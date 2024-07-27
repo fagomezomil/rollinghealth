@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {  
+.navbar-button {
+    @apply bg-[#0c423b] rounded-md w-fit text-lg font-medium  px-2 lg:px-10 py-2 xl:mx-2 lg:mx-1;
+  }
+.header-style {
+    @apply bg-[#126459] fixed w-full text-white text-center py-4 shadow-xl z-50 flex justify-between;
+  }
+  .user-badge {
+    @apply hidden lg:flex rounded-full h-10 w-10 mr-6 bg-[#a3a39d] border border-white flex items-center justify-center;
+  }
+  .user-menu {
+    @apply hidden lg:flex bg-white shadow-lg px-4 py-6 w-80 rounded-lg absolute right-6 top-14 flex-col;
+  }
+}
