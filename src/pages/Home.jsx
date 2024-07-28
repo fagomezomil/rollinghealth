@@ -1,9 +1,9 @@
-import SlideHome from "../components/SlideHome"
+import SliderHome from "../components/slidesHome/SliderHome"
 
 const Home = () => {
   return (
     <main className="mt-20">
-      <SlideHome />
+      <SliderHome />
     </main>
   )
 }
