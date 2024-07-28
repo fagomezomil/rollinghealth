@@ -27,4 +27,12 @@
   .slide-control-button {
     @apply text-neutral-300 text-4xl;
   }
+
+  /* services home */
+  .services-button {
+    @apply text-white text-2xl font-medium rounded-lg flex flex-col justify-center items-center;
+  }
+  .services-icon {
+    @apply text-4xl mr-2;
+  }
 }
