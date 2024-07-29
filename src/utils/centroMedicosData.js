@@ -5,6 +5,7 @@ export const centrosMedicos = [
         earth: "https://www.google.com/maps?q=Calle+19+de+Mayo+2345,+Bahía+Blanca,+Buenos+Aires",
         email: "bahiablanca@rollinghealth.com.ar",
         phone: "+54 291 890-1234",
+        img: "/images/centrosmedicos/centro1.png",
         specialities: [
             "Cardiología",
             "Clínica Médica - Medicina Interna",
@@ -25,6 +26,7 @@ export const centrosMedicos = [
         earth: "https://www.google.com/maps?q=Av.+Santa+Fe+1010,+Buenos+Aires,+Capital+Federal",
         email: "capital@rollinghealth.com.ar",
         phone: "+54 11 4567-8901",
+        img: "/images/centrosmedicos/centro2.jpg",
         specialities: [
             "Alergia e Inmunología",
             "Cardiología",
@@ -46,6 +48,7 @@ export const centrosMedicos = [
         earth: "https://www.google.com/maps?q=Av.+Sarmiento+7890,+Resistencia,+Chaco",
         email: "chaco@rollinghealth.com.ar",
         phone: "+54 362 345-6789",
+        img: "/images/centrosmedicos/centro3.jpg",
         specialities: [
             "Clínica Médica - Medicina Interna",
             "Dermatología",
@@ -69,6 +72,7 @@ export const centrosMedicos = [
         earth: "https://www.google.com/maps?q=Calle+Obispo+Trejo+456,+Córdoba,+Córdoba",
         email: "cordoba@rollinghealth.com.ar",
         phone: "+54 351 234-5678",
+        img: "/images/centrosmedicos/centro4.jpg",
         specialities: [
             "Alergia e Inmunología",
             "Cardiología",
@@ -92,6 +96,7 @@ export const centrosMedicos = [
         earth: "https://www.google.com/maps?q=Calle+Rivadavia+8901,+Formosa,+Formosa",
         email: "formosa@rollinghealth.com.ar",
         phone: "+54 370 456-7890",
+        img: "/images/centrosmedicos/centro5.jpg",
         specialities: [
             "Cardiología",
             "Cirugía General",
@@ -114,6 +119,7 @@ export const centrosMedicos = [
         earth: "https://www.google.com/maps?q=Calle+Alvear+6789,+San+Salvador+de+Jujuy,+Jujuy",
         email: "jujuy@rollinghealth.com.ar",
         phone: "+54 388 234-5678",
+        img: "/images/centrosmedicos/centro6.jpg",
         specialities: [
             "Alergia e Inmunología",
             "Cardiología",
@@ -137,6 +143,7 @@ export const centrosMedicos = [
         earth: "https://www.google.com/maps?q=Calle+12+1234,+La+Plata,+Buenos+Aires",
         email: "laplata@rollinghealth.com.ar",
         phone: "+54 221 678-9012",
+        img: "/images/centrosmedicos/centro7.jpg",
         specialities: [
             "Alergia e Inmunología",
             "Cirugía Plástica",
@@ -160,6 +167,7 @@ export const centrosMedicos = [
         earth: "https://www.google.com/maps?q=Av.+Colón+5678,+Mar+del+Plata,+Buenos+Aires",
         email: "mardelplata@rollinghealth.com.ar",
         phone: "+54 223 789-0123",
+        img: "/images/centrosmedicos/centro8.jpg",
         specialities: [
             "Cardiología",
             "Cirugía General",
@@ -183,6 +191,7 @@ export const centrosMedicos = [
         earth: "https://www.google.com/maps?q=Calle+San+Martín+1111,+Mendoza,+Mendoza",
         email: "mendoza@rollinghealth.com.ar",
         phone: "+54 261 567-8901",
+        img: "/images/centrosmedicos/centro9.jpg",
         specialities: [
             "Alergia e Inmunología",
             "Cardiología",
@@ -207,6 +216,7 @@ export const centrosMedicos = [
         earth: "https://www.google.com/maps?q=Calle+San+Juan+3456,+Neuquén,+Neuquén",
         email: "neuquen@rollinghealth.com.ar",
         phone: "+54 299 901-2345",
+        img: "/images/centrosmedicos/centro10.jpg",
         specialities: [
             "Alergia e Inmunología",
             "Cardiología",
@@ -231,6 +241,7 @@ export const centrosMedicos = [
         earth: "https://www.google.com/maps?q=Bv.+Oroño+789,+Rosario,+Santa+Fe",
         email: "rosario@rollinghealth.com.ar",
         phone: "+54 341 345-6789",
+        img: "/images/centrosmedicos/centro11.jpg",
         specialities: [
             "Alergia e Inmunología",
             "Cardiología",
@@ -255,6 +266,7 @@ export const centrosMedicos = [
         earth: "https://www.google.com/maps?q=Calle+Mitre+5678,+Salta,+Salta",
         email: "salta@rollinghealth.com.ar",
         phone: "+54 387 123-4567",
+        img: "/images/centrosmedicos/centro12.jpg",
         specialities: [
             "Cardiología",
             "Clínica Médica - Medicina Interna",
@@ -279,6 +291,7 @@ export const centrosMedicos = [
         earth: "https://www.google.com/maps?q=Av.+Libertador+4567,+San+Juan,+San+Juan",
         email: "sanjuan@rollinghealth.com.ar",
         phone: "+54 264 012-3456",
+        img: "/images/centrosmedicos/centro13.jpg",
         specialities: [
             "Alergia e Inmunología",
             "Cardiología",
@@ -303,6 +316,7 @@ export const centrosMedicos = [
         earth: "https://www.google.com/maps?q=Calle+San+Martín+9012,+Ushuaia,+Tierra+del+Fuego",
         email: "tierradelfuego@rollinghealth.com.ar",
         phone: "+54 2901 567-8901",
+        img: "/images/centrosmedicos/centro14.jpg",
         specialities: [
             "Alergia e Inmunología",
             "Cardiología",
@@ -327,6 +341,7 @@ export const centrosMedicos = [
         earth: "https://www.google.com/maps?q=Av.+Sarmiento+123,+San+Miguel+de+Tucumán,+Tucumán",
         email: "tucuman@rollinghealth.com.ar",
         phone: "+54 381 123-4567",
+        img: "/images/centrosmedicos/centro15.jpg",
         specialities: [
             "Alergia e Inmunología",
             "Cardiología",

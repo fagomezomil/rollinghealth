@@ -35,7 +35,7 @@ export default function ServicesHome() {
                     </button>
                     {
                         hoveredServiceId === service.id &&
-                        <p className="text-[15px] text-center ml-2 p-2 bg-white rounded-lg text-neutral-500 w-32 ">{service.text}</p>
+                        <p className="text-[15px] text-center ml-2 p-2 bg-white rounded-lg text-neutral-500 w-36 ">{service.text}</p>
                     }
                 </div>
             ))}

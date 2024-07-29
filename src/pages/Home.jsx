@@ -1,4 +1,5 @@
 import ServicesHome from "../components/ServicesHome";
+import SlideCentros from "../components/SlideCentros";
 import SliderHome from "../components/slidesHome/SliderHome"
 
 const Home = () => {
@@ -6,6 +7,7 @@ const Home = () => {
     <main className="mt-20">
       <SliderHome />
       <ServicesHome />
+      <SlideCentros />
     </main>
   )
 }
