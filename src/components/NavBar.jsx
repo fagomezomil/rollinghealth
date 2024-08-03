@@ -5,7 +5,7 @@ import { RiCloseFill, RiMenu3Line } from 'react-icons/ri';
 const NavBar = () => {
     const [close, setClose] = useState(true);
     const handleClose = () => setClose(!close);
-
+    
     return (
         <div className='flex justify-items-center items-center'>
             <div className='hidden lg:block lg:mr-2 xl:mr-8'>

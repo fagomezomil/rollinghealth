@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import SlideHomeContainer from "./SlideHomeContainer";
 import { IoChevronBackCircle, IoChevronForwardCircle, IoPauseCircle, IoPlayCircle } from "react-icons/io5";
-import { slidesData } from "../../utils/slidesData";
+import { slidesData } from "../../../utils/slidesData";
 
 const SliderHome = () => {
   const [currentIndex, setCurrentIndex] = useState(0);

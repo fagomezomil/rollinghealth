@@ -7,7 +7,8 @@ export const medicos = [
         centroMedico: "Centro Médico Bahía Blanca",
         atencion: "mañana de 8:00 a 13:00 hs",
         phone: "+54 291 890-1234 int. 101",
-        email: "jperez@rollinghealth.com.ar"
+        email: "jperez@rollinghealth.com.ar",
+        img: "/images/medicos/medicimg1.jpg"
     },
     {
         name: "Dra. María González",
@@ -17,7 +18,8 @@ export const medicos = [
         centroMedico: "Centro Médico Bahía Blanca",
         atencion: "tarde 16:00 a 21:00",
         phone: "+54 291 890-1234 int. 102",
-        email: "mgonzalez@rollinghealth.com.ar"
+        email: "mgonzalez@rollinghealth.com.ar",
+        img: "/images/medicos/medicimg2.jpg"
     },
     {
         name: "Dr. Carlos López",
@@ -27,7 +29,8 @@ export const medicos = [
         centroMedico: "Centro Médico Bahía Blanca",
         atencion: "mañana de 8:00 a 13:00 hs",
         phone: "+54 291 890-1234 int. 103",
-        email: "clopez@rollinghealth.com.ar"
+        email: "clopez@rollinghealth.com.ar",
+        img: "/images/medicos/medicimg3.jpg"
     },
     {
         name: "Dra. Ana Rodríguez",
@@ -37,7 +40,8 @@ export const medicos = [
         centroMedico: "Centro Médico Bahía Blanca",
         atencion: "tarde 16:00 a 21:00",
         phone: "+54 291 890-1234 int. 104",
-        email: "arodriguez@rollinghealth.com.ar"
+        email: "arodriguez@rollinghealth.com.ar",
+        img: "/images/medicos/medicimg4.jpg"
     },
     {
         name: "Dr. Pablo Gómez",
@@ -47,7 +51,8 @@ export const medicos = [
         centroMedico: "Centro Médico Bahía Blanca",
         atencion: "mañana de 8:00 a 13:00 hs",
         phone: "+54 291 890-1234 int. 105",
-        email: "pgomez@rollinghealth.com.ar"
+        email: "pgomez@rollinghealth.com.ar",
+        img: "/images/medicos/medicimg5.jpg"
     },
     {
         name: "Dra. Laura Díaz",
@@ -57,7 +62,8 @@ export const medicos = [
         centroMedico: "Centro Médico Bahía Blanca",
         atencion: "tarde 16:00 a 21:00",
         phone: "+54 291 890-1234 int. 106",
-        email: "ldiaz@rollinghealth.com.ar"
+        email: "ldiaz@rollinghealth.com.ar",
+        img: "/images/medicos/medicimg6.jpg"
     },
     {
         name: "Dr. Andrés Torres",
@@ -67,7 +73,8 @@ export const medicos = [
         centroMedico: "Centro Médico Bahía Blanca",
         atencion: "mañana de 8:00 a 13:00 hs",
         phone: "+54 291 890-1234 int. 107",
-        email: "atorres@rollinghealth.com.ar"
+        email: "atorres@rollinghealth.com.ar",
+        img: "/images/medicos/medicimg7.jpg"
     },
     {
         name: "Dra. Patricia Ramírez",
@@ -77,7 +84,8 @@ export const medicos = [
         centroMedico: "Centro Médico Bahía Blanca",
         atencion: "tarde 16:00 a 21:00",
         phone: "+54 291 890-1234 int. 108",
-        email: "pramirez@rollinghealth.com.ar"
+        email: "pramirez@rollinghealth.com.ar",
+        img: "/images/medicos/medicimg8.jpg"
     },
     {
         name: "Dr. Luis Fernández",
@@ -87,7 +95,8 @@ export const medicos = [
         centroMedico: "Centro Médico Bahía Blanca",
         atencion: "mañana de 8:00 a 13:00 hs",
         phone: "+54 291 890-1234 int. 109",
-        email: "lfernandez@rollinghealth.com.ar"
+        email: "lfernandez@rollinghealth.com.ar",
+        img: "/images/medicos/medicimg9.jpg"
     },
     {
         name: "Dra. Sofía Martínez",
@@ -97,7 +106,8 @@ export const medicos = [
         centroMedico: "Centro Médico Bahía Blanca",
         atencion: "tarde 16:00 a 21:00",
         phone: "+54 291 890-1234 int. 110",
-        email: "smartinez@rollinghealth.com.ar"
+        email: "smartinez@rollinghealth.com.ar",
+        img: "/images/medicos/medicimg10.jpg"
     },
     {
         name: "Dr. Javier Herrera",
@@ -107,7 +117,8 @@ export const medicos = [
         centroMedico: "Centro Médico Bahía Blanca",
         atencion: "mañana de 8:00 a 13:00 hs",
         phone: "+54 291 890-1234 int. 111",
-        email: "jherrera@rollinghealth.com.ar"
+        email: "jherrera@rollinghealth.com.ar",
+        img: "/images/medicos/medicimg11.jpg"
     },
     {
         name: "Dra. Marta Ruiz",
@@ -117,7 +128,8 @@ export const medicos = [
         centroMedico: "Centro Médico Bahía Blanca",
         atencion: "tarde 16:00 a 21:00",
         phone: "+54 291 890-1234 int. 112",
-        email: "mruiz@rollinghealth.com.ar"
+        email: "mruiz@rollinghealth.com.ar",
+        img: "/images/medicos/medicimg1.jpg"
     },
     {
         name: "Dr. Ricardo García",
@@ -127,7 +139,9 @@ export const medicos = [
         centroMedico: "Centro Médico Bahía Blanca",
         atencion: "mañana de 8:00 a 13:00 hs",
         phone: "+54 291 890-1234 int. 113",
-        email: "rgarcia@rollinghealth.com.ar"
+        email: "rgarcia@rollinghealth.com.ar",
+        img: "/images/medicos/medicimg2.jpg"
+
     },
     {
         name: "Dra. Natalia Vargas",
@@ -137,7 +151,8 @@ export const medicos = [
         centroMedico: "Centro Médico Bahía Blanca",
         atencion: "tarde 16:00 a 21:00",
         phone: "+54 291 890-1234 int. 114",
-        email: "nvargas@rollinghealth.com.ar"
+        email: "nvargas@rollinghealth.com.ar",
+        img: "/images/medicos/medicimg3.jpg"
     },
     {
         name: "Dr. Manuel Castro",
@@ -147,307 +162,338 @@ export const medicos = [
         centroMedico: "Centro Médico Bahía Blanca",
         atencion: "mañana de 8:00 a 13:00 hs",
         phone: "+54 291 890-1234 int. 115",
-        email: "mcastro@rollinghealth.com.ar"
+        email: "mcastro@rollinghealth.com.ar",
+        img: "/images/medicos/medicimg4.jpg"
     },
     {
         name: "Dr. Diego Almada",
         speciality: "Traumatología y Ortopedia",
         mp: "1475",
         bio: "Dr. Diego Almada se especializa en traumatología deportiva y cirugías de reconstrucción articular.",
-        centroMedico: "Centro Médico Bariloche Vida",
+        centroMedico: "Centro Médico Chaco Salud",
         atencion: "mañana de 8:00 a 13:00 hs",
         phone: "+54 294 890-1234 int. 101",
-        email: "dalmada@rollinghealth.com.ar"
+        email: "dalmada@rollinghealth.com.ar",
+        img: "/images/medicos/medicimg5.jpg"
     },
     {
         name: "Dra. Laura Saavedra",
         speciality: "Traumatología y Ortopedia",
         mp: "2891",
         bio: "Dra. Laura Saavedra cuenta con experiencia en ortopedia pediátrica y tratamiento de fracturas complejas.",
-        centroMedico: "Centro Médico Bariloche Vida",
+        centroMedico: "Centro Médico Chaco Salud",
         atencion: "tarde 16:00 a 21:00",
         phone: "+54 294 890-1234 int. 102",
-        email: "lsaavedra@rollinghealth.com.ar"
+        email: "lsaavedra@rollinghealth.com.ar",
+        img: "/images/medicos/medicimg6.jpg"
     },
     {
         name: "Dr. Emilio Cabrera",
         speciality: "Cirugía General",
         mp: "3610",
         bio: "Dr. Emilio Cabrera es especialista en cirugía laparoscópica y procedimientos mínimamente invasivos.",
-        centroMedico: "Centro Médico Bariloche Vida",
+        centroMedico: "Centro Médico Chaco Salud",
         atencion: "mañana de 8:00 a 13:00 hs",
         phone: "+54 294 890-1234 int. 103",
-        email: "ecabrera@rollinghealth.com.ar"
+        email: "ecabrera@rollinghealth.com.ar",
+        img: "/images/medicos/medicimg7.jpg"
     },
     {
         name: "Dra. Lucía Aguirre",
         speciality: "Cirugía General",
         mp: "4256",
         bio: "Dra. Lucía Aguirre es una cirujana general con experiencia en emergencias quirúrgicas y cirugía oncológica.",
-        centroMedico: "Centro Médico Bariloche Vida",
+        centroMedico: "Centro Médico Chaco Salud",
         atencion: "tarde 16:00 a 21:00",
         phone: "+54 294 890-1234 int. 104",
-        email: "laguirre@rollinghealth.com.ar"
+        email: "laguirre@rollinghealth.com.ar",
+        img: "/images/medicos/medicimg8.jpg"
     },
     {
         name: "Dr. Daniel Marín",
         speciality: "Infectología",
         mp: "5324",
         bio: "Dr. Daniel Marín se especializa en el diagnóstico y tratamiento de enfermedades infecciosas.",
-        centroMedico: "Centro Médico Bariloche Vida",
+        centroMedico: "Centro Médico Chaco Salud",
         atencion: "mañana de 8:00 a 13:00 hs",
         phone: "+54 294 890-1234 int. 105",
-        email: "dmarin@rollinghealth.com.ar"
+        email: "dmarin@rollinghealth.com.ar",
+        img: "/images/medicos/medicimg9.jpg"
     },
     {
         name: "Dra. Paula Navarro",
         speciality: "Infectología",
         mp: "6427",
         bio: "Dra. Paula Navarro es experta en el manejo de infecciones crónicas y enfermedades tropicales.",
-        centroMedico: "Centro Médico Bariloche Vida",
+        centroMedico: "Centro Médico Chaco Salud",
         atencion: "tarde 16:00 a 21:00",
         phone: "+54 294 890-1234 int. 106",
-        email: "pnavarro@rollinghealth.com.ar"
+        email: "pnavarro@rollinghealth.com.ar",
+        img: "/images/medicos/medicimg10.jpg"
     },
     {
         name: "Dr. Raúl Vega",
         speciality: "Neumonología",
         mp: "7893",
         bio: "Dr. Raúl Vega es neumonólogo con especialización en enfermedades respiratorias crónicas y cuidados críticos.",
-        centroMedico: "Centro Médico Bariloche Vida",
+        centroMedico: "Centro Médico Chaco Salud",
         atencion: "mañana de 8:00 a 13:00 hs",
         phone: "+54 294 890-1234 int. 107",
-        email: "rvega@rollinghealth.com.ar"
+        email: "rvega@rollinghealth.com.ar",
+        img: "/images/medicos/medicimg11.jpg"
     },
     {
         name: "Dra. Marina Ortiz",
         speciality: "Neumonología",
         mp: "8259",
         bio: "Dra. Marina Ortiz tiene experiencia en tratamiento de asma, EPOC y enfermedades intersticiales pulmonares.",
-        centroMedico: "Centro Médico Bariloche Vida",
+        centroMedico: "Centro Médico Chaco Salud",
         atencion: "tarde 16:00 a 21:00",
         phone: "+54 294 890-1234 int. 108",
-        email: "mortiz@rollinghealth.com.ar"
+        email: "mortiz@rollinghealth.com.ar",
+        img: "/images/medicos/medicimg1.jpg"
     },
     {
         name: "Dr. Tomás Ruiz",
         speciality: "Neurología",
         mp: "9374",
         bio: "Dr. Tomás Ruiz se especializa en trastornos neurológicos y neurocirugía.",
-        centroMedico: "Centro Médico Bariloche Vida",
+        centroMedico: "Centro Médico Chaco Salud",
         atencion: "mañana de 8:00 a 13:00 hs",
         phone: "+54 294 890-1234 int. 109",
-        email: "truiz@rollinghealth.com.ar"
+        email: "truiz@rollinghealth.com.ar",
+        img: "/images/medicos/medicimg2.jpg"
     },
     {
         name: "Dra. Gabriela Castro",
         speciality: "Neurología",
         mp: "1058",
         bio: "Dra. Gabriela Castro cuenta con experiencia en neurología infantil y epilepsia.",
-        centroMedico: "Centro Médico Bariloche Vida",
+        centroMedico: "Centro Médico Chaco Salud",
         atencion: "tarde 16:00 a 21:00",
         phone: "+54 294 890-1234 int. 110",
-        email: "gcastro@rollinghealth.com.ar"
+        email: "gcastro@rollinghealth.com.ar",
+        img: "/images/medicos/medicimg3.jpg"
     },
     {
         name: "Dr. Hernán Benítez",
         speciality: "Oncología",
         mp: "2736",
         bio: "Dr. Hernán Benítez es oncólogo con enfoque en terapias avanzadas y medicina personalizada.",
-        centroMedico: "Centro Médico Bariloche Vida",
+        centroMedico: "Centro Médico Chaco Salud",
         atencion: "mañana de 8:00 a 13:00 hs",
         phone: "+54 294 890-1234 int. 111",
-        email: "hbenitez@rollinghealth.com.ar"
+        email: "hbenitez@rollinghealth.com.ar",
+        img: "/images/medicos/medicimg4.jpg"
     },
     {
         name: "Dra. Isabel Flores",
         speciality: "Oncología",
         mp: "3814",
         bio: "Dra. Isabel Flores se especializa en oncología ginecológica y cuidados paliativos.",
-        centroMedico: "Centro Médico Bariloche Vida",
+        centroMedico: "Centro Médico Chaco Salud",
         atencion: "tarde 16:00 a 21:00",
         phone: "+54 294 890-1234 int. 112",
-        email: "iflores@rollinghealth.com.ar"
+        email: "iflores@rollinghealth.com.ar",
+        img: "/images/medicos/medicimg5.jpg"
     },
     {
         name: "Dr. Martín Muñoz",
         speciality: "Traumatología y Ortopedia",
         mp: "4937",
         bio: "Dr. Martín Muñoz se dedica a la traumatología pediátrica y cirugía ortopédica.",
-        centroMedico: "Centro Médico Bariloche Vida",
+        centroMedico: "Centro Médico Chaco Salud",
         atencion: "mañana de 8:00 a 13:00 hs",
         phone: "+54 294 890-1234 int. 113",
-        email: "mmunoz@rollinghealth.com.ar"
+        email: "mmunoz@rollinghealth.com.ar",
+        img: "/images/medicos/medicimg6.jpg"
     },
     {
         name: "Dra. Alejandra Prieto",
         speciality: "Traumatología y Ortopedia",
         mp: "5739",
         bio: "Dra. Alejandra Prieto tiene experiencia en tratamiento de lesiones deportivas y fracturas.",
-        centroMedico: "Centro Médico Bariloche Vida",
+        centroMedico: "Centro Médico Chaco Salud",
         atencion: "tarde 16:00 a 21:00",
         phone: "+54 294 890-1234 int. 114",
-        email: "aprieto@rollinghealth.com.ar"
+        email: "aprieto@rollinghealth.com.ar",
+        img: "/images/medicos/medicimg7.jpg"
     },
     {
         name: "Dr. Enrique Duarte",
         speciality: "Urología",
         mp: "6721",
         bio: "Dr. Enrique Duarte se especializa en cirugía urológica y tratamiento de enfermedades del tracto urinario.",
-        centroMedico: "Centro Médico Bariloche Vida",
+        centroMedico: "Centro Médico Chaco Salud",
         atencion: "mañana de 8:00 a 13:00 hs",
         phone: "+54 294 890-1234 int. 115",
-        email: "eduarte@rollinghealth.com.ar"
+        email: "eduarte@rollinghealth.com.ar",
+        img: "/images/medicos/medicimg8.jpg"
     },
     {
         name: "Dr. Andrés Moreno",
         speciality: "Alergia e Inmunología",
         mp: "1278",
         bio: "Dr. Andrés Moreno es especialista en alergias y enfermedades inmunológicas con más de 12 años de experiencia.",
-        centroMedico: "Centro Médico CABA Salud",
+        centroMedico: "Centro Médico Capital Bienestar",
         atencion: "mañana de 8:00 a 13:00 hs",
         phone: "+54 11 890-1234 int. 101",
-        email: "amoreno@rollinghealth.com.ar"
+        email: "amoreno@rollinghealth.com.ar",
+        img: "/images/medicos/medicimg9.jpg"
     },
     {
         name: "Dra. Valeria Santos",
         speciality: "Alergia e Inmunología",
         mp: "2396",
         bio: "Dra. Valeria Santos cuenta con experiencia en tratamiento de alergias y trastornos inmunológicos en niños y adultos.",
-        centroMedico: "Centro Médico CABA Salud",
+        centroMedico: "Centro Médico Capital Bienestar",
         atencion: "tarde 16:00 a 21:00",
         phone: "+54 11 890-1234 int. 102",
-        email: "vsantos@rollinghealth.com.ar"
+        email: "vsantos@rollinghealth.com.ar",
+        img: "/images/medicos/medicimg10.jpg"
     },
     {
         name: "Dr. Federico Blanco",
         speciality: "Cardiología",
         mp: "3489",
         bio: "Dr. Federico Blanco es cardiólogo especializado en prevención y rehabilitación cardiovascular.",
-        centroMedico: "Centro Médico CABA Salud",
+        centroMedico: "Centro Médico Capital Bienestar",
         atencion: "mañana de 8:00 a 13:00 hs",
         phone: "+54 11 890-1234 int. 103",
-        email: "fblanco@rollinghealth.com.ar"
+        email: "fblanco@rollinghealth.com.ar",
+        img: "/images/medicos/medicimg11.jpg"
     },
     {
         name: "Dra. Lucía Vargas",
         speciality: "Cardiología",
         mp: "4512",
         bio: "Dra. Lucía Vargas tiene experiencia en el manejo de enfermedades cardiovasculares y arritmias.",
-        centroMedico: "Centro Médico CABA Salud",
+        centroMedico: "Centro Médico Capital Bienestar",
         atencion: "tarde 16:00 a 21:00",
         phone: "+54 11 890-1234 int. 104",
-        email: "lvargas@rollinghealth.com.ar"
+        email: "lvargas@rollinghealth.com.ar",
+        img: "/images/medicos/medicimg1.jpg"
     },
     {
         name: "Dr. Javier Castro",
         speciality: "Dermatología",
         mp: "5784",
         bio: "Dr. Javier Castro es dermatólogo con especialización en tratamientos estéticos y enfermedades de la piel.",
-        centroMedico: "Centro Médico CABA Salud",
+        centroMedico: "Centro Médico Capital Bienestar",
         atencion: "mañana de 8:00 a 13:00 hs",
         phone: "+54 11 890-1234 int. 105",
-        email: "jcastro@rollinghealth.com.ar"
+        email: "jcastro@rollinghealth.com.ar",
+        img: "/images/medicos/medicimg2.jpg"
     },
     {
         name: "Dra. María López",
         speciality: "Dermatología",
         mp: "6872",
         bio: "Dra. María López se dedica a la dermatología clínica y quirúrgica, con enfoque en cáncer de piel.",
-        centroMedico: "Centro Médico CABA Salud",
+        centroMedico: "Centro Médico Capital Bienestar",
         atencion: "tarde 16:00 a 21:00",
         phone: "+54 11 890-1234 int. 106",
-        email: "mlopez@rollinghealth.com.ar"
+        email: "mlopez@rollinghealth.com.ar",
+        img: "/images/medicos/medicimg3.jpg"
     },
     {
         name: "Dr. Roberto Ramírez",
         speciality: "Endocrinología",
         mp: "7934",
         bio: "Dr. Roberto Ramírez es endocrinólogo con experiencia en el tratamiento de diabetes y enfermedades tiroideas.",
-        centroMedico: "Centro Médico CABA Salud",
+        centroMedico: "Centro Médico Capital Bienestar",
         atencion: "mañana de 8:00 a 13:00 hs",
         phone: "+54 11 890-1234 int. 107",
-        email: "rramirez@rollinghealth.com.ar"
+        email: "rramirez@rollinghealth.com.ar",
+        img: "/images/medicos/medicimg4.jpg"
     },
     {
         name: "Dra. Sandra Herrera",
         speciality: "Endocrinología",
         mp: "8721",
         bio: "Dra. Sandra Herrera se especializa en endocrinología reproductiva y trastornos hormonales.",
-        centroMedico: "Centro Médico CABA Salud",
+        centroMedico: "Centro Médico Capital Bienestar",
         atencion: "tarde 16:00 a 21:00",
         phone: "+54 11 890-1234 int. 108",
-        email: "sherrera@rollinghealth.com.ar"
+        email: "sherrera@rollinghealth.com.ar",
+        img: "/images/medicos/medicimg5.jpg"
     },
     {
         name: "Dr. Fernando Quiroga",
         speciality: "Gastroenterología y Endoscopías",
         mp: "9345",
         bio: "Dr. Fernando Quiroga es gastroenterólogo especializado en endoscopías y enfermedades del aparato digestivo.",
-        centroMedico: "Centro Médico CABA Salud",
+        centroMedico: "Centro Médico Capital Bienestar",
         atencion: "mañana de 8:00 a 13:00 hs",
         phone: "+54 11 890-1234 int. 109",
-        email: "fquiroga@rollinghealth.com.ar"
+        email: "fquiroga@rollinghealth.com.ar",
+        img: "/images/medicos/medicimg6.jpg"
     },
     {
         name: "Dra. Claudia Sánchez",
         speciality: "Gastroenterología y Endoscopías",
         mp: "1028",
         bio: "Dra. Claudia Sánchez tiene experiencia en endoscopías y tratamiento de enfermedades hepáticas.",
-        centroMedico: "Centro Médico CABA Salud",
+        centroMedico: "Centro Médico Capital Bienestar",
         atencion: "tarde 16:00 a 21:00",
         phone: "+54 11 890-1234 int. 110",
-        email: "csanchez@rollinghealth.com.ar"
+        email: "csanchez@rollinghealth.com.ar",
+        img: "/images/medicos/medicimg7.jpg"
     },
     {
         name: "Dr. Alejandro Díaz",
         speciality: "Ginecología",
         mp: "1143",
         bio: "Dr. Alejandro Díaz es ginecólogo con especialización en salud reproductiva y cuidados prenatales.",
-        centroMedico: "Centro Médico CABA Salud",
+        centroMedico: "Centro Médico Capital Bienestar",
         atencion: "mañana de 8:00 a 13:00 hs",
         phone: "+54 11 890-1234 int. 111",
-        email: "adiaz@rollinghealth.com.ar"
+        email: "adiaz@rollinghealth.com.ar",
+        img: "/images/medicos/medicimg8.jpg"
     },
     {
         name: "Dra. Patricia Herrera",
         speciality: "Ginecología",
         mp: "1294",
         bio: "Dra. Patricia Herrera se especializa en ginecología oncológica y cirugía mínimamente invasiva.",
-        centroMedico: "Centro Médico CABA Salud",
+        centroMedico: "Centro Médico Capital Bienestar",
         atencion: "tarde 16:00 a 21:00",
         phone: "+54 11 890-1234 int. 112",
-        email: "pherrera@rollinghealth.com.ar"
+        email: "pherrera@rollinghealth.com.ar",
+        img: "/images/medicos/medicimg9.jpg"
     },
     {
         name: "Dr. Marcelo Ruiz",
         speciality: "Neurología",
         mp: "2345",
         bio: "Dr. Marcelo Ruiz es neurólogo con experiencia en trastornos del sueño y enfermedades neurodegenerativas.",
-        centroMedico: "Centro Médico CABA Salud",
+        centroMedico: "Centro Médico Capital Bienestar",
         atencion: "mañana de 8:00 a 13:00 hs",
         phone: "+54 11 890-1234 int. 113",
-        email: "mruiz@rollinghealth.com.ar"
+        email: "mruiz@rollinghealth.com.ar",
+        img: "/images/medicos/medicimg10.jpg"
     },
     {
         name: "Dra. Verónica Ortiz",
         speciality: "Neurología",
         mp: "3456",
         bio: "Dra. Verónica Ortiz se dedica a la neurología infantil y tratamiento de epilepsia.",
-        centroMedico: "Centro Médico CABA Salud",
+        centroMedico: "Centro Médico Capital Bienestar",
         atencion: "tarde 16:00 a 21:00",
         phone: "+54 11 890-1234 int. 114",
-        email: "vortiz@rollinghealth.com.ar"
+        email: "vortiz@rollinghealth.com.ar",
+        img: "/images/medicos/medicimg11.jpg"
     },
     {
         name: "Dr. Héctor Gómez",
         speciality: "Odontología",
         mp: "4567",
         bio: "Dr. Héctor Gómez es odontólogo con especialización en implantología y estética dental.",
-        centroMedico: "Centro Médico CABA Salud",
+        centroMedico: "Centro Médico Capital Bienestar",
         atencion: "mañana de 8:00 a 13:00 hs",
         phone: "+54 11 890-1234 int. 115",
-        email: "hgomez@rollinghealth.com.ar"
+        email: "hgomez@rollinghealth.com.ar",
+        img: "/images/medicos/medicimg1.jpg"
     },
     {
         name: "Dr. Antonio Fernández",
@@ -457,7 +503,8 @@ export const medicos = [
         centroMedico: "Centro Médico Córdoba Vida",
         atencion: "mañana de 8:00 a 13:00 hs",
         phone: "+54 351 890-1234 int. 101",
-        email: "afernandez@rollinghealth.com.ar"
+        email: "afernandez@rollinghealth.com.ar",
+        img: "/images/medicos/medicimg2.jpg"
     },
     {
         name: "Dra. Isabel Molina",
@@ -467,7 +514,8 @@ export const medicos = [
         centroMedico: "Centro Médico Córdoba Vida",
         atencion: "tarde 16:00 a 21:00",
         phone: "+54 351 890-1234 int. 102",
-        email: "imolina@rollinghealth.com.ar"
+        email: "imolina@rollinghealth.com.ar",
+        img: "/images/medicos/medicimg3.jpg"
     },
     {
         name: "Dr. Javier Ramos",
@@ -477,7 +525,8 @@ export const medicos = [
         centroMedico: "Centro Médico Córdoba Vida",
         atencion: "mañana de 8:00 a 13:00 hs",
         phone: "+54 351 890-1234 int. 103",
-        email: "jramos@rollinghealth.com.ar"
+        email: "jramos@rollinghealth.com.ar",
+        img: "/images/medicos/medicimg4.jpg"
     },
     {
         name: "Dra. Camila Flores",
@@ -487,7 +536,8 @@ export const medicos = [
         centroMedico: "Centro Médico Córdoba Vida",
         atencion: "tarde 16:00 a 21:00",
         phone: "+54 351 890-1234 int. 104",
-        email: "cflores@rollinghealth.com.ar"
+        email: "cflores@rollinghealth.com.ar",
+        img: "/images/medicos/medicimg5.jpg"
     },
     {
         name: "Dr. Alejandro Márquez",
@@ -497,7 +547,8 @@ export const medicos = [
         centroMedico: "Centro Médico Córdoba Vida",
         atencion: "mañana de 8:00 a 13:00 hs",
         phone: "+54 351 890-1234 int. 105",
-        email: "amarquez@rollinghealth.com.ar"
+        email: "amarquez@rollinghealth.com.ar",
+        img: "/images/medicos/medicimg6.jpg"
     },
     {
         name: "Dra. Carla Gutiérrez",
@@ -507,7 +558,8 @@ export const medicos = [
         centroMedico: "Centro Médico Córdoba Vida",
         atencion: "tarde 16:00 a 21:00",
         phone: "+54 351 890-1234 int. 106",
-        email: "cgutierrez@rollinghealth.com.ar"
+        email: "cgutierrez@rollinghealth.com.ar",
+        img: "/images/medicos/medicimg7.jpg"
     },
     {
         name: "Dr. Martín Sosa",
@@ -517,7 +569,8 @@ export const medicos = [
         centroMedico: "Centro Médico Córdoba Vida",
         atencion: "mañana de 8:00 a 13:00 hs",
         phone: "+54 351 890-1234 int. 107",
-        email: "msosa@rollinghealth.com.ar"
+        email: "msosa@rollinghealth.com.ar",
+        img: "/images/medicos/medicimg8.jpg"
     },
     {
         name: "Dra. Mariana Castro",
@@ -527,7 +580,8 @@ export const medicos = [
         centroMedico: "Centro Médico Córdoba Vida",
         atencion: "tarde 16:00 a 21:00",
         phone: "+54 351 890-1234 int. 108",
-        email: "mcastro@rollinghealth.com.ar"
+        email: "mcastro@rollinghealth.com.ar",
+        img: "/images/medicos/medicimg9.jpg"
     },
     {
         name: "Dr. Ricardo Pérez",
@@ -537,7 +591,8 @@ export const medicos = [
         centroMedico: "Centro Médico Córdoba Vida",
         atencion: "mañana de 8:00 a 13:00 hs",
         phone: "+54 351 890-1234 int. 109",
-        email: "rperez@rollinghealth.com.ar"
+        email: "rperez@rollinghealth.com.ar",
+        img: "/images/medicos/medicimg10.jpg"
     },
     {
         name: "Dra. Laura Muñoz",
@@ -547,7 +602,8 @@ export const medicos = [
         centroMedico: "Centro Médico Córdoba Vida",
         atencion: "tarde 16:00 a 21:00",
         phone: "+54 351 890-1234 int. 110",
-        email: "lmunoz@rollinghealth.com.ar"
+        email: "lmunoz@rollinghealth.com.ar",
+        img: "/images/medicos/medicimg11.jpg"
     },
     {
         name: "Dr. Diego Herrera",
@@ -557,7 +613,8 @@ export const medicos = [
         centroMedico: "Centro Médico Córdoba Vida",
         atencion: "mañana de 8:00 a 13:00 hs",
         phone: "+54 351 890-1234 int. 111",
-        email: "dherrera@rollinghealth.com.ar"
+        email: "dherrera@rollinghealth.com.ar",
+        img: "/images/medicos/medicimg1.jpg"
     },
     {
         name: "Dra. Alicia Pérez",
@@ -567,7 +624,8 @@ export const medicos = [
         centroMedico: "Centro Médico Córdoba Vida",
         atencion: "tarde 16:00 a 21:00",
         phone: "+54 351 890-1234 int. 112",
-        email: "aperez@rollinghealth.com.ar"
+        email: "aperez@rollinghealth.com.ar",
+        img: "/images/medicos/medicimg2.jpg"
     },
     {
         name: "Dr. Enrique Sánchez",
@@ -577,7 +635,8 @@ export const medicos = [
         centroMedico: "Centro Médico Córdoba Vida",
         atencion: "mañana de 8:00 a 13:00 hs",
         phone: "+54 351 890-1234 int. 113",
-        email: "esanchez@rollinghealth.com.ar"
+        email: "esanchez@rollinghealth.com.ar",
+        img: "/images/medicos/medicimg3.jpg"
     },
     {
         name: "Dra. Victoria González",
@@ -587,7 +646,8 @@ export const medicos = [
         centroMedico: "Centro Médico Córdoba Vida",
         atencion: "tarde 16:00 a 21:00",
         phone: "+54 351 890-1234 int. 114",
-        email: "vgonzalez@rollinghealth.com.ar"
+        email: "vgonzalez@rollinghealth.com.ar",
+        img: "/images/medicos/medicimg4.jpg"
     },
     {
         name: "Dr. Alejandro López",
@@ -597,7 +657,8 @@ export const medicos = [
         centroMedico: "Centro Médico Córdoba Vida",
         atencion: "mañana de 8:00 a 13:00 hs",
         phone: "+54 351 890-1234 int. 115",
-        email: "alopez@rollinghealth.com.ar"
+        email: "alopez@rollinghealth.com.ar",
+        img: "/images/medicos/medicimg5.jpg"
     },
     {
         name: "Dr. Carlos Mendoza",
@@ -607,7 +668,8 @@ export const medicos = [
         centroMedico: "Centro Médico Tucumán Salud",
         atencion: "mañana de 8:00 a 13:00 hs",
         phone: "+54 381 890-1234 int. 101",
-        email: "cmendoza@rollinghealth.com.ar"
+        email: "cmendoza@rollinghealth.com.ar",
+        img: "/images/medicos/medicimg6.jpg"
     },
     {
         name: "Dra. Ana Ríos",
@@ -617,7 +679,8 @@ export const medicos = [
         centroMedico: "Centro Médico Tucumán Salud",
         atencion: "tarde 16:00 a 21:00",
         phone: "+54 381 890-1234 int. 102",
-        email: "arios@rollinghealth.com.ar"
+        email: "arios@rollinghealth.com.ar",
+        img: "/images/medicos/medicimg7.jpg"
     },
     {
         name: "Dr. Felipe Gómez",
@@ -627,7 +690,8 @@ export const medicos = [
         centroMedico: "Centro Médico Tucumán Salud",
         atencion: "mañana de 8:00 a 13:00 hs",
         phone: "+54 381 890-1234 int. 103",
-        email: "fgomez@rollinghealth.com.ar"
+        email: "fgomez@rollinghealth.com.ar",
+        img: "/images/medicos/medicimg8.jpg"
     },
     {
         name: "Dra. Laura Figueroa",
@@ -637,7 +701,8 @@ export const medicos = [
         centroMedico: "Centro Médico Tucumán Salud",
         atencion: "tarde 16:00 a 21:00",
         phone: "+54 381 890-1234 int. 104",
-        email: "lfigueroa@rollinghealth.com.ar"
+        email: "lfigueroa@rollinghealth.com.ar",
+        img: "/images/medicos/medicimg9.jpg"
     },
     {
         name: "Dr. Santiago López",
@@ -647,7 +712,8 @@ export const medicos = [
         centroMedico: "Centro Médico Tucumán Salud",
         atencion: "mañana de 8:00 a 13:00 hs",
         phone: "+54 381 890-1234 int. 105",
-        email: "slopez@rollinghealth.com.ar"
+        email: "slopez@rollinghealth.com.ar",
+        img: "/images/medicos/medicimg10.jpg"
     },
     {
         name: "Dra. Marta Ruiz",
@@ -657,7 +723,8 @@ export const medicos = [
         centroMedico: "Centro Médico Tucumán Salud",
         atencion: "tarde 16:00 a 21:00",
         phone: "+54 381 890-1234 int. 106",
-        email: "mruiz@rollinghealth.com.ar"
+        email: "mruiz@rollinghealth.com.ar",
+        img: "/images/medicos/medicimg11.jpg"
     },
     {
         name: "Dr. Pablo García",
@@ -667,7 +734,8 @@ export const medicos = [
         centroMedico: "Centro Médico Tucumán Salud",
         atencion: "mañana de 8:00 a 13:00 hs",
         phone: "+54 381 890-1234 int. 107",
-        email: "pgarcia@rollinghealth.com.ar"
+        email: "pgarcia@rollinghealth.com.ar",
+        img: "/images/medicos/medicimg1.jpg"
     },
     {
         name: "Dra. Silvia Martínez",
@@ -677,7 +745,8 @@ export const medicos = [
         centroMedico: "Centro Médico Tucumán Salud",
         atencion: "tarde 16:00 a 21:00",
         phone: "+54 381 890-1234 int. 108",
-        email: "smartinez@rollinghealth.com.ar"
+        email: "smartinez@rollinghealth.com.ar",
+        img: "/images/medicos/medicimg2.jpg"
     },
     {
         name: "Dr. Lucas Pérez",
@@ -687,7 +756,8 @@ export const medicos = [
         centroMedico: "Centro Médico Tucumán Salud",
         atencion: "mañana de 8:00 a 13:00 hs",
         phone: "+54 381 890-1234 int. 109",
-        email: "lperez@rollinghealth.com.ar"
+        email: "lperez@rollinghealth.com.ar",
+        img: "/images/medicos/medicimg3.jpg"
     },
     {
         name: "Dra. Patricia Gómez",
@@ -697,7 +767,8 @@ export const medicos = [
         centroMedico: "Centro Médico Tucumán Salud",
         atencion: "tarde 16:00 a 21:00",
         phone: "+54 381 890-1234 int. 110",
-        email: "pgomez@rollinghealth.com.ar"
+        email: "pgomez@rollinghealth.com.ar",
+        img: "/images/medicos/medicimg4.jpg"
     },
     {
         name: "Dr. Javier Romero",
@@ -707,7 +778,8 @@ export const medicos = [
         centroMedico: "Centro Médico Tucumán Salud",
         atencion: "mañana de 8:00 a 13:00 hs",
         phone: "+54 381 890-1234 int. 111",
-        email: "jromero@rollinghealth.com.ar"
+        email: "jromero@rollinghealth.com.ar",
+        img: "/images/medicos/medicimg5.jpg"
     },
     {
         name: "Dra. Sofía Álvarez",
@@ -717,7 +789,8 @@ export const medicos = [
         centroMedico: "Centro Médico Tucumán Salud",
         atencion: "tarde 16:00 a 21:00",
         phone: "+54 381 890-1234 int. 112",
-        email: "salvarez@rollinghealth.com.ar"
+        email: "salvarez@rollinghealth.com.ar",
+        img: "/images/medicos/medicimg6.jpg"
     },
     {
         name: "Dr. Marcos Torres",
@@ -727,7 +800,8 @@ export const medicos = [
         centroMedico: "Centro Médico Tucumán Salud",
         atencion: "mañana de 8:00 a 13:00 hs",
         phone: "+54 381 890-1234 int. 113",
-        email: "mtorres@rollinghealth.com.ar"
+        email: "mtorres@rollinghealth.com.ar",
+        img: "/images/medicos/medicimg7.jpg"
     },
     {
         name: "Dra. Verónica Luna",
@@ -737,7 +811,8 @@ export const medicos = [
         centroMedico: "Centro Médico Tucumán Salud",
         atencion: "tarde 16:00 a 21:00",
         phone: "+54 381 890-1234 int. 114",
-        email: "vluna@rollinghealth.com.ar"
+        email: "vluna@rollinghealth.com.ar",
+        img: "/images/medicos/medicimg8.jpg"
     },
     {
         name: "Dr. Fernando Herrera",
@@ -747,6 +822,7 @@ export const medicos = [
         centroMedico: "Centro Médico Tucumán Salud",
         atencion: "mañana de 8:00 a 13:00 hs",
         phone: "+54 381 890-1234 int. 115",
-        email: "fherrera@rollinghealth.com.ar"
+        email: "fherrera@rollinghealth.com.ar",
+        img: "/images/medicos/medicimg9.jpg"
     }
 ];
