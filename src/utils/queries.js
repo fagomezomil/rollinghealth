@@ -54,3 +54,14 @@ export const eliminarUsuarioAPI = async(id) => {
     console.error(error);
   }
 }
+
+export const login = async(usuario) => {
+  try {
+    const response = await axios.post(URI_LOGIN, {
+      usuario
+    })
+    return response
+  } catch (error) {
+    console.error(error);
+  }
+}
