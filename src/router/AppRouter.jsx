@@ -3,6 +3,7 @@ import Home from "../pages/Home"
 import Layout from "../components/Layout"
 import Register from "../components/Register"
 import Login from "../components/Login"
+import Paciente from "../components/Paciente"
 
 const AppRouter = () => {
     return (
@@ -12,6 +13,7 @@ const AppRouter = () => {
                     <Route path="/" element={<Home />} />
                     <Route path="/register" element={<Register />} />
                     <Route path="/login" element={<Login />} />
+                    <Route path="/paciente" element={<Paciente />} />
                 </Routes>
             </Layout>
         </BrowserRouter>

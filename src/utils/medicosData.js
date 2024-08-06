@@ -1,7 +1,7 @@
 export const medicos = [
     {
         name: "Dr. Juan Pérez",
-        speciality: "Cardiología",
+        specialty: "Cardiología",
         mp: "1234",
         bio: "Dr. Juan Pérez es un cardiólogo con más de 15 años de experiencia en el tratamiento de enfermedades cardiovasculares.",
         centroMedico: "Centro Médico Bahía Blanca",
@@ -12,7 +12,7 @@ export const medicos = [
     },
     {
         name: "Dra. María González",
-        speciality: "Cardiología",
+        specialty: "Cardiología",
         mp: "5678",
         bio: "Dra. María González es especialista en cardiología preventiva y rehabilitación cardiovascular.",
         centroMedico: "Centro Médico Bahía Blanca",
@@ -23,7 +23,7 @@ export const medicos = [
     },
     {
         name: "Dr. Carlos López",
-        speciality: "Dermatología",
+        specialty: "Dermatología",
         mp: "9101",
         bio: "Dr. Carlos López tiene una amplia experiencia en dermatología clínica y estética.",
         centroMedico: "Centro Médico Bahía Blanca",
@@ -34,7 +34,7 @@ export const medicos = [
     },
     {
         name: "Dra. Ana Rodríguez",
-        speciality: "Dermatología",
+        specialty: "Dermatología",
         mp: "1121",
         bio: "Dra. Ana Rodríguez se especializa en tratamientos dermatológicos avanzados y cuidado de la piel.",
         centroMedico: "Centro Médico Bahía Blanca",
@@ -45,7 +45,7 @@ export const medicos = [
     },
     {
         name: "Dr. Pablo Gómez",
-        speciality: "Endocrinología",
+        specialty: "Endocrinología",
         mp: "3141",
         bio: "Dr. Pablo Gómez es un endocrinólogo con experiencia en el manejo de enfermedades hormonales.",
         centroMedico: "Centro Médico Bahía Blanca",
@@ -56,7 +56,7 @@ export const medicos = [
     },
     {
         name: "Dra. Laura Díaz",
-        speciality: "Endocrinología",
+        specialty: "Endocrinología",
         mp: "5161",
         bio: "Dra. Laura Díaz es especialista en el tratamiento de trastornos endocrinos y metabólicos.",
         centroMedico: "Centro Médico Bahía Blanca",
@@ -67,7 +67,7 @@ export const medicos = [
     },
     {
         name: "Dr. Andrés Torres",
-        speciality: "Gastroenterología y Endoscopías",
+        specialty: "Gastroenterología y Endoscopías",
         mp: "7181",
         bio: "Dr. Andrés Torres tiene más de 10 años de experiencia en gastroenterología y endoscopía.",
         centroMedico: "Centro Médico Bahía Blanca",
@@ -78,7 +78,7 @@ export const medicos = [
     },
     {
         name: "Dra. Patricia Ramírez",
-        speciality: "Gastroenterología y Endoscopías",
+        specialty: "Gastroenterología y Endoscopías",
         mp: "9202",
         bio: "Dra. Patricia Ramírez es una experta en enfermedades digestivas y procedimientos endoscópicos.",
         centroMedico: "Centro Médico Bahía Blanca",
@@ -89,7 +89,7 @@ export const medicos = [
     },
     {
         name: "Dr. Luis Fernández",
-        speciality: "Ginecología",
+        specialty: "Ginecología",
         mp: "1223",
         bio: "Dr. Luis Fernández se especializa en salud reproductiva y cuidados ginecológicos.",
         centroMedico: "Centro Médico Bahía Blanca",
@@ -100,7 +100,7 @@ export const medicos = [
     },
     {
         name: "Dra. Sofía Martínez",
-        speciality: "Ginecología",
+        specialty: "Ginecología",
         mp: "3243",
         bio: "Dra. Sofía Martínez tiene amplia experiencia en obstetricia y ginecología.",
         centroMedico: "Centro Médico Bahía Blanca",
@@ -111,7 +111,7 @@ export const medicos = [
     },
     {
         name: "Dr. Javier Herrera",
-        speciality: "Neurología",
+        specialty: "Neurología",
         mp: "5264",
         bio: "Dr. Javier Herrera es un neurólogo con experiencia en trastornos neurológicos y enfermedades neurodegenerativas.",
         centroMedico: "Centro Médico Bahía Blanca",
@@ -122,7 +122,7 @@ export const medicos = [
     },
     {
         name: "Dra. Marta Ruiz",
-        speciality: "Neurología",
+        specialty: "Neurología",
         mp: "7284",
         bio: "Dra. Marta Ruiz se especializa en neurología infantil y epilepsia.",
         centroMedico: "Centro Médico Bahía Blanca",
@@ -133,7 +133,7 @@ export const medicos = [
     },
     {
         name: "Dr. Ricardo García",
-        speciality: "Odontología",
+        specialty: "Odontología",
         mp: "9305",
         bio: "Dr. Ricardo García es odontólogo con especialización en ortodoncia y estética dental.",
         centroMedico: "Centro Médico Bahía Blanca",
@@ -145,7 +145,7 @@ export const medicos = [
     },
     {
         name: "Dra. Natalia Vargas",
-        speciality: "Odontología",
+        specialty: "Odontología",
         mp: "1345",
         bio: "Dra. Natalia Vargas se especializa en periodoncia y tratamiento de enfermedades de las encías.",
         centroMedico: "Centro Médico Bahía Blanca",
@@ -156,7 +156,7 @@ export const medicos = [
     },
     {
         name: "Dr. Manuel Castro",
-        speciality: "Oncología",
+        specialty: "Oncología",
         mp: "3365",
         bio: "Dr. Manuel Castro es oncólogo con más de 20 años de experiencia en el tratamiento de cáncer.",
         centroMedico: "Centro Médico Bahía Blanca",
@@ -167,7 +167,7 @@ export const medicos = [
     },
     {
         name: "Dr. Diego Almada",
-        speciality: "Traumatología y Ortopedia",
+        specialty: "Traumatología y Ortopedia",
         mp: "1475",
         bio: "Dr. Diego Almada se especializa en traumatología deportiva y cirugías de reconstrucción articular.",
         centroMedico: "Centro Médico Chaco Salud",
@@ -178,7 +178,7 @@ export const medicos = [
     },
     {
         name: "Dra. Laura Saavedra",
-        speciality: "Traumatología y Ortopedia",
+        specialty: "Traumatología y Ortopedia",
         mp: "2891",
         bio: "Dra. Laura Saavedra cuenta con experiencia en ortopedia pediátrica y tratamiento de fracturas complejas.",
         centroMedico: "Centro Médico Chaco Salud",
@@ -189,7 +189,7 @@ export const medicos = [
     },
     {
         name: "Dr. Emilio Cabrera",
-        speciality: "Cirugía General",
+        specialty: "Cirugía General",
         mp: "3610",
         bio: "Dr. Emilio Cabrera es especialista en cirugía laparoscópica y procedimientos mínimamente invasivos.",
         centroMedico: "Centro Médico Chaco Salud",
@@ -200,7 +200,7 @@ export const medicos = [
     },
     {
         name: "Dra. Lucía Aguirre",
-        speciality: "Cirugía General",
+        specialty: "Cirugía General",
         mp: "4256",
         bio: "Dra. Lucía Aguirre es una cirujana general con experiencia en emergencias quirúrgicas y cirugía oncológica.",
         centroMedico: "Centro Médico Chaco Salud",
@@ -211,7 +211,7 @@ export const medicos = [
     },
     {
         name: "Dr. Daniel Marín",
-        speciality: "Infectología",
+        specialty: "Infectología",
         mp: "5324",
         bio: "Dr. Daniel Marín se especializa en el diagnóstico y tratamiento de enfermedades infecciosas.",
         centroMedico: "Centro Médico Chaco Salud",
@@ -222,7 +222,7 @@ export const medicos = [
     },
     {
         name: "Dra. Paula Navarro",
-        speciality: "Infectología",
+        specialty: "Infectología",
         mp: "6427",
         bio: "Dra. Paula Navarro es experta en el manejo de infecciones crónicas y enfermedades tropicales.",
         centroMedico: "Centro Médico Chaco Salud",
@@ -233,7 +233,7 @@ export const medicos = [
     },
     {
         name: "Dr. Raúl Vega",
-        speciality: "Neumonología",
+        specialty: "Neumonología",
         mp: "7893",
         bio: "Dr. Raúl Vega es neumonólogo con especialización en enfermedades respiratorias crónicas y cuidados críticos.",
         centroMedico: "Centro Médico Chaco Salud",
@@ -244,7 +244,7 @@ export const medicos = [
     },
     {
         name: "Dra. Marina Ortiz",
-        speciality: "Neumonología",
+        specialty: "Neumonología",
         mp: "8259",
         bio: "Dra. Marina Ortiz tiene experiencia en tratamiento de asma, EPOC y enfermedades intersticiales pulmonares.",
         centroMedico: "Centro Médico Chaco Salud",
@@ -255,7 +255,7 @@ export const medicos = [
     },
     {
         name: "Dr. Tomás Ruiz",
-        speciality: "Neurología",
+        specialty: "Neurología",
         mp: "9374",
         bio: "Dr. Tomás Ruiz se especializa en trastornos neurológicos y neurocirugía.",
         centroMedico: "Centro Médico Chaco Salud",
@@ -266,7 +266,7 @@ export const medicos = [
     },
     {
         name: "Dra. Gabriela Castro",
-        speciality: "Neurología",
+        specialty: "Neurología",
         mp: "1058",
         bio: "Dra. Gabriela Castro cuenta con experiencia en neurología infantil y epilepsia.",
         centroMedico: "Centro Médico Chaco Salud",
@@ -277,7 +277,7 @@ export const medicos = [
     },
     {
         name: "Dr. Hernán Benítez",
-        speciality: "Oncología",
+        specialty: "Oncología",
         mp: "2736",
         bio: "Dr. Hernán Benítez es oncólogo con enfoque en terapias avanzadas y medicina personalizada.",
         centroMedico: "Centro Médico Chaco Salud",
@@ -288,7 +288,7 @@ export const medicos = [
     },
     {
         name: "Dra. Isabel Flores",
-        speciality: "Oncología",
+        specialty: "Oncología",
         mp: "3814",
         bio: "Dra. Isabel Flores se especializa en oncología ginecológica y cuidados paliativos.",
         centroMedico: "Centro Médico Chaco Salud",
@@ -299,7 +299,7 @@ export const medicos = [
     },
     {
         name: "Dr. Martín Muñoz",
-        speciality: "Traumatología y Ortopedia",
+        specialty: "Traumatología y Ortopedia",
         mp: "4937",
         bio: "Dr. Martín Muñoz se dedica a la traumatología pediátrica y cirugía ortopédica.",
         centroMedico: "Centro Médico Chaco Salud",
@@ -310,7 +310,7 @@ export const medicos = [
     },
     {
         name: "Dra. Alejandra Prieto",
-        speciality: "Traumatología y Ortopedia",
+        specialty: "Traumatología y Ortopedia",
         mp: "5739",
         bio: "Dra. Alejandra Prieto tiene experiencia en tratamiento de lesiones deportivas y fracturas.",
         centroMedico: "Centro Médico Chaco Salud",
@@ -321,7 +321,7 @@ export const medicos = [
     },
     {
         name: "Dr. Enrique Duarte",
-        speciality: "Urología",
+        specialty: "Urología",
         mp: "6721",
         bio: "Dr. Enrique Duarte se especializa en cirugía urológica y tratamiento de enfermedades del tracto urinario.",
         centroMedico: "Centro Médico Chaco Salud",
@@ -332,7 +332,7 @@ export const medicos = [
     },
     {
         name: "Dr. Andrés Moreno",
-        speciality: "Alergia e Inmunología",
+        specialty: "Alergia e Inmunología",
         mp: "1278",
         bio: "Dr. Andrés Moreno es especialista en alergias y enfermedades inmunológicas con más de 12 años de experiencia.",
         centroMedico: "Centro Médico Capital Bienestar",
@@ -343,7 +343,7 @@ export const medicos = [
     },
     {
         name: "Dra. Valeria Santos",
-        speciality: "Alergia e Inmunología",
+        specialty: "Alergia e Inmunología",
         mp: "2396",
         bio: "Dra. Valeria Santos cuenta con experiencia en tratamiento de alergias y trastornos inmunológicos en niños y adultos.",
         centroMedico: "Centro Médico Capital Bienestar",
@@ -354,7 +354,7 @@ export const medicos = [
     },
     {
         name: "Dr. Federico Blanco",
-        speciality: "Cardiología",
+        specialty: "Cardiología",
         mp: "3489",
         bio: "Dr. Federico Blanco es cardiólogo especializado en prevención y rehabilitación cardiovascular.",
         centroMedico: "Centro Médico Capital Bienestar",
@@ -365,7 +365,7 @@ export const medicos = [
     },
     {
         name: "Dra. Lucía Vargas",
-        speciality: "Cardiología",
+        specialty: "Cardiología",
         mp: "4512",
         bio: "Dra. Lucía Vargas tiene experiencia en el manejo de enfermedades cardiovasculares y arritmias.",
         centroMedico: "Centro Médico Capital Bienestar",
@@ -376,7 +376,7 @@ export const medicos = [
     },
     {
         name: "Dr. Javier Castro",
-        speciality: "Dermatología",
+        specialty: "Dermatología",
         mp: "5784",
         bio: "Dr. Javier Castro es dermatólogo con especialización en tratamientos estéticos y enfermedades de la piel.",
         centroMedico: "Centro Médico Capital Bienestar",
@@ -387,7 +387,7 @@ export const medicos = [
     },
     {
         name: "Dra. María López",
-        speciality: "Dermatología",
+        specialty: "Dermatología",
         mp: "6872",
         bio: "Dra. María López se dedica a la dermatología clínica y quirúrgica, con enfoque en cáncer de piel.",
         centroMedico: "Centro Médico Capital Bienestar",
@@ -398,7 +398,7 @@ export const medicos = [
     },
     {
         name: "Dr. Roberto Ramírez",
-        speciality: "Endocrinología",
+        specialty: "Endocrinología",
         mp: "7934",
         bio: "Dr. Roberto Ramírez es endocrinólogo con experiencia en el tratamiento de diabetes y enfermedades tiroideas.",
         centroMedico: "Centro Médico Capital Bienestar",
@@ -409,7 +409,7 @@ export const medicos = [
     },
     {
         name: "Dra. Sandra Herrera",
-        speciality: "Endocrinología",
+        specialty: "Endocrinología",
         mp: "8721",
         bio: "Dra. Sandra Herrera se especializa en endocrinología reproductiva y trastornos hormonales.",
         centroMedico: "Centro Médico Capital Bienestar",
@@ -420,7 +420,7 @@ export const medicos = [
     },
     {
         name: "Dr. Fernando Quiroga",
-        speciality: "Gastroenterología y Endoscopías",
+        specialty: "Gastroenterología y Endoscopías",
         mp: "9345",
         bio: "Dr. Fernando Quiroga es gastroenterólogo especializado en endoscopías y enfermedades del aparato digestivo.",
         centroMedico: "Centro Médico Capital Bienestar",
@@ -431,7 +431,7 @@ export const medicos = [
     },
     {
         name: "Dra. Claudia Sánchez",
-        speciality: "Gastroenterología y Endoscopías",
+        specialty: "Gastroenterología y Endoscopías",
         mp: "1028",
         bio: "Dra. Claudia Sánchez tiene experiencia en endoscopías y tratamiento de enfermedades hepáticas.",
         centroMedico: "Centro Médico Capital Bienestar",
@@ -442,7 +442,7 @@ export const medicos = [
     },
     {
         name: "Dr. Alejandro Díaz",
-        speciality: "Ginecología",
+        specialty: "Ginecología",
         mp: "1143",
         bio: "Dr. Alejandro Díaz es ginecólogo con especialización en salud reproductiva y cuidados prenatales.",
         centroMedico: "Centro Médico Capital Bienestar",
@@ -453,7 +453,7 @@ export const medicos = [
     },
     {
         name: "Dra. Patricia Herrera",
-        speciality: "Ginecología",
+        specialty: "Ginecología",
         mp: "1294",
         bio: "Dra. Patricia Herrera se especializa en ginecología oncológica y cirugía mínimamente invasiva.",
         centroMedico: "Centro Médico Capital Bienestar",
@@ -464,7 +464,7 @@ export const medicos = [
     },
     {
         name: "Dr. Marcelo Ruiz",
-        speciality: "Neurología",
+        specialty: "Neurología",
         mp: "2345",
         bio: "Dr. Marcelo Ruiz es neurólogo con experiencia en trastornos del sueño y enfermedades neurodegenerativas.",
         centroMedico: "Centro Médico Capital Bienestar",
@@ -475,7 +475,7 @@ export const medicos = [
     },
     {
         name: "Dra. Verónica Ortiz",
-        speciality: "Neurología",
+        specialty: "Neurología",
         mp: "3456",
         bio: "Dra. Verónica Ortiz se dedica a la neurología infantil y tratamiento de epilepsia.",
         centroMedico: "Centro Médico Capital Bienestar",
@@ -486,7 +486,7 @@ export const medicos = [
     },
     {
         name: "Dr. Héctor Gómez",
-        speciality: "Odontología",
+        specialty: "Odontología",
         mp: "4567",
         bio: "Dr. Héctor Gómez es odontólogo con especialización en implantología y estética dental.",
         centroMedico: "Centro Médico Capital Bienestar",
@@ -497,7 +497,7 @@ export const medicos = [
     },
     {
         name: "Dr. Antonio Fernández",
-        speciality: "Cardiología",
+        specialty: "Cardiología",
         mp: "1378",
         bio: "Dr. Antonio Fernández es especialista en cardiología clínica y tratamiento de enfermedades coronarias.",
         centroMedico: "Centro Médico Córdoba Vida",
@@ -508,7 +508,7 @@ export const medicos = [
     },
     {
         name: "Dra. Isabel Molina",
-        speciality: "Cardiología",
+        specialty: "Cardiología",
         mp: "2589",
         bio: "Dra. Isabel Molina se especializa en cardiología intervencionista y rehabilitación cardiovascular.",
         centroMedico: "Centro Médico Córdoba Vida",
@@ -519,7 +519,7 @@ export const medicos = [
     },
     {
         name: "Dr. Javier Ramos",
-        speciality: "Dermatología",
+        specialty: "Dermatología",
         mp: "3781",
         bio: "Dr. Javier Ramos es dermatólogo con experiencia en tratamientos de acné y enfermedades de la piel.",
         centroMedico: "Centro Médico Córdoba Vida",
@@ -530,7 +530,7 @@ export const medicos = [
     },
     {
         name: "Dra. Camila Flores",
-        speciality: "Dermatología",
+        specialty: "Dermatología",
         mp: "4894",
         bio: "Dra. Camila Flores se especializa en dermatología estética y cirugía dermatológica.",
         centroMedico: "Centro Médico Córdoba Vida",
@@ -541,7 +541,7 @@ export const medicos = [
     },
     {
         name: "Dr. Alejandro Márquez",
-        speciality: "Endocrinología",
+        specialty: "Endocrinología",
         mp: "5783",
         bio: "Dr. Alejandro Márquez es endocrinólogo con especialización en diabetes y enfermedades tiroideas.",
         centroMedico: "Centro Médico Córdoba Vida",
@@ -552,7 +552,7 @@ export const medicos = [
     },
     {
         name: "Dra. Carla Gutiérrez",
-        speciality: "Endocrinología",
+        specialty: "Endocrinología",
         mp: "6895",
         bio: "Dra. Carla Gutiérrez se dedica al tratamiento de trastornos hormonales y metabólicos.",
         centroMedico: "Centro Médico Córdoba Vida",
@@ -563,7 +563,7 @@ export const medicos = [
     },
     {
         name: "Dr. Martín Sosa",
-        speciality: "Gastroenterología y Endoscopías",
+        specialty: "Gastroenterología y Endoscopías",
         mp: "7984",
         bio: "Dr. Martín Sosa es especialista en gastroenterología y endoscopías digestivas.",
         centroMedico: "Centro Médico Córdoba Vida",
@@ -574,7 +574,7 @@ export const medicos = [
     },
     {
         name: "Dra. Mariana Castro",
-        speciality: "Gastroenterología y Endoscopías",
+        specialty: "Gastroenterología y Endoscopías",
         mp: "8239",
         bio: "Dra. Mariana Castro se especializa en enfermedades hepáticas y endoscopías terapéuticas.",
         centroMedico: "Centro Médico Córdoba Vida",
@@ -585,7 +585,7 @@ export const medicos = [
     },
     {
         name: "Dr. Ricardo Pérez",
-        speciality: "Ginecología",
+        specialty: "Ginecología",
         mp: "9342",
         bio: "Dr. Ricardo Pérez es ginecólogo especializado en salud reproductiva y cirugía ginecológica.",
         centroMedico: "Centro Médico Córdoba Vida",
@@ -596,7 +596,7 @@ export const medicos = [
     },
     {
         name: "Dra. Laura Muñoz",
-        speciality: "Ginecología",
+        specialty: "Ginecología",
         mp: "1024",
         bio: "Dra. Laura Muñoz se especializa en ginecología oncológica y medicina fetal.",
         centroMedico: "Centro Médico Córdoba Vida",
@@ -607,7 +607,7 @@ export const medicos = [
     },
     {
         name: "Dr. Diego Herrera",
-        speciality: "Neonatología",
+        specialty: "Neonatología",
         mp: "2135",
         bio: "Dr. Diego Herrera es especialista en neonatología y cuidados intensivos neonatales.",
         centroMedico: "Centro Médico Córdoba Vida",
@@ -618,7 +618,7 @@ export const medicos = [
     },
     {
         name: "Dra. Alicia Pérez",
-        speciality: "Neonatología",
+        specialty: "Neonatología",
         mp: "3248",
         bio: "Dra. Alicia Pérez tiene experiencia en cuidados intensivos neonatales y seguimiento de bebés prematuros.",
         centroMedico: "Centro Médico Córdoba Vida",
@@ -629,7 +629,7 @@ export const medicos = [
     },
     {
         name: "Dr. Enrique Sánchez",
-        speciality: "Neurología",
+        specialty: "Neurología",
         mp: "4312",
         bio: "Dr. Enrique Sánchez es neurólogo especializado en enfermedades neurodegenerativas y trastornos del movimiento.",
         centroMedico: "Centro Médico Córdoba Vida",
@@ -640,7 +640,7 @@ export const medicos = [
     },
     {
         name: "Dra. Victoria González",
-        speciality: "Neurología",
+        specialty: "Neurología",
         mp: "5423",
         bio: "Dra. Victoria González se dedica a la neurología pediátrica y tratamiento de epilepsia.",
         centroMedico: "Centro Médico Córdoba Vida",
@@ -651,7 +651,7 @@ export const medicos = [
     },
     {
         name: "Dr. Alejandro López",
-        speciality: "Neumonología",
+        specialty: "Neumonología",
         mp: "6478",
         bio: "Dr. Alejandro López es neumonólogo especializado en enfermedades respiratorias crónicas.",
         centroMedico: "Centro Médico Córdoba Vida",
@@ -662,7 +662,7 @@ export const medicos = [
     },
     {
         name: "Dr. Carlos Mendoza",
-        speciality: "Cardiología",
+        specialty: "Cardiología",
         mp: "4756",
         bio: "Dr. Carlos Mendoza es cardiólogo especializado en enfermedades coronarias y rehabilitación cardiovascular.",
         centroMedico: "Centro Médico Tucumán Salud",
@@ -673,7 +673,7 @@ export const medicos = [
     },
     {
         name: "Dra. Ana Ríos",
-        speciality: "Cardiología",
+        specialty: "Cardiología",
         mp: "5874",
         bio: "Dra. Ana Ríos se dedica a la cardiología preventiva y tratamiento de hipertensión.",
         centroMedico: "Centro Médico Tucumán Salud",
@@ -684,7 +684,7 @@ export const medicos = [
     },
     {
         name: "Dr. Felipe Gómez",
-        speciality: "Dermatología",
+        specialty: "Dermatología",
         mp: "6123",
         bio: "Dr. Felipe Gómez es dermatólogo con experiencia en tratamientos de psoriasis y dermatitis.",
         centroMedico: "Centro Médico Tucumán Salud",
@@ -695,7 +695,7 @@ export const medicos = [
     },
     {
         name: "Dra. Laura Figueroa",
-        speciality: "Dermatología",
+        specialty: "Dermatología",
         mp: "7351",
         bio: "Dra. Laura Figueroa se especializa en dermatología estética y tratamientos de rejuvenecimiento.",
         centroMedico: "Centro Médico Tucumán Salud",
@@ -706,7 +706,7 @@ export const medicos = [
     },
     {
         name: "Dr. Santiago López",
-        speciality: "Endocrinología",
+        specialty: "Endocrinología",
         mp: "8452",
         bio: "Dr. Santiago López es endocrinólogo especializado en diabetes y trastornos metabólicos.",
         centroMedico: "Centro Médico Tucumán Salud",
@@ -717,7 +717,7 @@ export const medicos = [
     },
     {
         name: "Dra. Marta Ruiz",
-        speciality: "Endocrinología",
+        specialty: "Endocrinología",
         mp: "9643",
         bio: "Dra. Marta Ruiz se dedica al tratamiento de enfermedades tiroideas y hormonales.",
         centroMedico: "Centro Médico Tucumán Salud",
@@ -728,7 +728,7 @@ export const medicos = [
     },
     {
         name: "Dr. Pablo García",
-        speciality: "Gastroenterología y Endoscopías",
+        specialty: "Gastroenterología y Endoscopías",
         mp: "1278",
         bio: "Dr. Pablo García es gastroenterólogo especializado en endoscopías y enfermedades digestivas.",
         centroMedico: "Centro Médico Tucumán Salud",
@@ -739,7 +739,7 @@ export const medicos = [
     },
     {
         name: "Dra. Silvia Martínez",
-        speciality: "Gastroenterología y Endoscopías",
+        specialty: "Gastroenterología y Endoscopías",
         mp: "2379",
         bio: "Dra. Silvia Martínez se especializa en tratamiento de enfermedades hepáticas y endoscopías terapéuticas.",
         centroMedico: "Centro Médico Tucumán Salud",
@@ -750,7 +750,7 @@ export const medicos = [
     },
     {
         name: "Dr. Lucas Pérez",
-        speciality: "Ginecología",
+        specialty: "Ginecología",
         mp: "3456",
         bio: "Dr. Lucas Pérez es ginecólogo con especialización en salud reproductiva y cirugía ginecológica.",
         centroMedico: "Centro Médico Tucumán Salud",
@@ -761,7 +761,7 @@ export const medicos = [
     },
     {
         name: "Dra. Patricia Gómez",
-        speciality: "Ginecología",
+        specialty: "Ginecología",
         mp: "4567",
         bio: "Dra. Patricia Gómez se especializa en ginecología oncológica y medicina fetal.",
         centroMedico: "Centro Médico Tucumán Salud",
@@ -772,7 +772,7 @@ export const medicos = [
     },
     {
         name: "Dr. Javier Romero",
-        speciality: "Neurología",
+        specialty: "Neurología",
         mp: "5678",
         bio: "Dr. Javier Romero es neurólogo con experiencia en enfermedades neurodegenerativas y trastornos del sueño.",
         centroMedico: "Centro Médico Tucumán Salud",
@@ -783,7 +783,7 @@ export const medicos = [
     },
     {
         name: "Dra. Sofía Álvarez",
-        speciality: "Neurología",
+        specialty: "Neurología",
         mp: "6789",
         bio: "Dra. Sofía Álvarez se dedica a la neurología pediátrica y tratamiento de epilepsia.",
         centroMedico: "Centro Médico Tucumán Salud",
@@ -794,7 +794,7 @@ export const medicos = [
     },
     {
         name: "Dr. Marcos Torres",
-        speciality: "Odontología",
+        specialty: "Odontología",
         mp: "7890",
         bio: "Dr. Marcos Torres es odontólogo especializado en implantología y estética dental.",
         centroMedico: "Centro Médico Tucumán Salud",
@@ -805,7 +805,7 @@ export const medicos = [
     },
     {
         name: "Dra. Verónica Luna",
-        speciality: "Odontología",
+        specialty: "Odontología",
         mp: "8901",
         bio: "Dra. Verónica Luna se especializa en ortodoncia y tratamientos de maloclusiones dentales.",
         centroMedico: "Centro Médico Tucumán Salud",
@@ -816,7 +816,7 @@ export const medicos = [
     },
     {
         name: "Dr. Fernando Herrera",
-        speciality: "Traumatología y Ortopedia",
+        specialty: "Traumatología y Ortopedia",
         mp: "9012",
         bio: "Dr. Fernando Herrera es traumatólogo con experiencia en cirugías ortopédicas y tratamiento de fracturas.",
         centroMedico: "Centro Médico Tucumán Salud",

@@ -6,7 +6,7 @@ export const centrosMedicos = [
         email: "bahiablanca@rollinghealth.com.ar",
         phone: "+54 291 890-1234",
         img: "/images/centrosmedicos/centro1.png",
-        specialities: [
+        specialty: [
             "Cardiología",
             "Clínica Médica - Medicina Interna",
             "Dermatología",
@@ -27,7 +27,7 @@ export const centrosMedicos = [
         email: "capital@rollinghealth.com.ar",
         phone: "+54 11 4567-8901",
         img: "/images/centrosmedicos/centro2.jpg",
-        specialities: [
+        specialty: [
             "Alergia e Inmunología",
             "Cardiología",
             "Cirugía General",
@@ -49,7 +49,7 @@ export const centrosMedicos = [
         email: "chaco@rollinghealth.com.ar",
         phone: "+54 362 345-6789",
         img: "/images/centrosmedicos/centro3.jpg",
-        specialities: [
+        specialty: [
             "Clínica Médica - Medicina Interna",
             "Dermatología",
             "Diabetología",
@@ -73,7 +73,7 @@ export const centrosMedicos = [
         email: "cordoba@rollinghealth.com.ar",
         phone: "+54 351 234-5678",
         img: "/images/centrosmedicos/centro4.jpg",
-        specialities: [
+        specialty: [
             "Alergia e Inmunología",
             "Cardiología",
             "Cirugía",
@@ -97,7 +97,7 @@ export const centrosMedicos = [
         email: "formosa@rollinghealth.com.ar",
         phone: "+54 370 456-7890",
         img: "/images/centrosmedicos/centro5.jpg",
-        specialities: [
+        specialty: [
             "Cardiología",
             "Cirugía General",
             "Clínica Médica - Medicina Interna",
@@ -120,7 +120,7 @@ export const centrosMedicos = [
         email: "jujuy@rollinghealth.com.ar",
         phone: "+54 388 234-5678",
         img: "/images/centrosmedicos/centro6.jpg",
-        specialities: [
+        specialty: [
             "Alergia e Inmunología",
             "Cardiología",
             "Cirugía General",
@@ -144,7 +144,7 @@ export const centrosMedicos = [
         email: "laplata@rollinghealth.com.ar",
         phone: "+54 221 678-9012",
         img: "/images/centrosmedicos/centro7.jpg",
-        specialities: [
+        specialty: [
             "Alergia e Inmunología",
             "Cirugía Plástica",
             "Consultorios Externos",
@@ -168,7 +168,7 @@ export const centrosMedicos = [
         email: "mardelplata@rollinghealth.com.ar",
         phone: "+54 223 789-0123",
         img: "/images/centrosmedicos/centro8.jpg",
-        specialities: [
+        specialty: [
             "Cardiología",
             "Cirugía General",
             "Dermatología",
@@ -192,7 +192,7 @@ export const centrosMedicos = [
         email: "mendoza@rollinghealth.com.ar",
         phone: "+54 261 567-8901",
         img: "/images/centrosmedicos/centro9.jpg",
-        specialities: [
+        specialty: [
             "Alergia e Inmunología",
             "Cardiología",
             "Clínica Médica - Medicina Interna",
@@ -217,7 +217,7 @@ export const centrosMedicos = [
         email: "neuquen@rollinghealth.com.ar",
         phone: "+54 299 901-2345",
         img: "/images/centrosmedicos/centro10.jpg",
-        specialities: [
+        specialty: [
             "Alergia e Inmunología",
             "Cardiología",
             "Cirugía Plástica",
@@ -242,7 +242,7 @@ export const centrosMedicos = [
         email: "rosario@rollinghealth.com.ar",
         phone: "+54 341 345-6789",
         img: "/images/centrosmedicos/centro11.jpg",
-        specialities: [
+        specialty: [
             "Alergia e Inmunología",
             "Cardiología",
             "Cirugía",
@@ -267,7 +267,7 @@ export const centrosMedicos = [
         email: "salta@rollinghealth.com.ar",
         phone: "+54 387 123-4567",
         img: "/images/centrosmedicos/centro12.jpg",
-        specialities: [
+        specialty: [
             "Cardiología",
             "Clínica Médica - Medicina Interna",
             "Consultorios Externos",
@@ -292,7 +292,7 @@ export const centrosMedicos = [
         email: "sanjuan@rollinghealth.com.ar",
         phone: "+54 264 012-3456",
         img: "/images/centrosmedicos/centro13.jpg",
-        specialities: [
+        specialty: [
             "Alergia e Inmunología",
             "Cardiología",
             "Cirugía Plástica",
@@ -317,7 +317,7 @@ export const centrosMedicos = [
         email: "tierradelfuego@rollinghealth.com.ar",
         phone: "+54 2901 567-8901",
         img: "/images/centrosmedicos/centro14.jpg",
-        specialities: [
+        specialty: [
             "Alergia e Inmunología",
             "Cardiología",
             "Cirugía General",
@@ -342,7 +342,7 @@ export const centrosMedicos = [
         email: "tucuman@rollinghealth.com.ar",
         phone: "+54 381 123-4567",
         img: "/images/centrosmedicos/centro15.jpg",
-        specialities: [
+        specialty: [
             "Alergia e Inmunología",
             "Cardiología",
             "Cirugía Plástica",
