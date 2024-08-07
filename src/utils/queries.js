@@ -12,7 +12,6 @@ export const traerUsuariosAPI = async () => {
   try {
     const response = await axios.get(URI_USUARIOS)
     const listaUsuarios = await response.json()
-    console.log(listaUsuarios);
     return listaUsuarios
   } catch (error) {
     console.error(error);
@@ -29,10 +28,14 @@ export const traerUnUsuarioAPI = async(id) => {
 }
 
 export const agregarUsuarioAPI = async(nuevoUsuario) => {
-  const response = await axios.post(`${URI_USUARIOS}/registrar`, {
-    nuevoUsuario
-  })
-  return response
+  try {
+    const response = await axios.post(`${URI_USUARIOS}/registrar`, {
+      nuevoUsuario
+    })
+    return response
+  } catch (error) {
+    console.error(error);
+  }
 }
 
 export const actualizarUsuarioAPI = async(id, usuario) => {
@@ -113,6 +116,59 @@ export const actualizarCentroMedicoAPI = async(id, centroMedico) => {
 export const eliminarCentroMedicoAPI = async(id) => {
   try {
     const response = await axios.delete(`${URI_CENTROSMEDICOS}/${id}`)
+    return response
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+
+//----------------------- TURNOS -----------------------//
+
+export const traerTurnosAPI = async() => {
+  try {
+    const response = await axios.get(URI_TURNOS)
+    const listaTurnos = await response.json()
+    return listaTurnos
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+export const traerUnTurnoAPI = async(id) => {
+  try {
+    const response = await axios.get(`${URI_TURNOS}/${id}`)
+    return response
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+export const agregarTurnoAPI = async(nuevoTurno) => {
+  try {
+    const response = await axios.post(URI_TURNOS, {
+      nuevoTurno
+    })
+    return response
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+export const actualizarTurnoAPI = async(id, turno) => {
+  try {
+    const response = await axios.put(`${URI_TURNOS}/${id}`, {
+      turno
+    })
+    return response
+  } catch (error) {
+    console.error(error)
+  }
+}
+
+export const eliminarTurnoAPI = async(id) => {
+  try {
+    const response = await axios.delete(`${URI_TURNOS}/${id}`)
     return response
   } catch (error) {
     console.error(error);
