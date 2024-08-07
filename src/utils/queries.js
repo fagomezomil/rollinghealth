@@ -65,3 +65,56 @@ export const login = async(usuario) => {
     console.error(error);
   }
 }
+
+
+//----------------------- CENTROS MEDICOS -----------------------//
+
+export const traerCentrosMedicosAPI = async () => {
+  try {
+    const response = await axios.get(URI_CENTROSMEDICOS)
+    const listaCentrosMedicos = await response.json()
+    return listaCentrosMedicos
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+export const traerUnCentroMedicoAPI = async(id) => {
+  try {
+    const response = await axios.get(`${URI_CENTROSMEDICOS}/${id}`);
+    return response
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+export const agregarCentroMedicoAPI = async(nuevoCentroMedico) => {
+  try {
+    const response = await axios.post(URI_CENTROSMEDICOS, {
+      nuevoCentroMedico
+    })
+    return response
+  } catch (error) {
+    console.error(error)
+  }
+}
+
+export const actualizarCentroMedicoAPI = async(id, centroMedico) => {
+  try {
+    const response = await axios.put(`${URI_CENTROSMEDICOS}/${id}`, {
+      centroMedico
+    })
+    return response
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+export const eliminarCentroMedicoAPI = async(id) => {
+  try {
+    const response = await axios.delete(`${URI_CENTROSMEDICOS}/${id}`)
+    return response
+  } catch (error) {
+    console.error(error);
+  }
+}
