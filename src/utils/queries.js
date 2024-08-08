@@ -11,7 +11,7 @@ const URI_LOGIN = import.meta.env.VITE_API_LOGIN
 export const traerUsuariosAPI = async () => {
   try {
     const response = await axios.get(URI_USUARIOS)
-    const listaUsuarios = await response.json()
+    const listaUsuarios = await response.data
     return listaUsuarios
   } catch (error) {
     console.error(error);
@@ -75,7 +75,7 @@ export const login = async(usuario) => {
 export const traerCentrosMedicosAPI = async () => {
   try {
     const response = await axios.get(URI_CENTROSMEDICOS)
-    const listaCentrosMedicos = await response.json()
+    const listaCentrosMedicos = await response.data
     return listaCentrosMedicos
   } catch (error) {
     console.error(error);
@@ -128,7 +128,7 @@ export const eliminarCentroMedicoAPI = async(id) => {
 export const traerTurnosAPI = async() => {
   try {
     const response = await axios.get(URI_TURNOS)
-    const listaTurnos = await response.json()
+    const listaTurnos = await response.data
     return listaTurnos
   } catch (error) {
     console.error(error);
