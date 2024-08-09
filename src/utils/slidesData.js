@@ -1,7 +1,7 @@
 export const slidesData = [
     {
         id: 2,
-        title: "Más de 10 Centros de Atención Médica en todo el país",
+        title: "Más de 10 Centros de Atención Médica en el país",
         text: "En nuestros centros multidisciplinarios, ofrecemos atención cercana y accesible en toda Argentina.",
         img: "/images/slidehome/slide_img-2.jpg",
         button: "Descubre Más",

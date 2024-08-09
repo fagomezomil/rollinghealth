@@ -41,7 +41,7 @@
 
   /* Paciente */
   .boton-menu-portal {
-    @apply w-full flex items-center rounded-lg text-white bg-neutral-500 hover:bg-[#0c423b] p-6;
+    @apply w-full flex flex-col md:flex-row items-center rounded-lg text-white bg-neutral-500 hover:bg-[#0c423b] p-6;
   }
   .num-gestion-turno {
     @apply text-3xl text-neutral-600 font-bold p-2 border-2 border-neutral-600 rounded-lg mr-4;
@@ -50,7 +50,7 @@
     @apply text-3xl text-neutral-600 font-semibold mr-4;
   }
   .select-centros {
-    @apply rounded-lg p-4 text-lg font-semibold text-white bg-[#126459];
+    @apply rounded-lg p-4 text-lg font-semibold text-white bg-[#126459] w-full mt-4 lg:mt-0;
   }
   .text-continuar {
     @apply w-full col-span-4 text-xl text-neutral-400 font-light
