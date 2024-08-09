@@ -3,7 +3,6 @@ import SliderHome from "../components/home/slidesHome/SliderHome";
 import SlideCentros from "../components/home/SlideCentros";
 import EspecialistasHome from "../components/home/EspecialistasHome";
 
-
 const Home = () => {
   return (
     <main className="mt-20">
