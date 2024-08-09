@@ -16,7 +16,7 @@ export default function ServicesHome() {
     };
 
     return (
-        <div className="h-36 flex justify-around bg-neutral-400 items-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 h-36 justify-evenly bg-neutral-400 items-center">
             {services.map((service) => (
                 <Link key={service.id} to={service.link}>
                 <div className="flex">

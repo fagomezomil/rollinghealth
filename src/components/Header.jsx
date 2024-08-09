@@ -9,7 +9,7 @@ const Header = () => {
                 <img 
                 src="./images/rollinghealth.svg" 
                 alt="Rolling Health" 
-                className="ml-4 md:ml-6 lg:ml-12 h-12" />
+                className="ml-4 md:ml-6 lg:ml-12 h-9 md:h-12" />
             </Link>
             <div className="flex">
                 <NavBar />

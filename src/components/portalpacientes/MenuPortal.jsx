@@ -17,30 +17,32 @@ export default function MenuPortal({ setPortal, portal }) {
                 <button className="rounded-lg bg-[#126459] text-white text-medium py-2 px-4">Ver detalles</button>
             </div>
             <hr className="my-8 " />
-            <table className='table-fixed overflow-x-auto'>
-                <thead>
-                    <tr className='space-x-4'>
-                        <th>N°</th>
-                        <th>Día</th>
-                        <th>Horario</th>
-                        <th>Médico tratante</th>
-                        <th>Especialidad</th>
-                        <th>Dirección de atención</th>
-                        <th><FaRegTrashAlt className='' /></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Lunes</td>
-                        <td>09:00 - 10:00</td>
-                        <td>Dr. Juan Perez</td>
-                        <td>Cardiólogo</td>
-                        <td>Calle 123 # 1-2</td>
-                        <td><FaRegTrashAlt className='' /></td>
-                    </tr>
-                </tbody>
-            </table>
+            <div className='w-full'>
+                <table className='table-auto min-w-full'>
+                    <thead className='text-left'>
+                        <tr className=''>
+                            <th className='mr-10'>N°</th>
+                            <th>Día</th>
+                            <th>Horario</th>
+                            <th>Médico tratante</th>
+                            <th>Especialidad</th>
+                            <th>Dirección de atención</th>
+                            <th><FaRegTrashAlt className='' /></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td className='mr-10'>1</td>
+                            <td>Lunes</td>
+                            <td>09:00 - 10:00</td>
+                            <td>Dr. Juan Perez</td>
+                            <td>Cardiólogo</td>
+                            <td>Calle 123 # 1-2</td>
+                            <td><FaRegTrashAlt className='' /></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
             <hr className="my-2 " />
             <button onClick={() => setPortal("TurnosPortal")} className='boton-menu-portal'>
                 <IoCalendarNumber className='text-7xl mr-6' />

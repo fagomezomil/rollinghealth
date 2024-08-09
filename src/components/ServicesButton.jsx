@@ -14,19 +14,19 @@ export default function ServicesButton(text, title, icon, key) {
     };
 
     return (
-        <button
-            className={`services-button ${isHovered ? 'hovered' : ''}`}
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
-            key={key}
-        >
-            <div className="services-icon">
-                {icon === 'FaUserDoctor' && <FaUserDoctor />}
-                {icon === 'FaUserNurse' && <FaUserNurse />}
-                {icon === 'FaUsers' && <FaUsers />}
-                {icon === 'IoCalendarNumber' && <IoCalendarNumber />}
-            </div>
-            <div className="services-text">{title}</div>
-        </button>
+            <button
+                className={`services-button ${isHovered ? 'hovered' : ''}`}
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}
+                key={key}
+            >
+                <div className="services-icon">
+                    {icon === 'FaUserDoctor' && <FaUserDoctor />}
+                    {icon === 'FaUserNurse' && <FaUserNurse />}
+                    {icon === 'FaUsers' && <FaUsers />}
+                    {icon === 'IoCalendarNumber' && <IoCalendarNumber />}
+                </div>
+                <div className="services-text">{title}</div>
+            </button>
     );
 }
