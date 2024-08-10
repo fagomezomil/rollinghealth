@@ -5,19 +5,22 @@
 @layer base {  
     /* NavBar */
 .navbar-button {
-    @apply bg-[#0c423b] rounded-md w-fit text-white text-lg font-medium  px-2 lg:px-10 py-2 xl:mx-2 lg:mx-1;
+    @apply bg-[#0c423b] rounded-md  w-full xl:w-fit text-white text-lg font-medium my-1  p-2 lg:px-10  xl:mx-2 lg:mx-1;
   }
 .header-style {
-    @apply bg-[#126459] fixed w-full text-white text-center py-4 shadow-xl z-50 flex justify-between;
+    @apply bg-[#126459] fixed w-full text-white text-center py-4 shadow-xl z-50 flex justify-between items-center h-20;
   }
   .user-badge {
-    @apply hidden lg:flex rounded-full h-10 w-10 mr-6 bg-[#a3a39d] border border-white flex items-center justify-center;
+    @apply hidden lg:flex rounded-full h-10 w-10 mx-6 bg-[#a3a39d] border border-white items-center justify-center;
   }
   .user-menu {
     @apply hidden lg:flex bg-white shadow-lg px-4 py-6 w-80 rounded-lg absolute right-6 top-14 flex-col;
   }
   .user-menu-button {
-    @apply text-neutral-500 hover:bg-[#c4e9e4] hover:rounded-xl hover:text-neutral-700 py-1 font-medium text-lg;
+    @apply text-neutral-500 hover:bg-[#c4e9e4] hover:rounded-lg hover:text-neutral-700 my-2 py-1 font-medium text-lg;
+}
+.input-menu {
+  @apply text-center text-neutral-700 h-10 my-2 mb-4 rounded-md focus:outline-none focus:ring focus:ring-[#aaddd6] border border-[#126459];
 }
 
   /* Slide Home */
@@ -38,7 +41,7 @@
 
   /* Paciente */
   .boton-menu-portal {
-    @apply w-full flex items-center rounded-lg text-white bg-neutral-500 hover:bg-[#0c423b] p-6;
+    @apply w-full flex flex-col md:flex-row items-center rounded-lg text-white bg-neutral-500 hover:bg-[#0c423b] p-6;
   }
   .num-gestion-turno {
     @apply text-3xl text-neutral-600 font-bold p-2 border-2 border-neutral-600 rounded-lg mr-4;
@@ -47,7 +50,7 @@
     @apply text-3xl text-neutral-600 font-semibold mr-4;
   }
   .select-centros {
-    @apply rounded-lg p-4 text-lg font-semibold text-white bg-[#126459];
+    @apply rounded-lg p-4 text-lg font-semibold text-white bg-[#126459] w-full mt-4 lg:mt-0;
   }
   .text-continuar {
     @apply w-full col-span-4 text-xl text-neutral-400 font-light

@@ -30,7 +30,7 @@ export default function TurnosPortal({ setPortal }) {
     <div className="">
       <p className="text-[50px] text-[#126459] font-base leading-[55px]">Portal Paciente</p>
       <p className="text-[50px] text-[#126459] font-bold mb-6">Gestión de Turnos</p>
-      <div className="flex items-center">
+      <div className="flex flex-col lg:flex-row items-start lg:items-center">
         <div className="flex items-center justify-center">
           <p className="num-gestion-turno">01</p>
           <p className="opt-gestion-turno">Elija su Centro Médico más cercano:</p>
@@ -51,7 +51,7 @@ export default function TurnosPortal({ setPortal }) {
             <p className="num-gestion-turno">02</p>
             <p className="opt-gestion-turno">Filtre su búsqueda por especialidad:</p>
           </div>
-          <div className="grid grid-cols-5 gap-4 items-center">
+          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4 items-center">
             {
               centrosMedicos.find((centro) => centro.name === centroMedicoSelected)
                 ? centrosMedicos.find((centro) => centro.name === centroMedicoSelected).specialty.map((especialidad) => (
@@ -76,7 +76,7 @@ export default function TurnosPortal({ setPortal }) {
           <p className="num-gestion-turno">03</p>
           <p className="opt-gestion-turno">Seleccione su médico y registre el turno:</p>
         </div>
-        <div className="grid grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
           {
             // no pude hacer que filtre la especialidad y el centro medico
             centroMedicoSelected && especialidadSelected
@@ -85,20 +85,22 @@ export default function TurnosPortal({ setPortal }) {
                   <div
                     key={medico.name}
                     onClick={() => setMedicoSelected(medico.name)}
-                    className={`${medicoSelected === medico.name ? "col-span-2 row-span-3 h-full bg-[#0c423b]" : "cursor-pointer bg-[#126459]"}
+                    className={`${medicoSelected === medico.name ? "col-span-1 lg:col-span-2 row-span-3 h-full bg-[#0c423b]" : "cursor-pointer bg-[#126459]"}
                        p-4 text-white rounded-lg relative`}>
                     <div className="flex items-center ">
-                      <img src={medico.img} className="img-doc-turno" alt="" />
-                      <div className="w-full">
-                        <p className="text-xl font-bold">{medico.name}</p>
-                        <p className="text-lg">{medico.specialty}</p>
+                      <div className="flex flex-col md:flex-row">
+                        <img src={medico.img} className="img-doc-turno" alt="" />
+                        <div className="w-full">
+                          <p className="text-xl font-bold">{medico.name}</p>
+                          <p className="text-lg">{medico.specialty}</p>
+                        </div>
+                        {
+                          medicoSelected === medico.name &&
+                          <p className="italic text-lg pr-10">
+                            {medico.bio}
+                          </p>
+                        }
                       </div>
-                      {
-                        medicoSelected === medico.name &&
-                        <p className="italic text-lg pr-10">
-                          {medico.bio}
-                        </p>
-                      }
                     </div>
                     {
                       medicoSelected === medico.name &&
@@ -108,7 +110,7 @@ export default function TurnosPortal({ setPortal }) {
                           <p className="text-xl font-medium">Horarios de atención: turno {medico.atencion}</p>
                           <hr className="my-4 border-white" />
                         </div>
-                        <div className="bg-neutral-500 rounded-lg py-4 px-8 flex items-center w-fit">
+                        <div className="bg-neutral-500 rounded-lg py-4 px-8 flex flex-col lg:flex-row items-start lg:items-center w-full">
                           <p className="text-white w-fit text-xl mr-4">Elija fecha del turno para continuar</p>
                           <input type="date"
                             name="FechaTurno"
@@ -117,19 +119,21 @@ export default function TurnosPortal({ setPortal }) {
                         </div>
                         {
                           fechaSelected !== "" && medicoSelected ?
-                            <div className="bg-neutral-100 mt-4 p-2 rounded-lg flex items-center space-x-4">
-                              <p className="text-xl font-semibold ml-6 text-[#126459]">Elegir horario y reservar turno</p>
-                              <select className="grid grid-cols-4 rounded-lg p-4 text-lg font-semibold text-white bg-neutral-500">
-                                {
-                                  turnos.morning.map((turno) => (
-                                    <option key={turno} value={turno}>
-                                      {turno}
-                                    </option>
+                            <div className="bg-neutral-100 mt-4 p-2 rounded-lg flex  flex-col lg:flex-row items-start lg:items-center lg:space-x-4">
+                              <p className="text-xl font-semibold ml-6 text-[#126459] mb-4 md:mb-0">Elegir horario y reservar turno</p>
+                              <div className="flex flex-col md:flex-row w-full my-4">
+                                <select className="rounded-lg p-4 text-lg font-semibold text-white bg-neutral-500">
+                                  {
+                                    turnos.morning.map((turno) => (
+                                      <option key={turno} value={turno}>
+                                        {turno}
+                                      </option>
 
-                                  ))
-                                }
-                              </select>
-                              <button className="py-4 px-8 rounded-lg text-lg font-semibold text-white uppercase bg-[#0c423b]">Confirmar Turno</button>
+                                    ))
+                                  }
+                                </select>
+                                <button className="ml-0 md:ml-4 mt-4 md:mt-0 py-4 px-8 rounded-lg text-base font-semibold text-white uppercase bg-[#0c423b]">Confirmar Turno</button>
+                              </div>
                             </div>
                             : null
                         }

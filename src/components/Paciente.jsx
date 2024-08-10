@@ -10,8 +10,7 @@ export default function Paciente() {
     return (
         <div className='mt-20 grid grid-cols-12'>
             <SidePortal  setPortal={setPortal} portal={portal}/>
-            <div className="col-span-8 p-10 ">
-                
+            <div className="col-span-12 xl:col-span-8 p-10 ">
                 {   portal === "MenuPortal" ?
                     <MenuPortal setPortal={setPortal} portal={portal} />
                     : ""
@@ -22,7 +21,6 @@ export default function Paciente() {
                     : ""
                 }
             </div>
-
         </div>
     )
 }

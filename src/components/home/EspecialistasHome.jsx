@@ -11,12 +11,12 @@ export default function EspecialistasHome() {
     const medicosRandomResult = medicosRandom()
     console.log(medicosRandomResult)
     return (
-        <div className='flex  bg-[#126459]'>
+        <div className='grid  bg-[#126459]'>
             <div>
                 <h1 className='text-3xl font-bold text-white'>Buscador</h1>
                 <input type="text" placeholder="Buscador" />
             </div>
-            <div className='flex flex-row justify-evenly'>
+            <div className='lg:flex justify-evenly'>
                 {
                     medicosRandomResult.map((medico, index) => {
                         return (
