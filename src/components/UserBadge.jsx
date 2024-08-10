@@ -8,6 +8,7 @@ const UserBadge = () => {
     const [emailOk, setEmailOk] = useState(false)
     const [passwordOk, setPasswordOk] = useState(false)
     
+  
 
     return (
         <div className="flex items-center relative">
@@ -81,4 +82,4 @@ const UserBadge = () => {
     );
 };
 
-export default UserBadge;
+export default UserBadge; 
