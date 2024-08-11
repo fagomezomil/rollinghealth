@@ -4,6 +4,8 @@ import { IoCalendarNumber, IoCloseCircle, IoSearchSharp } from 'react-icons/io5'
 import { FaRegTrashAlt } from "react-icons/fa";
 
 export default function MenuPortal({ setPortal, portal }) {
+    
+
     return (
         <div>
             <p className="text-[50px] text-[#126459] font-base leading-[55px]">Disfrutá todos los servicios del </p>
@@ -86,3 +88,5 @@ export default function MenuPortal({ setPortal, portal }) {
         </div>
     )
 }
+
+

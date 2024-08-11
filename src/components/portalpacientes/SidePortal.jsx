@@ -2,8 +2,38 @@ import { FaUser } from 'react-icons/fa6'
 import { BsPencilSquare } from "react-icons/bs";
 import { ImStatsBars2 } from "react-icons/im";
 import { FaPlusCircle } from 'react-icons/fa';
+import {useState, useEffect } from 'react';
+import useTurnosStore from "../../zustand/turnos-zustand.js";
+import usePacienteStore from "../../zustand/paciente-zustand.js";
+
 
 export default function SidePortal({ setPortal }) {
+
+    const [turnos, setTurnos] =  useState([]);
+    const {getTurnos, getTurnosPaciente, turnosPaciente}= useTurnosStore((state) => 
+        ({
+            getTurnosPaciente: state.getTurnosPaciente,
+            getTurnos: state.getTurnos,          
+            turnosPaciente: state.turnosPaciente,           
+          }));      
+    const {paciente, traerPaciente} = usePacienteStore((state) => ({
+        traerPaciente: state.traerPaciente,
+        paciente: state.paciente,
+    }));
+ 
+    useEffect(() => {
+        const getDatos = async () => {
+            await  getTurnosPaciente("66b695969eeea75cf7534bb3");
+            await traerPaciente("66b695969eeea75cf7534bb3");//aqui hay que pasarle el _id del paciente logueado
+            setTurnos[turnosPaciente];
+        };
+
+        getDatos();
+    }, [getTurnosPaciente, traerPaciente, turnosPaciente, getTurnos, turnos]);   
+
+    const cantidadTurnos = Array.isArray(turnosPaciente) ? turnosPaciente.length : 0;
+
+
     return (
         <div className='col-span-12 xl:col-span-4 bg-neutral-100 bg-cover bg-no-repeat w-full p-12'>
             <div className='flex justify-between'>
@@ -13,7 +43,7 @@ export default function SidePortal({ setPortal }) {
             <div className='mt-6 flex justify-between'>
                 <div className='flex flex-col justify-center mr-12'>
                     <p className='text-2xl font-bold text-neutral-600'>
-                        Nombre y Apellido Paciente
+                    {paciente ? `${paciente.name}` : 'Nombre y Apellido Paciente'}
                     </p>
                 </div>
                 <div className='mt-6 flex flex-col items-center justify-center text-center'>
@@ -30,7 +60,7 @@ export default function SidePortal({ setPortal }) {
                     Correo Electrónico
                 </p>
                 <p className='text-xl text-neutral-600 mb-4'>
-                    Correo Electrónico del paciente
+                {paciente ? paciente.email : 'Correo Electrónico del paciente'}
                 </p>
                 <hr className="my-2" />
                 <p className='text-base italic text-neutral-600 mt-4'>
@@ -53,7 +83,7 @@ export default function SidePortal({ setPortal }) {
                 <hr className="mb-2 mt-2" />
                 <div className='flex flex-col lg:flex-row items-start justify-between mt-4'>
                     <div className='flex items-center'>
-                        <p className='rounded-full w-10 h-10 text-center pt-1 font-bold text-white bg-[#126459] text-2xl'>0</p>
+                        <p className='rounded-full w-10 h-10 text-center pt-1 font-bold text-white bg-[#126459] text-2xl'>{cantidadTurnos}</p>
                         <p className='ml-3 text-xl font-bold text-neutral-500'>Turnos pendientes</p>
                     </div>
                     <button onClick={() => setPortal("TurnosPortal")} className="rounded-lg flex justify-center items-center bg-[#126459] text-white text-lg py-2 px-4 my-4 lg:mt-0"><FaPlusCircle className='mr-2' />Nuevo Turno</button>
