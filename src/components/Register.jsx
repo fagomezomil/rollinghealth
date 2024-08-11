@@ -1,15 +1,18 @@
 import { useForm } from "react-hook-form"
 import { agregarUsuarioAPI } from "../utils/queries"
 import toast, { Toaster } from "react-hot-toast"
+import { useNavigate } from "react-router-dom"
 
 export default function Register() {
     const { register, handleSubmit, reset, watch, formState: {errors} } = useForm()
+    const navegacion = useNavigate()
 
     const onSubmit = async(dataForm) => {
         const response = await agregarUsuarioAPI(dataForm)
         if(response.status === 201){
             toast.success('Registrado exitosamente')
             reset()
+            navegacion('/paciente')
         } else{
             toast.error('Error al registrar, intente más tarde')
         }
