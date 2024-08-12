@@ -1,49 +1,127 @@
+import { useForm } from "react-hook-form"
+import { agregarUsuarioAPI } from "../utils/queries"
+import toast, { Toaster } from "react-hot-toast"
+import { useNavigate } from "react-router-dom"
 
 export default function Register() {
+    const { register, handleSubmit, reset, watch, formState: {errors} } = useForm()
+    const navegacion = useNavigate()
+
+    const onSubmit = async(dataForm) => {
+        const response = await agregarUsuarioAPI(dataForm)
+        if(response.status === 201){
+            toast.success('Registrado exitosamente')
+            reset()
+            navegacion('/paciente')
+        } else{
+            toast.error('Error al registrar, intente más tarde')
+        }
+    }
+
     return (
         <div className='mt-20 grid grid-cols-12'>
             <div className='col-span-5 bg-[url(/images/register/register.webp)] bg-cover bg-no-repeat w-full h-[650px]'>
             </div>
             <div className="col-span-5 p-10 ">
             <p className="text-[50px] text-[#126459] font-bold leading-[55px] mb-6">Registrese y sientase cuidado por Rolling Health</p>
-            <form className="flex flex-col">
-                <p className="text-neutral-700 text-left italic">Nombre y apellido</p>
+            <form className="flex flex-col" onSubmit={handleSubmit(onSubmit)}>
+                <p className="text-neutral-700 text-left italic">Nombre y apellido <span className="text-red-500">*</span></p>
                 <input
                     type="text"
-                    name="nombre"
                     placeholder="Ingrese su Nombre y Apellido completo" 
                     className="text-center text-neutral-700 h-10 my-2 mb-4 rounded-md focus:outline-none focus:ring focus:ring-[#aaddd6] border border-[#126459]"
+                    {
+                        ...register("name", {
+                            required: 'El nombre y apellido es obligatorio.',
+                            minLength: {
+                                value: 3,
+                                message: "Debe ingresar como mínimo 3 carácteres para el nombre y apellido de usuario.",
+                            },
+                            maxLength: {
+                                value: 50,
+                                message: "Puede ingresar como máximo 30 carácteres para el nombre y apellido de usuario.",
+                            },
+                        })
+                    }
                 />
-                <p className="text-neutral-700 text-left italic">Correo electrónico</p>
+                {errors.nombre && (
+                    <p className="text-red-500 text-sm">{errors.nombre.message}</p>
+                )}
+                <p className="text-neutral-700 text-left italic">Correo electrónico <span className="text-red-500">*</span></p>
                 <input
                     type="email"
-                    name="email"
                     placeholder="Ingrese su Correo Electrónico"
-                    maxLength={30}
                     className="text-center text-neutral-700 h-10 my-2 mb-4 rounded-md focus:outline-none focus:ring focus:ring-[#aaddd6] border border-[#126459]"
+                    {...register("email", {
+                        required: "El email es obligatorio",
+                        minLength: {
+                            value: 4,
+                            message:
+                                "El email debe contener al menos 4 caracteres",
+                        },
+                        maxLength: {
+                            value: 250,
+                            message:
+                                "El email debe contener como máximo 250 caracteres",
+                        },
+                        pattern: {
+                            value:
+                                /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/,
+                            message:
+                                "Ingrese una dirección de correo electrónico válida",
+                        },
+                    })}
                 />
-                <p className="text-neutral-700 text-left italic">Ingresar Contraseña</p>
+                {errors.email && (
+                    <p className='text-red-500 text-sm'>{errors.email.message}</p>
+                )}
+                <p className="text-neutral-700 text-left italic">Ingresar Contraseña <span className="text-red-500">*</span></p>
                 <input
                     type="password"
-                    name="password"
                     placeholder="Ingrese su contraseña"
-                    maxLength={16}
-                    minLength={8}
                     className="text-center text-neutral-700 h-10 my-2 mb-4 rounded-md focus:outline-none focus:ring focus:ring-[#aaddd6] border border-[#126459]"
+                    {...register("password", {
+                        required: "La contraseña es obligatoria",
+                        minLength: {
+                            value: 8,
+                            message: "La contraseña debe tener al menos 10 carácteres.",
+                        },
+                        maxLength: {
+                            value: 16,
+                            message: "La contraseña puede tener hasta 16 carácteres.",
+                        },
+                    })}
                 />
-                <p className="text-neutral-700 text-left italic">Repetir Contraseña</p>
+                {errors.password && (
+                    <p className='text-red-500 text-sm'>{errors.password.message}</p>
+                )}
+                <p className="text-neutral-700 text-left italic">Repetir Contraseña <span className="text-red-500">*</span></p>
                 <input
                     type="password"
-                    name="password"
                     placeholder="Repita su contraseña"
-                    maxLength={16}
-                    minLength={8}
                     className="text-center text-neutral-700 h-10 my-2 mb-4 rounded-md focus:outline-none focus:ring focus:ring-[#aaddd6] border border-[#126459]"
+                    {...register("confirmPassword", {
+                        required: "Es obligatorio ingresar nuevamente la contraseña",
+                        minLength: {
+                            value: 8,
+                            message: "La contraseña debe tener al menos 10 carácteres.",
+                        },
+                        maxLength: {
+                            value: 16,
+                            message: "La contraseña puede tener hasta 16 carácteres.",
+                        },
+                        validate: (value) =>
+                            value === watch("password") ||
+                            "Las contraseñas no coinciden",
+                    })}
                 />
-                <button className="rounded-lg bg-[#126459] text-white text-sm py-2 px-4 mb-4">Ingresar</button>
+                {errors.confirmPassword && (
+                    <p className='text-red-500 text-sm'>{errors.confirmPassword.message}</p>
+                )}
+                <button type="submit" className="rounded-lg bg-[#126459] text-white text-sm py-2 px-4 mb-4">Ingresar</button>
             </form>
             </div>
-
+            <Toaster/>
         </div>
     )
 }

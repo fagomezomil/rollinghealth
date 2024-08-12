@@ -29,9 +29,7 @@ export const traerUnUsuarioAPI = async(id) => {
 
 export const agregarUsuarioAPI = async(nuevoUsuario) => {
   try {
-    const response = await axios.post(`${URI_USUARIOS}/registrar`, {
-      nuevoUsuario
-    })
+    const response = await axios.post(`${URI_USUARIOS}/registrar`, nuevoUsuario)
     return response
   } catch (error) {
     console.error(error);
@@ -40,9 +38,7 @@ export const agregarUsuarioAPI = async(nuevoUsuario) => {
 
 export const actualizarUsuarioAPI = async(id, usuario) => {
   try {
-    const response = await axios.put(`${URI_USUARIOS}/${id}`, {
-      usuario
-    })
+    const response = await axios.put(`${URI_USUARIOS}/${id}`, usuario)
     return response
   } catch (error) {
     console.error(error);
@@ -60,9 +56,7 @@ export const eliminarUsuarioAPI = async(id) => {
 
 export const login = async(usuario) => {
   try {
-    const response = await axios.post(URI_LOGIN, {
-      usuario
-    })
+    const response = await axios.post(URI_LOGIN, usuario)
     return response
   } catch (error) {
     console.error(error);
@@ -93,9 +87,7 @@ export const traerUnCentroMedicoAPI = async(id) => {
 
 export const agregarCentroMedicoAPI = async(nuevoCentroMedico) => {
   try {
-    const response = await axios.post(URI_CENTROSMEDICOS, {
-      nuevoCentroMedico
-    })
+    const response = await axios.post(URI_CENTROSMEDICOS, nuevoCentroMedico)
     return response
   } catch (error) {
     console.error(error)
@@ -104,9 +96,7 @@ export const agregarCentroMedicoAPI = async(nuevoCentroMedico) => {
 
 export const actualizarCentroMedicoAPI = async(id, centroMedico) => {
   try {
-    const response = await axios.put(`${URI_CENTROSMEDICOS}/${id}`, {
-      centroMedico
-    })
+    const response = await axios.put(`${URI_CENTROSMEDICOS}/${id}`, nuevoCentroMedico)
     return response
   } catch (error) {
     console.error(error);
@@ -146,9 +136,7 @@ export const traerUnTurnoAPI = async(id) => {
 
 export const agregarTurnoAPI = async(nuevoTurno) => {
   try {
-    const response = await axios.post(URI_TURNOS, {
-      nuevoTurno
-    })
+    const response = await axios.post(URI_TURNOS,nuevoTurno)
     return response
   } catch (error) {
     console.error(error);
@@ -157,9 +145,7 @@ export const agregarTurnoAPI = async(nuevoTurno) => {
 
 export const actualizarTurnoAPI = async(id, turno) => {
   try {
-    const response = await axios.put(`${URI_TURNOS}/${id}`, {
-      turno
-    })
+    const response = await axios.put(`${URI_TURNOS}/${id}`, turno)
     return response
   } catch (error) {
     console.error(error)
