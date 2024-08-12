@@ -30,11 +30,11 @@ const SliderHome = () => {
   };
 
   return (
-    <div className="relative mt-20">
+    <div className="relative mt-20 pb-14 lg:pb-0">
       <div className="">
         <SlideHomeContainer data={slidesData[currentIndex]} />
       </div>
-      <div className="absolute bottom-5 left-12">
+      <div className="absolute bottom-5 left-6 lg:left-12">
         <button className="slide-control-button" onClick={handlePrevSlide}>
           <IoChevronBackCircle />
         </button>

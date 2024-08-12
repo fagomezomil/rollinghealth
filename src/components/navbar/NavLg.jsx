@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 export default function NavLg({ open, setOpen, emailOk, setEmailOk, passwordOk, setPasswordOk, role }) {
     return (
         <>
-            <button onClick={() => setOpen(!open)} className="text-lg italic flex justify-center items-center mr-6">
+            <div onClick={() => setOpen(!open)} className="text-lg italic flex justify-center items-center mr-6">
                 {role === "" &&
                     <>
                         <p className="mr-2">Ingresar</p>
@@ -28,12 +28,12 @@ export default function NavLg({ open, setOpen, emailOk, setEmailOk, passwordOk, 
                     :
                     ""
                 }
-            </button>
+            </div>
             {open && (
                 <div className="flex bg-white shadow-lg p-6 w-screen lg:w-[400px] rounded-lg absolute right-0 lg:right-6 top-12 md:top-14 flex-col">
                     {role === "" ?
                         <>
-                        <button className='navbar-button block xl:hidden'>Nosotros</button>
+                            <button className='navbar-button block xl:hidden'>Nosotros</button>
                             <button className='navbar-button block xl:hidden'>Centros de Salud</button>
                             <button className='navbar-button block xl:hidden'>Staff Médico</button>
                             <button className='navbar-button block xl:hidden'>Turnos Online</button>
