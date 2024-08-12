@@ -2,6 +2,7 @@ import ServicesHome from "../components/home/ServicesHome";
 import SliderHome from "../components/home/slidesHome/SliderHome";
 import SlideCentros from "../components/home/SlideCentros";
 import EspecialistasHome from "../components/home/EspecialistasHome";
+import Urgencias from "../components/home/Urgencias";
 
 const Home = () => {
   return (
@@ -10,6 +11,7 @@ const Home = () => {
       <ServicesHome />
       <SlideCentros />
       <EspecialistasHome />
+      <Urgencias />
     </main>
   )
 }

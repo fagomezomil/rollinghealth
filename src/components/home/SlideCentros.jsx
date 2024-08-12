@@ -11,8 +11,8 @@ export default function SlideCentros() {
                 {
                     centrosMedicos.slice(0, 4).map((centro, index) => {
                         return (
-                            <>
-                                <div key={index} className="hidden lg:block col-span-1">
+                            <div key={index} >
+                                <div className="hidden lg:block col-span-1">
                                     <div className="h-72 rounded-t-md bg-cover bg-center" style={{ backgroundImage: `url(${centro.img})` }}>
 
                                     </div>
@@ -30,7 +30,7 @@ export default function SlideCentros() {
                                         <button className="rounded-full bg-[#126459] text-white text-sm py-2 px-4 my-4">Ver toda la información</button>
                                     </div>
                                 </div>
-                            </>
+                            </div>
                         )
                     })
                 }
