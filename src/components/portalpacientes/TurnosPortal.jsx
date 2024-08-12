@@ -27,12 +27,15 @@ export default function TurnosPortal({ setPortal }) {
   //aqui tambien hay que traer _id (pacienteSelectedId) del paciente logueado para ingresarlo en el turno!
   const agregarTurno= useTurnosStore((state) => state.agregarTurno);
   const getTurnos= useTurnosStore((state) => state.getTurnos);
-
+  
 
   useEffect(() => {
-    getCentrosMedicos();
-    getMedicos();
-    getTurnos();
+    const getDatos = async () => {
+      await getCentrosMedicos();
+      await getMedicos();
+      await getTurnos();
+    };
+    getDatos();
   }, [getCentrosMedicos, getMedicos, getTurnos])
 
 
@@ -66,21 +69,22 @@ export default function TurnosPortal({ setPortal }) {
   };
 
   
-  const handleSubmit = async () => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     const nuevoTurno = {
       paciente: { _id: "66b695969eeea75cf7534bb3"},  //aqui va el _id del paciente logueado
       doctor: { _id: idMedicoSelected },      
       fecha: fechaSelected,                  
       hora: horaSelected,                     
-      notas: "resfrio"
+      notas: "prueba"
     }
-    await agregarTurno(nuevoTurno);
+    await agregarTurno(nuevoTurno);    
     alert('Turno guardado exitosamente');
     setCentroMedicoSelected('');
     setMedicoSelected('');
     setFechaSelected('');
     setHoraSelected(''); 
+    setPortal("MenuPortal");
   }
 
 
@@ -96,6 +100,7 @@ export default function TurnosPortal({ setPortal }) {
         </div>
         <select className="select-centros"
           value={centroMedicoSelected} onChange={handleSelectCentro}>
+          <option value="">Seleccione un centro médico</option>
           {centrosMedicos.map((centro, index) => (
             <option key={`${centro.name}-${index}`} value={centro.name} className="flex mb-6">
               {centro.name}

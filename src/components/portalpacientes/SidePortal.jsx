@@ -2,14 +2,14 @@ import { FaUser } from 'react-icons/fa6'
 import { BsPencilSquare } from "react-icons/bs";
 import { ImStatsBars2 } from "react-icons/im";
 import { FaPlusCircle } from 'react-icons/fa';
-import {useState, useEffect } from 'react';
+/* import {useState, useEffect } from 'react';
 import useTurnosStore from "../../zustand/turnos-zustand.js";
-import usePacienteStore from "../../zustand/paciente-zustand.js";
+import usePacienteStore from "../../zustand/paciente-zustand.js"; */
 
 
-export default function SidePortal({ setPortal }) {
+export default function SidePortal({ setPortal , cantidadTurnos, paciente}) {
 
-    const [turnos, setTurnos] =  useState([]);
+   /*  const [turnos, setTurnos] =  useState([]);
     const {getTurnos, getTurnosPaciente, turnosPaciente}= useTurnosStore((state) => 
         ({
             getTurnosPaciente: state.getTurnosPaciente,
@@ -31,7 +31,7 @@ export default function SidePortal({ setPortal }) {
         getDatos();
     }, [getTurnosPaciente, traerPaciente, turnosPaciente, getTurnos, turnos]);   
 
-    const cantidadTurnos = Array.isArray(turnosPaciente) ? turnosPaciente.length : 0;
+    const cantidadTurnos = Array.isArray(turnosPaciente) ? turnosPaciente.length : 0; */
 
 
     return (
@@ -44,7 +44,7 @@ export default function SidePortal({ setPortal }) {
                 <div className='flex flex-col justify-center mr-12'>
                     <p className='text-2xl font-bold text-neutral-600'>
                     {paciente ? `${paciente.name}` : 'Nombre y Apellido Paciente'}
-                    </p>
+                  </p>
                 </div>
                 <div className='mt-6 flex flex-col items-center justify-center text-center'>
                     <p className="rounded-full w-fit p-6 mb-2 bg-neutral-400 text-2xl">
@@ -60,7 +60,7 @@ export default function SidePortal({ setPortal }) {
                     Correo Electrónico
                 </p>
                 <p className='text-xl text-neutral-600 mb-4'>
-                {paciente ? paciente.email : 'Correo Electrónico del paciente'}
+                 {paciente ? paciente.email : 'Correo Electrónico del paciente'}
                 </p>
                 <hr className="my-2" />
                 <p className='text-base italic text-neutral-600 mt-4'>

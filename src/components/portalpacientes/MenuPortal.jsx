@@ -1,10 +1,55 @@
-
 import { FaWhatsapp } from 'react-icons/fa';
 import { IoCalendarNumber, IoCloseCircle, IoSearchSharp } from 'react-icons/io5';
 import { FaRegTrashAlt } from "react-icons/fa";
+import {useState, useEffect } from 'react';
+import useTurnosStore from "../../zustand/turnos-zustand.js";
+import usePacienteStore from "../../zustand/paciente-zustand.js";
+import useMedicoStore from '../../zustand/medico-zustand';
+import useCentroMedicoStore from '../../zustand/centroMedico-zustand.js';
 
-export default function MenuPortal({ setPortal, portal }) {
+export default function MenuPortal({ setPortal, portal }) {   
+    const [turnosData, setTurnosData] = useState(''); 
     
+    const { getTurnosPaciente, turnosPaciente}= useTurnosStore((state) => ({            
+            getTurnosPaciente: state.getTurnosPaciente,
+            turnosPaciente: state.turnosPaciente,           
+          }));      
+    const {paciente, traerPaciente} = usePacienteStore((state) => ({
+            traerPaciente: state.traerPaciente,
+            paciente: state.paciente,
+        }));
+    const { traerMedico, medico, getMedicos } = useMedicoStore((state) => ({
+            traerMedico: state.traerMedico,
+            medico: state.medico,
+            getMedicos: state.getMedicos,
+        }));  
+    const { traerCentroMedico, centroMedico } = useCentroMedicoStore((state) => ({           
+            traerCentroMedico: state.traerCentroMedico,
+            centroMedico: state.centroMedico,
+        }));  
+
+    /*     useEffect(() => {
+            const getDatos = async () => {                
+                await getTurnosPaciente("66b695969eeea75cf7534bb3");               
+                await traerPaciente("66b695969eeea75cf7534bb3");               
+                
+                await getMedicos();
+
+                const turnosCompletos = await Promise.all(turnosPaciente.map(async (turno) => {
+                    const medico = await traerMedico(turno.doctor._id);
+                    return {
+                      ...turno,
+                      medico,
+                    };
+                  }));                  
+                  setTurnosData(turnosCompletos);               
+            };
+    
+            getDatos();
+        }, [getTurnosPaciente, traerPaciente, turnosPaciente, getMedicos, traerMedico, traerCentroMedico]); */
+
+        //console.log(medico, paciente, turnosPaciente, centroMedico);
+        //console.log(turnosData);
 
     return (
         <div>
@@ -32,7 +77,21 @@ export default function MenuPortal({ setPortal, portal }) {
                                 <th className='p-2 md:p-5 '>Cancelar</th>
                             </tr>
                         </thead>
-                        <tbody>
+                   {/*      <tbody>
+                            {turnosData.map((turno, index) => (
+                                <tr key={turno._id} className={index % 2 === 0 ? 'bg-white' : 'bg-[#c4e9e4]'}>
+                                <td className='p-2 md:p-5 mr-10'>{index + 1}</td>
+                                <td className='p-2 md:p-5'>{turno.dia}</td>
+                                <td className='p-2 md:p-5 whitespace-nowrap'>{turno.horario}</td>
+                                <td className='p-2 md:p-5 whitespace-nowrap'>{turno.medico.nombre}</td>
+                                <td className='p-2 md:p-5'>{turno.medico.especialidad}</td>
+                                <td className='p-2 md:p-5'>{turno.direccion}</td>
+                                <td className='p-2 md:p-5 text-red-700 text-3xl text-center'><IoCloseCircle /></td>
+                                </tr>
+                            ))}
+                        </tbody> */}
+
+                        {/* <tbody>
                             <tr className='bg-white'>
                                 <td className='p-2 md:p-5 mr-10'>1</td>
                                 <td className='p-2 md:p-5'>Lunes</td>
@@ -60,7 +119,7 @@ export default function MenuPortal({ setPortal, portal }) {
                                 <td className='p-2 md:p-5'>Calle 123 # 1-5</td>
                                 <td className='p-2 md:p-5 text-red-700 text-3xl text-center'><IoCloseCircle /></td>
                             </tr>
-                        </tbody>
+                        </tbody> */}
                     </table>
                 </div>
             </div>
