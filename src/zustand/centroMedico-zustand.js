@@ -6,6 +6,7 @@ const URI_CENTROSMEDICOS = import.meta.env.VITE_API_CENTROSMEDICOS;
 const useCentroMedicoStore = create((set) => ({
   centrosMedicos: [],
   centroMedico: null,
+  centroMedicoTurnos: [],
   loading: false,
   error: null,
 
@@ -30,6 +31,27 @@ const useCentroMedicoStore = create((set) => ({
       set({ error: 'Error al traer el centroMedico' });
     } 
   },
+
+  getCentrosTurnos: async (idsCentros) => {
+    set({ loading: true, error: null });
+    try {
+        const response = await axios.get(URI_CENTROSMEDICOS);
+        const centrosMedicos = response.data;
+        const centrosFiltrados = centrosMedicos.filter((centro) => idsCentros.includes(centro._id));
+        set({
+            centrosMedicos,
+            centroMedicoTurnos: centrosFiltrados,
+            loading: false,
+        });
+    } catch (error) {
+        set({
+            error: error.message || 'Error al traer los turnos',
+            loading: false,
+            centroMedicoTurnos: [],
+        });
+    }
+},
+
 
   agregarCentroMedico: async (nuevocentroMedico) => {
     set({ loading: true, error: null });

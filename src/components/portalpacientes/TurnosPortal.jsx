@@ -1,7 +1,5 @@
 import { IoArrowBackCircle } from "react-icons/io5";
 import { useState, useEffect } from "react";
-//import { centrosMedicos } from "../../utils/centroMedicosData";
-//import { medicos } from "../../utils/medicosData";
 import { FaPlusCircle } from "react-icons/fa";
 import { turnos } from "../../utils/turnosData";
 
@@ -27,6 +25,8 @@ export default function TurnosPortal({ setPortal }) {
   //aqui tambien hay que traer _id (pacienteSelectedId) del paciente logueado para ingresarlo en el turno!
   const agregarTurno= useTurnosStore((state) => state.agregarTurno);
   const getTurnos= useTurnosStore((state) => state.getTurnos);
+  const turnosStore = useTurnosStore((state) => state.turnos);
+
   
 
   useEffect(() => {
@@ -85,6 +85,7 @@ export default function TurnosPortal({ setPortal }) {
     setFechaSelected('');
     setHoraSelected(''); 
     setPortal("MenuPortal");
+    
   }
 
 

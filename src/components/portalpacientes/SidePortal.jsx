@@ -2,38 +2,11 @@ import { FaUser } from 'react-icons/fa6'
 import { BsPencilSquare } from "react-icons/bs";
 import { ImStatsBars2 } from "react-icons/im";
 import { FaPlusCircle } from 'react-icons/fa';
-/* import {useState, useEffect } from 'react';
-import useTurnosStore from "../../zustand/turnos-zustand.js";
-import usePacienteStore from "../../zustand/paciente-zustand.js"; */
 
 
 export default function SidePortal({ setPortal , cantidadTurnos, paciente}) {
 
-   /*  const [turnos, setTurnos] =  useState([]);
-    const {getTurnos, getTurnosPaciente, turnosPaciente}= useTurnosStore((state) => 
-        ({
-            getTurnosPaciente: state.getTurnosPaciente,
-            getTurnos: state.getTurnos,          
-            turnosPaciente: state.turnosPaciente,           
-          }));      
-    const {paciente, traerPaciente} = usePacienteStore((state) => ({
-        traerPaciente: state.traerPaciente,
-        paciente: state.paciente,
-    }));
- 
-    useEffect(() => {
-        const getDatos = async () => {
-            await  getTurnosPaciente("66b695969eeea75cf7534bb3");
-            await traerPaciente("66b695969eeea75cf7534bb3");//aqui hay que pasarle el _id del paciente logueado
-            setTurnos[turnosPaciente];
-        };
-
-        getDatos();
-    }, [getTurnosPaciente, traerPaciente, turnosPaciente, getTurnos, turnos]);   
-
-    const cantidadTurnos = Array.isArray(turnosPaciente) ? turnosPaciente.length : 0; */
-
-
+   
     return (
         <div className='col-span-12 xl:col-span-4 bg-neutral-100 bg-cover bg-no-repeat w-full p-12'>
             <div className='flex justify-between'>

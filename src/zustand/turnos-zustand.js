@@ -55,9 +55,9 @@ const useTurnosStore = create((set) => ({
   agregarTurno: async (nuevoTurno) => {
     set({ loading: true, error: null });
     try {
-      const response = await axios.post(`${URI_TURNOS}`, nuevoTurno);
+      await axios.post(`${URI_TURNOS}`, nuevoTurno);
       set((state) => ({
-        turnos: [...state.turnos, response.data],
+        turnos: [...state.turnos, nuevoTurno],
       }));
     } catch (error) {
       set({ error: 'Error al agregar el turno' });

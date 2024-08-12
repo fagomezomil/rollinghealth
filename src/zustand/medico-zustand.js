@@ -8,6 +8,7 @@ const useMedicoStore = create((set) => ({
   medico: null,
   loading: false,
   error: null,
+  idMedicoCentro: [],
 
 
   getMedicos: async () => {
@@ -31,12 +32,34 @@ const useMedicoStore = create((set) => ({
     } 
   },
 
+  getCentrosByMedicosIds: async (idsMedicos) => {
+    set({ loading: true, error: null });
+    try {        
+        const response = await axios.get(URI_USUARIOS); 
+        const medicos = response.data;        
+        const medicosFiltrados = medicos.filter((medico) => idsMedicos.includes(medico._id));
+        const idsCentrosMedicos = medicosFiltrados.map((medico) => medico.centroMedico);     
+        const unicosCentrosMedicos = [...new Set(idsCentrosMedicos)];
+        set({
+            idMedicoCentro: unicosCentrosMedicos,
+            loading: false,
+        });
+    } catch (error) {
+        set({
+            error: error.message || 'Error al obtener los centros médicos',
+            loading: false,
+            idMedicoCentro: [],
+        });
+    }
+},
+
+
   agregarMedico: async (nuevoMedico) => {
     set({ loading: true, error: null });
     try {
-      const response = await axios.post(`${URI_USUARIOS}/registrar`, nuevoMedico);
+      await axios.post(`${URI_USUARIOS}/registrar`, nuevoMedico);
       set((state) => ({
-        medicos: [...state.medicos, response.data],
+        medicos: [...state.medicos, nuevoMedico],
       }));
     } catch (error) {
       set({ error: 'Error al agregar el medico' });
