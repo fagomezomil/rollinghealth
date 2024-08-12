@@ -8,7 +8,6 @@ const UserBadge = () => {
     const [emailOk, setEmailOk] = useState(false)
     const [passwordOk, setPasswordOk] = useState(false)
 
-
     return (
         <div className="flex items-center relative">
             <NavLg open={open} setOpen={setOpen} emailOk={emailOk} setEmailOk={setEmailOk} passwordOk={passwordOk} setPasswordOk={setPasswordOk} role={role} />
@@ -16,4 +15,4 @@ const UserBadge = () => {
     );
 };
 
-export default UserBadge;
+export default UserBadge; 
