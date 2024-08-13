@@ -49,7 +49,7 @@ const usePacienteStore = create((set) => ({
       const response = await axios.put(`${URI_USUARIOS}/${id}`, pacienteActualizado)
       set((state) => ({
         pacientes: state.pacientes.map((paciente) =>
-          paciente.id === id ? response.data : paciente
+          paciente._id === id ? response.data : paciente
         ),
       }));
     } catch (error) {
@@ -62,7 +62,7 @@ const usePacienteStore = create((set) => ({
     try {
       await axios.delete(`${URI_USUARIOS}/${id}`)
       set((state) => ({
-        pacientes: state.pacientes.filter((paciente) => paciente.id !== id),
+        pacientes: state.pacientes.filter((paciente) => paciente._id !== id),
       }));
     } catch (error) {
       set({ error: 'Error al eliminar el paciente' });

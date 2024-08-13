@@ -71,7 +71,7 @@ const useCentroMedicoStore = create((set) => ({
       const response = await axios.put(`${URI_CENTROSMEDICOS}/${id}`, centroMedicoActualizado)
       set((state) => ({
         centrosMedicos: state.centrosMedicos.map((centroMedico) =>
-          centroMedico.id === id ? response.data : centroMedico
+          centroMedico._id === id ? response.data : centroMedico
         ),
       }));
     } catch (error) {
@@ -84,7 +84,7 @@ const useCentroMedicoStore = create((set) => ({
     try {
       await axios.delete(`${URI_CENTROSMEDICOS}/${id}`)
       set((state) => ({
-        centrosMedicos: state.centrosMedicos.filter((centroMedico) => centroMedico.id !== id),
+        centrosMedicos: state.centrosMedicos.filter((centroMedico) => centroMedico._id !== id),
       }));
     } catch (error) {
       set({ error: 'Error al eliminar el centroMedico' });
