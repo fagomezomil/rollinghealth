@@ -63,6 +63,7 @@ const useTurnosStore = create((set) => ({
       set({ error: 'Error al agregar el turno' });
     } 
   },
+  
 
   actualizarTurno: async (id, turnoActualizado) => {
     set({ loading: true, error: null });
@@ -70,7 +71,7 @@ const useTurnosStore = create((set) => ({
       const response = await axios.put(`${URI_TURNOS}/${id}`, turnoActualizado)
       set((state) => ({
         turnos: state.turnos.map((turno) =>
-          turno.id === id ? response.data : turno
+          turno._id === id ? response.data : turno
         ),
       }));
     } catch (error) {
@@ -83,7 +84,7 @@ const useTurnosStore = create((set) => ({
     try {
       await axios.delete(`${URI_TURNOS}/${id}`)
       set((state) => ({
-        turnos: state.turnos.filter((turno) => turno.id !== id),
+        turnos: state.turnos.filter((turno) => turno._id !== id),
       }));
     } catch (error) {
       set({ error: 'Error al eliminar el turno' });

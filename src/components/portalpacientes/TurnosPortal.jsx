@@ -25,7 +25,7 @@ export default function TurnosPortal({ setPortal }) {
   //aqui tambien hay que traer _id (pacienteSelectedId) del paciente logueado para ingresarlo en el turno!
   const agregarTurno= useTurnosStore((state) => state.agregarTurno);
   const getTurnos= useTurnosStore((state) => state.getTurnos);
-  const turnosStore = useTurnosStore((state) => state.turnos);
+  const getTurnosPaciente = useTurnosStore((state) => state.getTurnosPaciente);
 
   
 
@@ -78,7 +78,8 @@ export default function TurnosPortal({ setPortal }) {
       hora: horaSelected,                     
       notas: "prueba"
     }
-    await agregarTurno(nuevoTurno);    
+    await agregarTurno(nuevoTurno);   
+    await getTurnosPaciente("66b695969eeea75cf7534bb3"); //aqui va el _id del paciente logueado
     alert('Turno guardado exitosamente');
     setCentroMedicoSelected('');
     setMedicoSelected('');
@@ -86,8 +87,7 @@ export default function TurnosPortal({ setPortal }) {
     setHoraSelected(''); 
     setPortal("MenuPortal");
     
-  }
-
+  } 
 
 
   return (
