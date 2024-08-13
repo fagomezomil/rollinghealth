@@ -4,7 +4,7 @@ import NavLg from "./navbar/NavLg";
 
 const UserBadge = () => {
     const [open, setOpen] = useState(false);
-    const role = "paciente";
+    const role = "";
     const [emailOk, setEmailOk] = useState(false)
     const [passwordOk, setPasswordOk] = useState(false)
 

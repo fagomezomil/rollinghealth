@@ -4,7 +4,7 @@ import { FaRegTrashAlt } from "react-icons/fa";
 import useTurnosStore from "../../zustand/turnos-zustand.js";
 
 
-export default function MenuPortal({ setPortal, portal, cantidadTurnos, turnosPaciente, centroMedicoTurnos, medicos}) {
+export default function MenuPortal({ setPortal, portal, cantidadTurnos, turnosPaciente, centroMedicoTurnos, medicos, dataUsuario}) {
 
     const {eliminarTurno, getTurnosPaciente} = useTurnosStore(state => ({      
         eliminarTurno: state.eliminarTurno,
@@ -37,7 +37,8 @@ export default function MenuPortal({ setPortal, portal, cantidadTurnos, turnosPa
     const cancelarTurno = async (id) => {
         try {       
           await eliminarTurno(id);
-          await getTurnosPaciente("66b695969eeea75cf7534bb3");// aqui va el id del user logueado
+          //await getTurnosPaciente("66b695969eeea75cf7534bb3");// aqui va el id del user logueado
+          await getTurnosPaciente(dataUsuario._id);// aqui va el id del user logueado
           console.log("Turno eliminado");        
           alert("Turno cancelado exitosamente");
         } catch (error) {
