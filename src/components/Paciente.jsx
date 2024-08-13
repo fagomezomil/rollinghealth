@@ -41,7 +41,7 @@ export default function Paciente() {
     const getDatos = useCallback(async () => {
         try {
             await getTurnosPaciente(dataUsuario?._id);
-            await traerPaciente(dataUsuario?._id);
+            await traerPaciente(dataUsuario?._id)
         } catch (error) {
             console.error("Error al obtener datos del paciente:", error);
         }
@@ -97,18 +97,14 @@ export default function Paciente() {
     const cantidadTurnos = Array.isArray(turnosPaciente) ? turnosPaciente.length : 0;
     const turnosPacienteMenu = Array.isArray(turnosPaciente) ? turnosPaciente : [];
 
-    console.log("Turnos Paciente:", turnosPaciente);
-    console.log("id Medico Turnos:", medicoTurnos);
-    console.log("id Centro Medico Turnos:", idMedicoCentro);
-    console.log("datos Centro Medico turnos:", centroMedicoTurnos);
-    console.log("Datos de Médicos:", medicos); 
+  
 
     return (
         <div className='mt-20 grid grid-cols-12'>
             <SidePortal setPortal={setPortal} portal={portal} cantidadTurnos={cantidadTurnos} paciente={paciente} />
             <div className="col-span-12 xl:col-span-8 p-10 ">
                 {portal === "MenuPortal" && <MenuPortal setPortal={setPortal} portal={portal}  cantidadTurnos={cantidadTurnos} turnosPaciente={turnosPacienteMenu} centroMedicoTurnos={centroMedicoTurnos} medicos={medicos} />}
-                {portal === "TurnosPortal" && <TurnosPortal setPortal={setPortal} portal={portal} />}
+                {portal === "TurnosPortal" && <TurnosPortal setPortal={setPortal} portal={portal} getDatos={getDatos} />}
             </div>
         </div>
     );
