@@ -8,7 +8,7 @@ import useMedicoStore from "../../zustand/medico-zustand.js";
 import useTurnosStore from "../../zustand/turnos-zustand.js";
 
 
-export default function TurnosPortal({ setPortal }) {
+export default function TurnosPortal({ setPortal, dataUsuario }) {
 
   const [centroMedicoSelected, setCentroMedicoSelected] = useState('');
   //const [idCentroMedicoSelected, setIdCentroMedicoSelected] = useState('');
@@ -72,7 +72,8 @@ export default function TurnosPortal({ setPortal }) {
   const handleSubmit = async (event) => {
     event.preventDefault();
     const nuevoTurno = {
-      paciente: { _id: "66b695969eeea75cf7534bb3"},  //aqui va el _id del paciente logueado
+      //paciente: { _id: "66b695969eeea75cf7534bb3"},  //aqui va el _id del paciente logueado
+      paciente: { _id: dataUsuario._id}, 
       doctor: { _id: idMedicoSelected },      
       fecha: fechaSelected,                  
       hora: horaSelected,                     
