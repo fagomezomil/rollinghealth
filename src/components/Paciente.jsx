@@ -7,12 +7,14 @@ import useTurnosStore from "../zustand/turnos-zustand.js";
 import usePacienteStore from "../zustand/paciente-zustand.js";
 import useCentroMedicoStore from '../zustand/centroMedico-zustand.js';
 import useMedicoStore from '../zustand/medico-zustand';
+import useUsuarioStore from '../zustand/usuario-zustand.js';
 
 export default function Paciente() {
     const [portal, setPortal] = useState("MenuPortal");
     const [medicoTurnos, setMedicoTurnos] = useState([]);
     const [centroTurnos, setCentroTurnos] = useState([]);
     const [medicos, setMedicos] = useState([]); 
+    const { dataUsuario } = useUsuarioStore();
 
     const { getTurnosPaciente, turnosPaciente } = useTurnosStore(state => ({
         getTurnosPaciente: state.getTurnosPaciente,
@@ -38,8 +40,8 @@ export default function Paciente() {
 
     const getDatos = useCallback(async () => {
         try {
-            await getTurnosPaciente("66b695969eeea75cf7534bb3"); //cambiar por id de usuario logueado
-            await traerPaciente("66b695969eeea75cf7534bb3");//cambiar por id de usuario logueado
+            await getTurnosPaciente(dataUsuario?._id);
+            await traerPaciente(dataUsuario?._id)
         } catch (error) {
             console.error("Error al obtener datos del paciente:", error);
         }
