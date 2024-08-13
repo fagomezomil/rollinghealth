@@ -12,7 +12,7 @@ export default function Register() {
         if(response.status === 201){
             toast.success('Registrado exitosamente')
             reset()
-            navegacion('/paciente')
+            navegacion('/login')
         } else{
             toast.error('Error al registrar, intente más tarde')
         }
@@ -118,7 +118,7 @@ export default function Register() {
                 {errors.confirmPassword && (
                     <p className='text-red-500 text-sm'>{errors.confirmPassword.message}</p>
                 )}
-                <button type="submit" className="rounded-lg bg-[#126459] text-white text-sm py-2 px-4 mb-4">Ingresar</button>
+                <button type="submit" className="rounded-lg bg-[#126459] text-white text-sm py-2 px-4 mb-4">Registrar</button>
             </form>
             </div>
             <Toaster/>
