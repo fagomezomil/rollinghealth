@@ -1,9 +1,15 @@
 import { FaWhatsapp } from 'react-icons/fa';
 import { IoCalendarNumber, IoCloseCircle, IoSearchSharp } from 'react-icons/io5';
 import { FaRegTrashAlt } from "react-icons/fa";
+import useTurnosStore from "../../zustand/turnos-zustand.js";
 
 
-export default function MenuPortal({ setPortal, portal, cantidadTurnos, turnosPaciente, centroMedicoTurnos, medicos}) {
+export default function MenuPortal({ setPortal, portal, cantidadTurnos, turnosPaciente, centroMedicoTurnos, medicos, dataUsuario}) {
+
+    const {eliminarTurno, getTurnosPaciente} = useTurnosStore(state => ({      
+        eliminarTurno: state.eliminarTurno,
+        getTurnosPaciente: state.getTurnosPaciente,      
+    }));
 
     const formatDate = (dateString) => {
         const date = new Date(dateString);
@@ -12,8 +18,9 @@ export default function MenuPortal({ setPortal, portal, cantidadTurnos, turnosPa
         const year = date.getUTCFullYear();
         return `${day}-${month}-${year}`;
     };
-    
-    const turnosCompletos = turnosPaciente.map(turno => {
+    const turnosPacienteMenu = Array.isArray(turnosPaciente) ? turnosPaciente : [];
+
+    const turnosCompletos = turnosPacienteMenu.map(turno => {
        
         const medico = medicos.find(m => m._id === turno.doctor._id) || { name: 'Desconocido' };       
         const centroMedico = centroMedicoTurnos.find(c => c._id === medico.centroMedico) || { address: 'Desconocido' };
@@ -26,6 +33,19 @@ export default function MenuPortal({ setPortal, portal, cantidadTurnos, turnosPa
             especialidad: medico.speciality
         };
     });
+      
+    const cancelarTurno = async (id) => {
+        try {       
+          await eliminarTurno(id);
+          //await getTurnosPaciente("66b695969eeea75cf7534bb3");// aqui va el id del user logueado
+          await getTurnosPaciente(dataUsuario._id);// aqui va el id del user logueado
+          console.log("Turno eliminado");        
+          alert("Turno cancelado exitosamente");
+        } catch (error) {
+          console.error("Error al cancelar el turno:", error);        
+        }
+      };   
+
 
     console.log(turnosCompletos);
   
@@ -57,7 +77,7 @@ export default function MenuPortal({ setPortal, portal, cantidadTurnos, turnosPa
                         </thead>
                         <tbody>
                             {turnosCompletos.map((turno, index) => (
-                                <tr key={turno.id || index} className='border-b'>
+                                <tr key={turno._id || index} className='border-b'>
                                     <td className='p-2 md:p-5'>{index + 1}</td>
                                     <td className='p-2 md:p-5'>{turno.fecha}</td>
                                     <td className='p-2 md:p-5'>{turno.hora}</td>
@@ -65,7 +85,7 @@ export default function MenuPortal({ setPortal, portal, cantidadTurnos, turnosPa
                                     <td className='p-2 md:p-5'>{turno.especialidad}</td>
                                     <td className='p-2 md:p-5'>{turno.centroMedico}</td>
                                     <td className='p-2 md:p-5'>
-                                        <button onClick={() => cancelarTurno(turno.id)} className="text-red-500 hover:text-red-700">
+                                        <button onClick={() => cancelarTurno(turno._id)} className="text-red-500 hover:text-red-700">
                                             <IoCloseCircle />
                                         </button>
                                     </td>

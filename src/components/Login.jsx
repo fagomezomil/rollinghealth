@@ -1,31 +1,29 @@
-import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import axios from 'axios';
 import { ROLES } from '../constants/usersRoles';
 import { useNavigate } from 'react-router-dom';
 import toast, { Toaster } from 'react-hot-toast';
+import useUsuarioStore from '../zustand/usuario-zustand';
 
 export default function Login() {
-  const URI_LOGIN = import.meta.env.VITE_API_LOGIN;
   const userRole = '';
-  const [isLoadingButton, setIsLoadingButton] = useState(false);
-  const { register, handleSubmit, formState: { errors }} = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
   const navigate = useNavigate();
+  const { isLoading, postLogin } = useUsuarioStore();
 
   const onSubmit = async (dataForm) => {
-    setIsLoadingButton(true);
     try {
-      const { data } = await axios.post(URI_LOGIN, dataForm);
-      if (data.role === ROLES.PATIENT) navigate('/paciente');
-    } catch (error) {
-      toast.error('El nombre de usuario o contraseña son incorrectos')
-    } finally {
-      setIsLoadingButton(false);
+      const user = await postLogin(dataForm);
+      if (user.role === ROLES.PATIENT) navigate('/paciente');
+    } catch {
+      toast.error('El nombre de usuario o contraseña son incorrectos');
     }
   };
 
-  return (
-  userRole === '' ? (
+  return userRole === '' ? (
     <div className='mt-20 grid grid-cols-12 items-center'>
       <div className='col-span-5 bg-[url(/images/register/register.webp)] bg-cover bg-no-repeat w-full h-[650px]'></div>
       <div className='col-span-5 p-10 '>
@@ -72,21 +70,18 @@ export default function Login() {
           )}
           <button
             type='submit'
-            disabled={isLoadingButton}
+            disabled={isLoading}
             className={`rounded-lg text-white text-sm py-2 px-4 mb-4 ${
-              isLoadingButton
-                ? 'bg-[#E6E6E6] cursor-not-allowed'
-                : 'bg-[#126459]'
+              isLoading ? 'bg-[#E6E6E6] cursor-not-allowed' : 'bg-[#126459]'
             }`}
           >
-            {isLoadingButton ? 'Ingresando...' : 'Ingresar'}
+            {isLoading ? 'Ingresando...' : 'Ingresar'}
           </button>
         </form>
       </div>
-       <Toaster />
+      <Toaster />
     </div>
   ) : (
     ''
-  )
   );
 }
