@@ -2,6 +2,7 @@ import { FaWhatsapp } from 'react-icons/fa';
 import { IoCalendarNumber, IoCloseCircle, IoSearchSharp } from 'react-icons/io5';
 import { FaRegTrashAlt } from "react-icons/fa";
 import useTurnosStore from "../../zustand/turnos-zustand.js";
+import toast, {Toaster} from 'react-hot-toast';
 
 
 export default function MenuPortal({ setPortal, portal, cantidadTurnos, turnosPaciente, centroMedicoTurnos, medicos, dataUsuario}) {
@@ -35,19 +36,17 @@ export default function MenuPortal({ setPortal, portal, cantidadTurnos, turnosPa
     });
       
     const cancelarTurno = async (id) => {
-        try {       
-          await eliminarTurno(id);
-          //await getTurnosPaciente("66b695969eeea75cf7534bb3");// aqui va el id del user logueado
-          await getTurnosPaciente(dataUsuario._id);// aqui va el id del user logueado
-          console.log("Turno eliminado");        
-          alert("Turno cancelado exitosamente");
+          try {
+            await eliminarTurno(id);
+            await getTurnosPaciente(dataUsuario._id);
+            toast.success('Turno cancelado exitosamente');
         } catch (error) {
-          console.error("Error al cancelar el turno:", error);        
+            toast.error('Error al cancelar el turno');
+            console.error("Error al cancelar el turno:", error);
         }
       };   
 
-
-    console.log(turnosCompletos);
+   
   
     return (
         <div>
@@ -88,6 +87,7 @@ export default function MenuPortal({ setPortal, portal, cantidadTurnos, turnosPa
                                         <button onClick={() => cancelarTurno(turno._id)} className="text-red-500 hover:text-red-700">
                                             <IoCloseCircle />
                                         </button>
+                                        <Toaster/>
                                     </td>
                                 </tr>
                             ))}

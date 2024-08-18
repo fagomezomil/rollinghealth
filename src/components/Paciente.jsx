@@ -2,7 +2,6 @@ import { useState, useEffect, useCallback } from 'react';
 import MenuPortal from './portalpacientes/MenuPortal';
 import SidePortal from './portalpacientes/SidePortal';
 import TurnosPortal from './portalpacientes/TurnosPortal';
-
 import useTurnosStore from "../zustand/turnos-zustand.js";
 import usePacienteStore from "../zustand/paciente-zustand.js";
 import useCentroMedicoStore from '../zustand/centroMedico-zustand.js';
@@ -97,7 +96,6 @@ export default function Paciente() {
     const cantidadTurnos = Array.isArray(turnosPaciente) ? turnosPaciente.length : 0;
     const turnosPacienteMenu = Array.isArray(turnosPaciente) ? turnosPaciente : [];
 
-  console.log(dataUsuario);
 
     return (
         <div className='mt-20 grid grid-cols-12'>
