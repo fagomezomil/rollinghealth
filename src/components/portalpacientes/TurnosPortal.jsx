@@ -2,7 +2,7 @@ import { IoArrowBackCircle } from "react-icons/io5";
 import { useState, useEffect } from "react";
 import { FaPlusCircle } from "react-icons/fa";
 import { turnos } from "../../utils/turnosData";
-
+import toast, { Toaster } from 'react-hot-toast';
 import useCentroMedicoStore from "../../zustand/centroMedico-zustand.js";
 import useMedicoStore from "../../zustand/medico-zustand.js";
 import useTurnosStore from "../../zustand/turnos-zustand.js";
@@ -69,26 +69,62 @@ export default function TurnosPortal({ setPortal, dataUsuario }) {
   };
 
   
-  const handleSubmit = async (event) => {
+/*   const handleSubmit = async (event) => {
     event.preventDefault();
-    const nuevoTurno = {
-      //paciente: { _id: "66b695969eeea75cf7534bb3"},  //aqui va el _id del paciente logueado
+    const nuevoTurno = {      
       paciente: { _id: dataUsuario._id}, 
       doctor: { _id: idMedicoSelected },      
       fecha: fechaSelected,                  
       hora: horaSelected,                     
       notas: "prueba"
     }
-    await agregarTurno(nuevoTurno);   
-    await getTurnosPaciente(dataUsuario._id); //aqui va el _id del paciente logueado
-    alert('Turno guardado exitosamente');
+   
+    try {
+      await agregarTurno(nuevoTurno);
+      await getTurnosPaciente(dataUsuario._id);
+      toast.success('Turno guardado exitosamente', {
+          duration: 3000, 
+      });
+  } catch (error) {
+      toast.error('Error al guardar el turno', {
+          duration: 3000, 
+      });
+  }
     setCentroMedicoSelected('');
     setMedicoSelected('');
     setFechaSelected('');
     setHoraSelected(''); 
     setPortal("MenuPortal");
     
-  } 
+  }  */
+
+    const handleSubmit = async (event) => {
+      event.preventDefault();
+      const nuevoTurno = {      
+        paciente: { _id: dataUsuario._id }, 
+        doctor: { _id: idMedicoSelected },      
+        fecha: fechaSelected,                  
+        hora: horaSelected,                     
+        notas: "prueba"
+      };
+      
+      try {
+        await agregarTurno(nuevoTurno);
+        await getTurnosPaciente(dataUsuario._id); 
+        toast.success('Turno guardado exitosamente');          
+        
+        setTimeout(() => {
+          setCentroMedicoSelected('');
+          setMedicoSelected('');
+          setFechaSelected('');
+          setHoraSelected(''); 
+          setPortal("MenuPortal");
+        }, 2000); 
+      } catch (error) {
+        toast.error('Error al guardar el turno');
+      }
+    };
+    
 
 
   return (
@@ -191,7 +227,7 @@ export default function TurnosPortal({ setPortal, dataUsuario }) {
                               <div className="flex flex-col md:flex-row w-full my-4">
                                 <select className="rounded-lg p-4 text-lg font-semibold text-white bg-neutral-500"
                                 value={horaSelected} onChange={handleHoraChange}>
-                                  <option value="">Seleccione un horario</option>
+                                <option value="">Seleccione horario</option>
                                   {
                                     turnos.morning.map((turno) => (
                                       <option key={turno} value={turno}>
@@ -204,6 +240,7 @@ export default function TurnosPortal({ setPortal, dataUsuario }) {
                                 <form onSubmit={handleSubmit}>
                                   <button className="ml-0 md:ml-4 mt-4 md:mt-0 py-4 px-8 rounded-lg text-base font-semibold text-white uppercase bg-[#0c423b]">Confirmar Turno</button>
                                 </form>
+                                <Toaster/>
                               </div>
                             </div>
                             : null
