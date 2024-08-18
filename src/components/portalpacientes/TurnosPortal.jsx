@@ -80,7 +80,7 @@ export default function TurnosPortal({ setPortal, dataUsuario }) {
       notas: "prueba"
     }
     await agregarTurno(nuevoTurno);   
-    await getTurnosPaciente("66b695969eeea75cf7534bb3"); //aqui va el _id del paciente logueado
+    await getTurnosPaciente(dataUsuario._id); //aqui va el _id del paciente logueado
     alert('Turno guardado exitosamente');
     setCentroMedicoSelected('');
     setMedicoSelected('');
@@ -191,6 +191,7 @@ export default function TurnosPortal({ setPortal, dataUsuario }) {
                               <div className="flex flex-col md:flex-row w-full my-4">
                                 <select className="rounded-lg p-4 text-lg font-semibold text-white bg-neutral-500"
                                 value={horaSelected} onChange={handleHoraChange}>
+                                  <option value="">Seleccione un horario</option>
                                   {
                                     turnos.morning.map((turno) => (
                                       <option key={turno} value={turno}>
