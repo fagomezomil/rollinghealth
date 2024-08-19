@@ -10,7 +10,7 @@ export default function EspecialistasHome() {
             .slice(0, 5);
     }
     const medicosRandomResult = medicosRandom()
-    console.log(medicosRandomResult)
+
     return (
         <div className='grid  bg-[#126459] pb-12'>
             <div className='p-4 md:p-12'>
