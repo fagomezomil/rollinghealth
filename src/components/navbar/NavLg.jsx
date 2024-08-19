@@ -1,8 +1,56 @@
-import { FaPlusCircle, FaUser } from 'react-icons/fa'
+import React from 'react';
+import { FaPlusCircle, FaUser } from 'react-icons/fa';
 import { RiCloseFill, RiMenu3Line } from 'react-icons/ri';
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom';
+import toast, {Toaster} from 'react-hot-toast';
+import useUsuarioStore from '../../zustand/usuario-zustand';
+import useTurnosStore from "../../zustand/turnos-zustand.js";
 
 export default function NavLg({ open, setOpen, emailOk, setEmailOk, passwordOk, setPasswordOk, role }) {
+
+    const { turnosPaciente } = useTurnosStore(state => ({
+        turnosPaciente: state.turnosPaciente,
+    }));
+
+    const { postLogout, isLoading } = useUsuarioStore((state) => ({
+        postLogout: state.postLogout,
+        isLoading: state.isLoading,
+    }));
+    const navigate = useNavigate();
+
+    const handleLogout = () => {
+        toast((t) => (
+            <div>
+                <p>¿Seguro que quieres cerrar sesión?</p>
+                <div className="flex justify-end mt-4">
+                    <button
+                        className="mr-2 px-4 py-2 bg-green-500 text-white rounded-lg"
+                        onClick={() => {
+                            toast.dismiss(t.id);
+                            postLogout().then(() => {
+                                setOpen(false);
+                                navigate('/');
+                            });
+                        }}
+                    >
+                        Sí
+                    </button>
+                    <button
+                        className="px-4 py-2 bg-red-500 text-white rounded-lg"
+                        onClick={() => toast.dismiss(t.id)}
+                    >
+                        No
+                    </button>
+                </div>
+            </div>
+        ), {
+            duration: Infinity,
+            position: 'top-center',
+        });
+    };
+
+    const cantidadTurnos = Array.isArray(turnosPaciente) ? turnosPaciente.length : 0;
+
     return (
         <>
             <div onClick={() => setOpen(!open)} className="text-lg italic flex justify-center items-center mr-6">
@@ -12,12 +60,10 @@ export default function NavLg({ open, setOpen, emailOk, setEmailOk, passwordOk, 
                         <FaUser />
                     </>
                 }
-                {role === "paciente" ?
+                {role === "Paciente" ?
                     <button onClick={() => setOpen(!open)} className='flex justify-center items-center text-[20px]'>
                         <>
-                            <p className="mr-2">
-                                Menú
-                            </p>
+                            <p className="mr-2">Menú</p>
                             {!open ?
                                 <RiMenu3Line />
                                 :
@@ -47,32 +93,30 @@ export default function NavLg({ open, setOpen, emailOk, setEmailOk, passwordOk, 
                                 maxLength={35}
                                 className="input-menu"
                             />
-                            {
-                                emailOk === true ?
-                                    <>
-                                        <p className="text-neutral-700 text-left italic">Ingresar Contraseña</p>
-                                        <input
-                                            type="password"
-                                            name="password"
-                                            placeholder="Ingrese su contraseña"
-                                            onInput={() => setPasswordOk(true)}
-                                            maxLength={16}
-                                            minLength={8}
-                                            className="input-menu"
-                                        />
-                                    </> : ""
+                            {emailOk === true &&
+                                <>
+                                    <p className="text-neutral-700 text-left italic">Ingresar Contraseña</p>
+                                    <input
+                                        type="password"
+                                        name="password"
+                                        placeholder="Ingrese su contraseña"
+                                        onInput={() => setPasswordOk(true)}
+                                        maxLength={16}
+                                        minLength={8}
+                                        className="input-menu"
+                                    />
+                                </>
                             }
-                            {
-                                passwordOk === true ?
-                                    <button className="rounded-lg bg-[#126459] text-white text-sm py-2 px-4 mb-4">Ingresar</button> : ""
+                            {passwordOk === true &&
+                                <button className="rounded-lg bg-[#126459] text-white text-sm py-2 px-4 mb-4" onClick={() => setOpen(false)}>Ingresar</button>
                             }
                             <hr className="mb-2 mt-2" />
-                            <button className="flex items-center justify-center user-menu-button ">
+                            <button className="flex items-center justify-center user-menu-button" onClick={() => setOpen(false)}>
                                 <img src="./images/google.png" alt="" className="h-10 p-2" />
                                 <p className="">Continuar con Google</p>
                             </button>
-                            <hr className="mt-2 mb-4 " />
-                            <Link to="/register" className="user-menu-button">Registrarse</Link>
+                            <hr className="mt-2 mb-4" />
+                            <Link to="/register" className="user-menu-button" onClick={() => setOpen(false)}>Registrarse</Link>
                             <hr className="my-2" />
                         </>
                         :
@@ -98,19 +142,26 @@ export default function NavLg({ open, setOpen, emailOk, setEmailOk, passwordOk, 
                             <hr className="my-4 border-neutral-300" />
                             <div className='flex items-center justify-between'>
                                 <div className='flex'>
-                                    <p className='rounded-full w-8 h-8 text-center font-bold text-white bg-[#126459] text-xl'>0</p>
+                                    <p className='rounded-full w-8 h-8 text-center font-bold text-white bg-[#126459] text-xl'>{cantidadTurnos}</p>
                                     <p className='ml-1 text-lg font-bold text-neutral-500'>Turnos pendientes</p>
                                 </div>
-                                <button className="rounded-lg flex justify-center items-center bg-[#126459] text-white text-medium py-1 px-2 "><FaPlusCircle className='mr-2' />Nuevo Turno</button>
+                                <button className="rounded-lg flex justify-center items-center bg-[#126459] text-white text-medium py-1 px-2 " onClick={() => setOpen(false)}><FaPlusCircle className='mr-2'/>Nuevo Turno</button>
                             </div>
                             <hr className="my-4 border-neutral-300" />
-                            <Link className="user-menu-button mt-2">Cerrar sesión</Link>
+                            <button
+                                onClick={handleLogout}
+                                className={`rounded-lg text-white text-sm py-2 px-4 mb-4 ${
+                                    isLoading ? 'bg-[#E6E6E6] cursor-not-allowed' : 'bg-[#126459]'
+                                }`}
+                            >
+                                {isLoading ? 'Cerrando Sesión...' : 'Cerrar Sesión'}
+                            </button>
+                            <Toaster/>
                         </>
                     }
-                    <Link className="user-menu-button mt-2">Preguntas Frecuentes</Link>
+                    <Link className="user-menu-button mt-2" onClick={() => setOpen(false)}>Preguntas Frecuentes</Link>
                 </div>
             )}
         </>
-    )
+    );
 }
-
