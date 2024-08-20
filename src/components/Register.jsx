@@ -47,6 +47,50 @@ export default function Register() {
                 {errors.nombre && (
                     <p className="text-red-500 text-sm">{errors.nombre.message}</p>
                 )}
+                <p className="text-neutral-700 text-left italic">Dirección (Domicilio y Provincia) <span className="text-red-500">*</span></p>
+                <input
+                    type="text"
+                    placeholder="Ingrese su dirección" 
+                    className="text-center text-neutral-700 h-10 my-2 mb-4 rounded-md focus:outline-none focus:ring focus:ring-[#aaddd6] border border-[#126459]"
+                    {
+                        ...register("address", {
+                            required: 'La dirección es obligatoria.',
+                            minLength: {
+                                value: 3,
+                                message: "Debe ingresar como mínimo 3 carácteres para la dirección.",
+                            },
+                            maxLength: {
+                                value: 250,
+                                message: "Puede ingresar como máximo 250 carácteres para la dirección.",
+                            },
+                        })
+                    }
+                />
+                {errors.address && (
+                    <p className="text-red-500 text-sm">{errors.address.message}</p>
+                )}
+                <p className="text-neutral-700 text-left italic">Teléfono de contacto <span className="text-red-500">*</span></p>
+                <input
+                    type="number"
+                    placeholder="Ingrese su número de contacto (sin 0 ni 15)" 
+                    className="text-center text-neutral-700 h-10 my-2 mb-4 rounded-md focus:outline-none focus:ring focus:ring-[#aaddd6] border border-[#126459]"
+                    {
+                        ...register("phone", {
+                            required: 'El número de teléfono es obligatorio.',
+                            minLength: {
+                                value: 10,
+                                message: "Debe ingresar como mínimo 10 carácteres para el número de teléfono.",
+                            },
+                            maxLength: {
+                                value: 15,
+                                message: "Puede ingresar como máximo 15 carácteres para el número de teléfono.",
+                            },
+                        })
+                    }
+                />
+                {errors.phone && (
+                    <p className="text-red-500 text-sm">{errors.phone.message}</p>
+                )}
                 <p className="text-neutral-700 text-left italic">Correo electrónico <span className="text-red-500">*</span></p>
                 <input
                     type="email"

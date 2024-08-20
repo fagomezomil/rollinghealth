@@ -59,3 +59,9 @@
     @apply h-20 w-20 border-4 border-neutral-200 rounded-md mr-4;
   }
 }
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
