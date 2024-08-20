@@ -59,8 +59,7 @@ export default function Paciente() {
                         doctorIds.push(turno.doctor._id);
                     }
                 });
-                setMedicoTurnos(doctorIds);
-                console.log('Doctor IDs:', doctorIds);
+                setMedicoTurnos(doctorIds);                
             
                 const medicosData = [];
                 for (const id of doctorIds) {
