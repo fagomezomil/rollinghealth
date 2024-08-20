@@ -12,7 +12,8 @@ export default function NavLg({ open, setOpen, emailOk, setEmailOk, passwordOk, 
         turnosPaciente: state.turnosPaciente,
     }));
 
-    const { postLogout, isLoading } = useUsuarioStore((state) => ({
+    const {dataUsuario, postLogout, isLoading } = useUsuarioStore((state) => ({
+        dataUsuario: state.dataUsuario,
         postLogout: state.postLogout,
         isLoading: state.isLoading,
     }));
@@ -83,7 +84,7 @@ export default function NavLg({ open, setOpen, emailOk, setEmailOk, passwordOk, 
                             <Link to="/centros" className='navbar-button block xl:hidden'>Centros de Salud</Link>
                             <Link to="/staff" className='navbar-button block xl:hidden'>Staff Médico</Link>
                             <Link to="/login" className='navbar-button block xl:hidden'>Turnos Online</Link>
-                            <Link to="/login" className="text-neutral-500 user-menu-button py-2 mb-1 font-medium text-lg">Iniciar Sesión</Link>
+                            <Link to="/login" className="text-neutral-500 user-menu-button py-2 mb-1 font-medium text-lg" onClick={() => setOpen(false)}>Iniciar Sesión</Link>
                             <p className="text-neutral-700 text-left italic">Inicie con Usuario o E-mail</p>
                             <input
                                 type="email"
@@ -129,8 +130,8 @@ export default function NavLg({ open, setOpen, emailOk, setEmailOk, passwordOk, 
 
                             <div className='flex items-center justify-between text-neutral-500 mt-4 xl:mt-0'>
                                 <div className='text-left'>
-                                    <p className='font-bold text-lg'>Nombre del Paciente</p>
-                                    <p className='italic'>Dirección de email</p>
+                                    <p className='font-bold text-lg'>{dataUsuario.name}</p>
+                                    <p className='italic'>{dataUsuario.email}</p>
                                 </div>
                                 <div className='flex flex-col items-center'>
                                     <div className='flex flex-col rounded-full w-fit p-4 mb-2 bg-neutral-400 text-white text-xl'>
