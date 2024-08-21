@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { FaWhatsapp } from 'react-icons/fa';
 import { IoCalendarNumber, IoCloseCircle, IoSearchSharp } from 'react-icons/io5';
 import { FaRegTrashAlt } from "react-icons/fa";
@@ -6,7 +7,7 @@ import toast, {Toaster} from 'react-hot-toast';
 
 
 export default function MenuPortal({ setPortal, portal, cantidadTurnos, turnosPaciente, centroMedicoTurnos, medicos, dataUsuario}) {
-
+    const [isButtonDisabled, setIsButtonDisabled] = useState(false);
     const {eliminarTurno, getTurnosPaciente} = useTurnosStore(state => ({      
         eliminarTurno: state.eliminarTurno,
         getTurnosPaciente: state.getTurnosPaciente,      
@@ -34,19 +35,48 @@ export default function MenuPortal({ setPortal, portal, cantidadTurnos, turnosPa
             especialidad: medico.speciality
         };
     });
-      
-    const cancelarTurno = async (id) => {
-          try {
-            await eliminarTurno(id);
-            await getTurnosPaciente(dataUsuario._id);
-            toast.success('Turno cancelado exitosamente');
-        } catch (error) {
-            toast.error('Error al cancelar el turno');
-            console.error("Error al cancelar el turno:", error);
-        }
-      };   
 
-   
+
+      const cancelarTurno = (id) => {
+        setIsButtonDisabled(true);
+        toast((t) => (
+            <div>
+                <p>¿Seguro que quieres cancelar el turno?</p>
+                <div className="flex justify-end mt-4">
+                    <button
+                        className="mr-2 px-4 py-2 bg-green-500 text-white rounded-lg"
+                        onClick={async () => {
+                            try {
+                                toast.dismiss(t.id);
+                                setIsButtonDisabled(false);
+                                await eliminarTurno(id);
+                                await getTurnosPaciente(dataUsuario._id);
+                                toast.success('Turno cancelado exitosamente');
+                            } catch (error) {
+                                toast.error('Error al cancelar el turno');
+                                console.error("Error al cancelar el turno:", error);
+                            }
+                        }}
+                    >
+                        Sí
+                    </button>
+                    <button
+                        className="px-4 py-2 bg-red-500 text-white rounded-lg"
+                        onClick={() => {
+                            toast.dismiss(t.id);
+                            setIsButtonDisabled(false);
+                        }}
+                    >
+                        No
+                    </button>
+                </div>
+            </div>
+        ), {
+            duration: Infinity,
+            position: 'top-center',
+        });
+    };
+    
   
     return (
         <div>
@@ -84,7 +114,9 @@ export default function MenuPortal({ setPortal, portal, cantidadTurnos, turnosPa
                                     <td className='p-2 md:p-5'>{turno.especialidad}</td>
                                     <td className='p-2 md:p-5'>{turno.centroMedico}</td>
                                     <td className='p-2 md:p-5'>
-                                        <button onClick={() => cancelarTurno(turno._id)} className="text-red-500 hover:text-red-700">
+                                        <button onClick={() => cancelarTurno(turno._id)}
+                                        disabled={isButtonDisabled}
+                                        className={`text-red-500 hover:text-red-700 ${isButtonDisabled ? 'cursor-not-allowed opacity-50 bg-gray-500' : 'text-red-500 hover:text-red-700' }`}>
                                             <IoCloseCircle />
                                         </button>
                                         <Toaster/>
