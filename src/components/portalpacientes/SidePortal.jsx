@@ -8,7 +8,7 @@ export default function SidePortal({ setPortal , cantidadTurnos, paciente}) {
 
    
     return (
-        <div className='col-span-12 xl:col-span-4 bg-neutral-100 bg-cover bg-no-repeat w-full p-12'>
+        <div className='col-span-12 xl:col-span-4 bg-neutral-100 bg-cover bg-no-repeat w-full p-4 md:p-12'>
             <div className='flex justify-between'>
                 <h1 className='italic text-4xl text-[#126459]'>Perfil de paciente</h1>
                 <button className='text-4xl text-[#126459]'><BsPencilSquare /></button>
