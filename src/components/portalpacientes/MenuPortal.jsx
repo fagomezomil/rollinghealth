@@ -80,14 +80,14 @@ export default function MenuPortal({ setPortal, portal, cantidadTurnos, turnosPa
                             {isLoading && <TableSkeleton cols={8} />}
                             {turnosCompletos.map((turno, index) => (
                                 <tr key={turno._id || index} className='border-b'>
-                                    <td className='p-2 md:p-5'>{index + 1}</td>
+                                    <td className='p-2 md:p-5'> <p className='font-bold text-white bg-[#126459] rounded-full py-2 px-4'>{index + 1}</p></td>
                                     <td className='p-2 md:p-5'>{turno.fecha}</td>
                                     <td className='p-2 md:p-5'>{turno.hora}</td>
                                     <td className='p-2 md:p-5'>{turno.medico}</td>
                                     <td className='p-2 md:p-5'>{turno.especialidad}</td>
                                     <td className='p-2 md:p-5'>{turno.centroMedico}</td>
                                     <td className='p-2 md:p-5'>
-                                        <button onClick={() => cancelarTurno(turno._id)} className="text-red-500 hover:text-red-700">
+                                        <button onClick={() => cancelarTurno(turno._id)} className="text-3xl flex items-center text-red-500 hover:text-red-700">
                                             <IoCloseCircle />
                                         </button>
                                         <Toaster/>

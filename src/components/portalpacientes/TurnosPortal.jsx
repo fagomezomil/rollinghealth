@@ -1,6 +1,8 @@
 import { IoArrowBackCircle } from "react-icons/io5";
 import { useState, useEffect } from "react";
 import { FaPlusCircle } from "react-icons/fa";
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 import { turnos } from "../../utils/turnosData";
 import toast, { Toaster } from 'react-hot-toast';
 import useCentroMedicoStore from "../../zustand/centroMedico-zustand.js";
@@ -11,7 +13,7 @@ import useTurnosStore from "../../zustand/turnos-zustand.js";
 export default function TurnosPortal({ setPortal, dataUsuario }) {
 
   const [centroMedicoSelected, setCentroMedicoSelected] = useState('');
-  //const [idCentroMedicoSelected, setIdCentroMedicoSelected] = useState('');
+  const [idCentroMedicoSelected, setIdCentroMedicoSelected] = useState('');
   const [especialidadSelected, setEspecialidadSelected] = useState('');
   const [medicoSelected, setMedicoSelected] = useState('');
   const [idMedicoSelected, setIdMedicoSelected] = useState('');
@@ -22,12 +24,11 @@ export default function TurnosPortal({ setPortal, dataUsuario }) {
   const getCentrosMedicos = useCentroMedicoStore((state) => state.getCentrosMedicos);
   const medicos = useMedicoStore((state) => state.medicos);
   const getMedicos = useMedicoStore((state) => state.getMedicos);
-  //aqui tambien hay que traer _id (pacienteSelectedId) del paciente logueado para ingresarlo en el turno!
-  const agregarTurno= useTurnosStore((state) => state.agregarTurno);
-  const getTurnos= useTurnosStore((state) => state.getTurnos);
+  const agregarTurno = useTurnosStore((state) => state.agregarTurno);
+  const getTurnos = useTurnosStore((state) => state.getTurnos);
   const getTurnosPaciente = useTurnosStore((state) => state.getTurnosPaciente);
 
-  
+
 
   useEffect(() => {
     const getDatos = async () => {
@@ -40,91 +41,68 @@ export default function TurnosPortal({ setPortal, dataUsuario }) {
 
 
   const handleSelectCentro = (event) => {
-    const centroElegido = event.target.value;
+    const selectedOption = event.target.options[event.target.selectedIndex];
+    const centroElegido = selectedOption.getAttribute('data-name');
+    const idCentroElegido = selectedOption.getAttribute('data-id');
     setCentroMedicoSelected(centroElegido);
-    //setIdCentroMedicoSelected(centroMedicoSelected.id);   
-};
+    setIdCentroMedicoSelected(idCentroElegido);
+
+  };
 
   const handleSelectEspecialidad = (especialidad) => {
     const especialidadElegida = especialidad;
-    setEspecialidadSelected(especialidadElegida);   
+    setEspecialidadSelected(especialidadElegida);
   };
 
-  const handleMedicoSelected = (medico, id) => {
+  const handleMedicoSelected = (medico, id, atencion) => {
     const medicoElegido = medico;
     const idMedicoElegido = id;
+    const atencionMedico = atencion;
     setMedicoSelected(medicoElegido);
     setIdMedicoSelected(idMedicoElegido);
+    console.log(atencionMedico);
   };
 
-  const handleFechaChange = (event) => {
-    const fechaElegida = event.target.value;
+  const handleFechaChange = (date) => {
+    const fechaElegida = date.toISOString().split("T")[0];
     setFechaSelected(fechaElegida);
   };
 
 
   const handleHoraChange = (event) => {
     const horaElegida = event.target.value;
-    setHoraSelected(horaElegida); 
+    setHoraSelected(horaElegida);
   };
 
-  
-/*   const handleSubmit = async (event) => {
+
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    const nuevoTurno = {      
-      paciente: { _id: dataUsuario._id}, 
-      doctor: { _id: idMedicoSelected },      
-      fecha: fechaSelected,                  
-      hora: horaSelected,                     
+    const nuevoTurno = {
+      paciente: { _id: dataUsuario._id },
+      doctor: { _id: idMedicoSelected },
+      fecha: fechaSelected,
+      hora: horaSelected,
       notas: "prueba"
-    }
-   
+    };
+
     try {
       await agregarTurno(nuevoTurno);
       await getTurnosPaciente(dataUsuario._id);
-      toast.success('Turno guardado exitosamente', {
-          duration: 3000, 
-      });
-  } catch (error) {
-      toast.error('Error al guardar el turno', {
-          duration: 3000, 
-      });
-  }
-    setCentroMedicoSelected('');
-    setMedicoSelected('');
-    setFechaSelected('');
-    setHoraSelected(''); 
-    setPortal("MenuPortal");
-    
-  }  */
+      toast.success('Turno guardado exitosamente');
 
-    const handleSubmit = async (event) => {
-      event.preventDefault();
-      const nuevoTurno = {      
-        paciente: { _id: dataUsuario._id }, 
-        doctor: { _id: idMedicoSelected },      
-        fecha: fechaSelected,                  
-        hora: horaSelected,                     
-        notas: "prueba"
-      };
-      
-      try {
-        await agregarTurno(nuevoTurno);
-        await getTurnosPaciente(dataUsuario._id); 
-        toast.success('Turno guardado exitosamente');          
-        
-        setTimeout(() => {
-          setCentroMedicoSelected('');
-          setMedicoSelected('');
-          setFechaSelected('');
-          setHoraSelected(''); 
-          setPortal("MenuPortal");
-        }, 2000); 
-      } catch (error) {
-        toast.error('Error al guardar el turno');
-      }
-    };
-    
+      setTimeout(() => {
+        setCentroMedicoSelected('');
+        setMedicoSelected('');
+        setFechaSelected('');
+        setHoraSelected('');
+        setPortal("MenuPortal");
+      }, 2000);
+    } catch (error) {
+      toast.error('Error al guardar el turno');
+    }
+  };
+
 
 
   return (
@@ -140,7 +118,7 @@ export default function TurnosPortal({ setPortal, dataUsuario }) {
           value={centroMedicoSelected} onChange={handleSelectCentro}>
           <option value="">Seleccione un centro médico</option>
           {centrosMedicos.map((centro, index) => (
-            <option key={`${centro.name}-${index}`} value={centro.name} className="flex mb-6">
+            <option key={`${centro.name}-${index}`} value={centro.name} data-name={centro.name} data-id={centro._id} className="flex mb-6">
               {centro.name}
             </option>
           ))}
@@ -181,12 +159,12 @@ export default function TurnosPortal({ setPortal, dataUsuario }) {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
           {
             centroMedicoSelected && especialidadSelected
-              ? medicos.filter((medico) => medico.speciality === especialidadSelected)
-              //&&  medico.centroMedico === idCentroMedicoSelected)
+              ? medicos.filter((medico) => medico.speciality === especialidadSelected
+                && medico.centroMedico === idCentroMedicoSelected)
                 .map((medico) => (
                   <div
                     key={medico._id}
-                    onClick={() => handleMedicoSelected(medico.name, medico._id)}
+                    onClick={() => handleMedicoSelected(medico.name, medico._id, medico.atencion)}
                     className={`${medicoSelected === medico.name ? "col-span-1 lg:col-span-2 row-span-3 h-full bg-[#0c423b]" : "cursor-pointer bg-[#126459]"}
                        p-4 text-white rounded-lg relative`}>
                     <div className="flex items-center ">
@@ -212,13 +190,18 @@ export default function TurnosPortal({ setPortal, dataUsuario }) {
                           <p className="text-xl font-medium">Horarios de atención: turno {medico.atencion}</p>
                           <hr className="my-4 border-white" />
                         </div>
-                        <div className="bg-neutral-500 rounded-lg py-4 px-8 flex flex-col lg:flex-row items-start lg:items-center w-full">
-                          <p className="text-white w-fit text-xl mr-4">Elija fecha del turno para continuar</p>
-                          <input type="date"
-                            name="FechaTurno"
-                            value={fechaSelected}
+                        <div className="bg-neutral-500 rounded-lg py-4 px-4 md:px-8 flex flex-col md:flex-row items-start lg:items-center w-full">
+                          <p className="text-white w-fit text-xl mr-4 mb-4">Elija fecha del turno para continuar</p>
+                          <DatePicker
+                            showIcon
+                            selected={fechaSelected ? new Date(fechaSelected) : null}
                             onChange={handleFechaChange}
-                            className="text-neutral-700 font-semibold text-lg rounded-lg p-2" />
+                            filterDate={(date) => date.getDay() !== 0 && date.getDay() !== 6}
+                            dateFormat="dd/MM/yyyy"
+                            minDate={new Date()}
+                            className="text-neutral-700 font-semibold text-lg rounded-lg p-2 text-center"
+                            closeOnScroll={true}
+                          />
                         </div>
                         {
                           fechaSelected !== "" && medicoSelected ?
@@ -226,8 +209,8 @@ export default function TurnosPortal({ setPortal, dataUsuario }) {
                               <p className="text-xl font-semibold ml-6 text-[#126459] mb-4 md:mb-0">Elegir horario y reservar turno</p>
                               <div className="flex flex-col md:flex-row w-full my-4">
                                 <select className="rounded-lg p-4 text-lg font-semibold text-white bg-neutral-500"
-                                value={horaSelected} onChange={handleHoraChange}>
-                                <option value="">Seleccione horario</option>
+                                  value={horaSelected} onChange={handleHoraChange}>
+                                  <option value="">Seleccione horario</option>
                                   {
                                     turnos.morning.map((turno) => (
                                       <option key={turno} value={turno}>
@@ -240,7 +223,7 @@ export default function TurnosPortal({ setPortal, dataUsuario }) {
                                 <form onSubmit={handleSubmit}>
                                   <button className="ml-0 md:ml-4 mt-4 md:mt-0 py-4 px-8 rounded-lg text-base font-semibold text-white uppercase bg-[#0c423b]">Confirmar Turno</button>
                                 </form>
-                                <Toaster/>
+                                <Toaster />
                               </div>
                             </div>
                             : null
@@ -257,7 +240,7 @@ export default function TurnosPortal({ setPortal, dataUsuario }) {
       <button
         onClick={() => setPortal("MenuPortal")}
         className='w-full flex items-center text-xl text-neutral-400 mt-10'>
-        <IoArrowBackCircle className='text-4xl mr-6 ' />
+        <IoArrowBackCircle className='text-4xl mr-6' />
         <p>Volver</p>
       </button>
     </div>

@@ -12,7 +12,8 @@ export default function NavLg({ open, setOpen, emailOk, setEmailOk, passwordOk, 
         turnosPaciente: state.turnosPaciente,
     }));
 
-    const { postLogout, isLoading } = useUsuarioStore((state) => ({
+    const {dataUsuario, postLogout, isLoading } = useUsuarioStore((state) => ({
+        dataUsuario: state.dataUsuario,
         postLogout: state.postLogout,
         isLoading: state.isLoading,
     }));
@@ -79,10 +80,10 @@ export default function NavLg({ open, setOpen, emailOk, setEmailOk, passwordOk, 
                 <div className="flex bg-white shadow-lg p-6 w-screen lg:w-[400px] rounded-lg absolute right-0 lg:right-6 top-12 md:top-14 flex-col">
                     {role === "" ?
                         <>
-                            <button className='navbar-button block xl:hidden'>Nosotros</button>
-                            <button className='navbar-button block xl:hidden'>Centros de Salud</button>
-                            <button className='navbar-button block xl:hidden'>Staff Médico</button>
-                            <button className='navbar-button block xl:hidden'>Turnos Online</button>
+                            <Link to="/nosotros" className='navbar-button block xl:hidden'>Nosotros</Link>
+                            <Link to="/centros" className='navbar-button block xl:hidden'>Centros de Salud</Link>
+                            <Link to="/staff" className='navbar-button block xl:hidden'>Staff Médico</Link>
+                            <Link to="/login" className='navbar-button block xl:hidden'>Turnos Online</Link>
                             <Link to="/login" className="text-neutral-500 user-menu-button py-2 mb-1 font-medium text-lg" onClick={() => setOpen(false)}>Iniciar Sesión</Link>
                             <p className="text-neutral-700 text-left italic">Inicie con Usuario o E-mail</p>
                             <input
@@ -121,15 +122,16 @@ export default function NavLg({ open, setOpen, emailOk, setEmailOk, passwordOk, 
                         </>
                         :
                         <>
-                            <button className='navbar-button block xl:hidden'>Nosotros</button>
-                            <button className='navbar-button block xl:hidden'>Centros de Salud</button>
-                            <button className='navbar-button block xl:hidden'>Staff Médico</button>
-                            <button className='navbar-button block xl:hidden'>Turnos Online</button>
+
+                            <Link to="/nosotros" className='navbar-button block xl:hidden'>Nosotros</Link>
+                            <Link to="/centros" className='navbar-button block xl:hidden'>Centros de Salud</Link>
+                            <Link to="/staff" className='navbar-button block xl:hidden'>Staff Médico</Link>
+                            <Link to="/login" className='navbar-button block xl:hidden'>Turnos Online</Link>
 
                             <div className='flex items-center justify-between text-neutral-500 mt-4 xl:mt-0'>
                                 <div className='text-left'>
-                                    <p className='font-bold text-lg'>Nombre del Paciente</p>
-                                    <p className='italic'>Dirección de email</p>
+                                    <p className='font-bold text-lg'>{dataUsuario.name}</p>
+                                    <p className='italic'>{dataUsuario.email}</p>
                                 </div>
                                 <div className='flex flex-col items-center'>
                                     <div className='flex flex-col rounded-full w-fit p-4 mb-2 bg-neutral-400 text-white text-xl'>

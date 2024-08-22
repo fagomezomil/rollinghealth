@@ -1,6 +1,7 @@
 import { IoAdd, IoAddCircle, IoChevronBackCircle, IoChevronForwardCircle, IoPauseCircle, IoPlayCircle } from "react-icons/io5";
 import { MdOutlineLocationOn } from "react-icons/md";
 import { centrosMedicos } from "../../utils/centroMedicosData";
+import { Link } from "react-router-dom";
 
 export default function SlideCentros() {
     return (
@@ -36,12 +37,12 @@ export default function SlideCentros() {
                 }
             </div>
             <div className="flex justify-center">
-                <button className="flex justify-center items-center bg-neutral-400 rounded-full px-6 py-4 font-semibold text-white">
+                <Link to="/centros" className="flex justify-center items-center bg-neutral-400 rounded-full px-6 py-4 font-semibold text-white">
                     <div className="mr-2 slide-control-button" >
                         <IoAddCircle />
                     </div>
                     <p>Ver todos los Centros</p>
-                </button>
+                </Link>
             </div>
         </div>
     )
