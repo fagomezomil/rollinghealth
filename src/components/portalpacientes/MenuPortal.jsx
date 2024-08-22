@@ -3,7 +3,7 @@ import { IoCalendarNumber, IoCloseCircle, IoSearchSharp } from 'react-icons/io5'
 import { FaRegTrashAlt } from "react-icons/fa";
 import useTurnosStore from "../../zustand/turnos-zustand.js";
 import toast, {Toaster} from 'react-hot-toast';
-import TableSkeleton from '../TableSkeleton.jsx';
+import Spinner from '../Spinner.jsx';
 
 
 export default function MenuPortal({ setPortal, portal, cantidadTurnos, turnosPaciente, centroMedicoTurnos, medicos, dataUsuario}) {
@@ -76,8 +76,8 @@ export default function MenuPortal({ setPortal, portal, cantidadTurnos, turnosPa
                                 <th className='p-2 md:p-5 '>Cancelar</th>
                             </tr>
                         </thead>
+                        {isLoading && <Spinner />}
                         <tbody>
-                            {isLoading && <TableSkeleton cols={8} />}
                             {turnosCompletos.map((turno, index) => (
                                 <tr key={turno._id || index} className='border-b'>
                                     <td className='p-2 md:p-5'> <p className='font-bold text-white bg-[#126459] rounded-full py-2 px-4'>{index + 1}</p></td>
