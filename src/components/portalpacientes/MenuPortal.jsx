@@ -3,13 +3,15 @@ import { IoCalendarNumber, IoCloseCircle, IoSearchSharp } from 'react-icons/io5'
 import { FaRegTrashAlt } from "react-icons/fa";
 import useTurnosStore from "../../zustand/turnos-zustand.js";
 import toast, {Toaster} from 'react-hot-toast';
+import TableSkeleton from '../TableSkeleton.jsx';
 
 
 export default function MenuPortal({ setPortal, portal, cantidadTurnos, turnosPaciente, centroMedicoTurnos, medicos, dataUsuario}) {
 
-    const {eliminarTurno, getTurnosPaciente} = useTurnosStore(state => ({      
+    const {eliminarTurno, getTurnosPaciente, isLoading} = useTurnosStore(state => ({      
         eliminarTurno: state.eliminarTurno,
-        getTurnosPaciente: state.getTurnosPaciente,      
+        getTurnosPaciente: state.getTurnosPaciente,
+        isLoading: state.loading
     }));
 
     const formatDate = (dateString) => {
@@ -75,6 +77,7 @@ export default function MenuPortal({ setPortal, portal, cantidadTurnos, turnosPa
                             </tr>
                         </thead>
                         <tbody>
+                            {isLoading && <TableSkeleton cols={8} />}
                             {turnosCompletos.map((turno, index) => (
                                 <tr key={turno._id || index} className='border-b'>
                                     <td className='p-2 md:p-5'>{index + 1}</td>
