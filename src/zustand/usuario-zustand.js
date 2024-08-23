@@ -27,7 +27,7 @@ const useUsuarioStore = create(
         set({ dataUsuario: null });
         localStorage.removeItem('user-storage');
       } catch (error) {
-        set({ error: true });
+        set({ error: true , loading: false });
       }
     },
   }),  
