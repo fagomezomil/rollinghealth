@@ -7,6 +7,7 @@ import Paciente from "../components/Paciente"
 import Centros from "../pages/Centros"
 import Staff from "../pages/Staff"
 import Nosotros from "../pages/Nosotros"
+import Dashboard from "../pages/Dashboard"
 
 const AppRouter = () => {
     return (
@@ -20,6 +21,7 @@ const AppRouter = () => {
                     <Route path="/register" element={<Register />} />
                     <Route path="/login" element={<Login />} />
                     <Route path="/paciente" element={<Paciente />} />
+                    <Route path="/dashboard" element={<Dashboard />} />
                 </Routes>
             </Layout>
         </BrowserRouter>

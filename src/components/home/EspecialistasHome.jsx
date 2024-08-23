@@ -27,7 +27,6 @@ export default function EspecialistasHome() {
             .slice(0, 5);
     }
     const medicosRandomResult = medicosRandom()
-
     const handleCentroMedicoChange = (event) => {
         setCentroMedicoId(event.target.value);
         const centroMedico = centrosMedicos.find((centro) => centro._id === event.target.value);
@@ -94,6 +93,9 @@ export default function EspecialistasHome() {
                         )
                     })
                 }
+            </div>
+            <div>
+                <p className='text-3xl md:text-[50px] text-[#126459] font-bold leading-tight'>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sequi provident saepe iusto praesentium ab, cupiditate consequuntur culpa. Suscipit, libero quas.</p>
             </div>
         </div>
     )
