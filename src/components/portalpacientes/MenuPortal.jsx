@@ -4,10 +4,14 @@ import { IoCalendarNumber, IoCloseCircle, IoSearchSharp } from 'react-icons/io5'
 import { FaRegTrashAlt } from "react-icons/fa";
 import useTurnosStore from "../../zustand/turnos-zustand.js";
 import toast, {Toaster} from 'react-hot-toast';
+import useButtonState from '../../hooks/useButtonState';
+
 
 
 export default function MenuPortal({ setPortal, portal, cantidadTurnos, turnosPaciente, centroMedicoTurnos, medicos, dataUsuario}) {
-    const [isButtonDisabled, setIsButtonDisabled] = useState(false);
+   
+    const { isButtonDisabled, disableButton, enableButton } = useButtonState(false);
+
     const {eliminarTurno, getTurnosPaciente} = useTurnosStore(state => ({      
         eliminarTurno: state.eliminarTurno,
         getTurnosPaciente: state.getTurnosPaciente,      
@@ -37,8 +41,8 @@ export default function MenuPortal({ setPortal, portal, cantidadTurnos, turnosPa
     });
 
 
-      const cancelarTurno = (id) => {
-        setIsButtonDisabled(true);
+      const cancelarTurno = (id) => {       
+        disableButton();
         toast((t) => (
             <div>
                 <p>¿Seguro que quieres cancelar el turno?</p>
@@ -47,8 +51,8 @@ export default function MenuPortal({ setPortal, portal, cantidadTurnos, turnosPa
                         className="mr-2 px-4 py-2 bg-green-500 text-white rounded-lg"
                         onClick={async () => {
                             try {
-                                toast.dismiss(t.id);
-                                setIsButtonDisabled(false);
+                                toast.dismiss(t.id);                              
+                                enableButton();
                                 await eliminarTurno(id);
                                 await getTurnosPaciente(dataUsuario._id);
                                 toast.success('Turno cancelado exitosamente');
@@ -63,8 +67,8 @@ export default function MenuPortal({ setPortal, portal, cantidadTurnos, turnosPa
                     <button
                         className="px-4 py-2 bg-red-500 text-white rounded-lg"
                         onClick={() => {
-                            toast.dismiss(t.id);
-                            setIsButtonDisabled(false);
+                            toast.dismiss(t.id);                        
+                            enableButton();
                         }}
                     >
                         No

@@ -8,6 +8,7 @@ import toast, { Toaster } from 'react-hot-toast';
 import useCentroMedicoStore from "../../zustand/centroMedico-zustand.js";
 import useMedicoStore from "../../zustand/medico-zustand.js";
 import useTurnosStore from "../../zustand/turnos-zustand.js";
+import useHorariosDisponibles from "../../hooks/useHorariosDisponibles";
 
 
 export default function TurnosPortal({ setPortal, dataUsuario }) {
@@ -20,7 +21,7 @@ export default function TurnosPortal({ setPortal, dataUsuario }) {
   const [horaSelected, setHoraSelected] = useState("");
   const [atencionSelected, setAtencionSelected] = useState("");
   const [horariosDisponibles, setHorariosDisponibles] = useState([]);
-
+  const horariosBase = useHorariosDisponibles(atencionSelected, turnos);
 
   
   const { getCentrosMedicos, centrosMedicos} = useCentroMedicoStore(state =>({
@@ -65,7 +66,7 @@ export default function TurnosPortal({ setPortal, dataUsuario }) {
   };
 
 
-  const horarios = allTurnos.map(turno => ({
+  const horariosTurnos = allTurnos.map(turno => ({
     fecha: new Date(turno.fecha).toISOString().split('T')[0], 
     hora: turno.hora,
     doctorId: turno.doctor._id  
@@ -79,19 +80,8 @@ export default function TurnosPortal({ setPortal, dataUsuario }) {
     setMedicoSelected(medicoElegido);
     setIdMedicoSelected(idMedicoElegido);
     setAtencionSelected(atencionMedico);
-    await getFechasDeshabilitadas(idMedicoElegido, horarios);    
+    await getFechasDeshabilitadas(idMedicoElegido, horariosTurnos);    
 };
-
-
-  const getHorariosDisponibles = (atencion) => {
-    if (atencion.includes("mañana")) {
-      return turnos.morning;
-    } else if (atencion.includes("tarde")) {
-      return turnos.afternoon;
-    } else {
-      return [];
-    }
-  };
   
   useEffect(() => {
       if (centroMedicoSelected) {       
@@ -108,20 +98,20 @@ export default function TurnosPortal({ setPortal, dataUsuario }) {
   }, [medicoSelected]);
 
 
-
   const handleFechaChange = (date) => {
-    //const fechaSeleccionada = new Date(date.toLocaleString('en-US', { timeZone: 'America/Argentina/Buenos_Aires'}));
     const fechaSeleccionada = date.toISOString().split('T')[0];
     const turnosEnFecha = allTurnos.filter(turno => 
       new Date(turno.fecha).toISOString().split('T')[0] === fechaSeleccionada
     );
 
-    const horariosDisponibles = getHorariosDisponibles(atencionSelected).filter(hora => 
+    const horariosDisponiblesFiltrados = horariosBase.filter(hora => 
       !turnosEnFecha.some(turno => turno.hora === hora)
-    );  
+    );
+
     setFechaSelected(fechaSeleccionada);
-    setHorariosDisponibles(horariosDisponibles); 
+    setHorariosDisponibles(horariosDisponiblesFiltrados);
   };
+
 
   const handleHoraChange = (event) => {
     const horaElegida = event.target.value;

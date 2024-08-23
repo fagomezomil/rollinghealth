@@ -5,22 +5,25 @@ import { Link, useNavigate } from 'react-router-dom';
 import toast, {Toaster} from 'react-hot-toast';
 import useUsuarioStore from '../../zustand/usuario-zustand';
 import useTurnosStore from "../../zustand/turnos-zustand.js";
+import useButtonState from '../../hooks/useButtonState';
+
 
 export default function NavLg({ open, setOpen, emailOk, setEmailOk, passwordOk, setPasswordOk, role }) {
-    const [isButtonDisabled, setIsButtonDisabled] = useState(false);
+    
+    const { isButtonDisabled, disableButton, enableButton } = useButtonState(false);
+
     const { turnosPaciente } = useTurnosStore(state => ({
         turnosPaciente: state.turnosPaciente,
     }));
 
-    const {dataUsuario, postLogout, isLoading } = useUsuarioStore((state) => ({
+    const {dataUsuario, postLogout } = useUsuarioStore((state) => ({
         dataUsuario: state.dataUsuario,
-        postLogout: state.postLogout,
-        isLoading: state.isLoading,
+        postLogout: state.postLogout,   
     }));
     const navigate = useNavigate();
 
-    const handleLogout = () => {
-        setIsButtonDisabled(true);
+    const handleLogout = () => {        
+        disableButton();
         toast((t) => (
             <div>
                 <p>¿Seguro que quieres cerrar sesión?</p>
@@ -29,8 +32,8 @@ export default function NavLg({ open, setOpen, emailOk, setEmailOk, passwordOk, 
                         className="mr-2 px-4 py-2 bg-green-500 text-white rounded-lg"
                         onClick={() => {
                             toast.dismiss(t.id);
-                            postLogout().then(() => {
-                                setIsButtonDisabled(false);
+                            postLogout().then(() => {                              
+                                enableButton();
                                 setOpen(false);
                                 navigate('/');
                             });
@@ -41,8 +44,8 @@ export default function NavLg({ open, setOpen, emailOk, setEmailOk, passwordOk, 
                     <button
                        className="mr-2 px-4 py-2 bg-red-500 text-white rounded-lg"
                         onClick={() => {
-                            toast.dismiss(t.id);
-                            setIsButtonDisabled(false);
+                            toast.dismiss(t.id);                          
+                            enableButton();
                         }}
                     >
                         No

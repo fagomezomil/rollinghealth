@@ -28,9 +28,9 @@ const useTurnosStore = create((set) => ({
     set({ loading: true, error: null });
     try {
       const response = await axios.get(`${URI_TURNOS}/${id}`);
-      set({ turno: response.data });
+      set({ turno: response.data, loading: false});
     } catch (error) {
-      set({ error: 'Error al traer el turno' });
+      set({ error: 'Error al traer el turno', loading: false });
     } 
   },
 
@@ -60,9 +60,10 @@ const useTurnosStore = create((set) => ({
       await axios.post(`${URI_TURNOS}`, nuevoTurno);
       set((state) => ({
         turnos: [...state.turnos, nuevoTurno],
-      }));
+        loading: false}
+      ));
     } catch (error) {
-      set({ error: 'Error al agregar el turno' });
+      set({ error: 'Error al agregar el turno', loading: false });
     } 
   },
   
@@ -74,10 +75,10 @@ const useTurnosStore = create((set) => ({
       set((state) => ({
         turnos: state.turnos.map((turno) =>
           turno._id === id ? response.data : turno
-        ),
-      }));
+        ), loading: false}
+      ));
     } catch (error) {
-      set({ error: 'Error al actualizar el turno' });
+      set({ error: 'Error al actualizar el turno', loading: false });
     } 
   },
 
@@ -87,7 +88,8 @@ const useTurnosStore = create((set) => ({
       await axios.delete(`${URI_TURNOS}/${id}`)
       set((state) => ({
         turnos: state.turnos.filter((turno) => turno._id !== id),
-      }));
+        loading: false}
+      ));
     } catch (error) {
       set({ error: 'Error al eliminar el turno' });
     } 
@@ -117,9 +119,9 @@ const useTurnosStore = create((set) => ({
       }, {});  
       // Filtro las fechas donde todos los horarios están ocupados y la seteo al estado
       const fechasDeshabilitadas = Object.keys(fechasOcupadas).filter(fecha => fechasOcupadas[fecha].length >= horariosTotales.length);   
-      set({ fechasDeshabilitadas });
+      set({ fechasDeshabilitadas, loading: false });
     }catch (error) {
-      set({ error: 'Error al obtener fechas deshabilitadas'});
+      set({ error: 'Error al obtener fechas deshabilitadas', loading: false});
     }     
   }
 }));
