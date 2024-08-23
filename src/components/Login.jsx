@@ -14,14 +14,23 @@ export default function Login() {
   const navigate = useNavigate();
   const { isLoading, postLogin } = useUsuarioStore();
 
+
   const onSubmit = async (dataForm) => {
     try {
-      const user = await postLogin(dataForm);
-      if (user.role === ROLES.PATIENT) navigate('/paciente');
+        const user = await postLogin(dataForm);       
+        if (user.role === ROLES.PATIENT) {
+            navigate('/paciente');
+        } else if (user.role === ROLES.DOCTOR) {
+            navigate('/doctor');
+        } else if (user.role === ROLES.ADMIN) {
+            navigate('/admin');
+        } else {
+            toast.error('Rol desconocido, por favor contacte con soporte.');
+        }
     } catch {
-      toast.error('El nombre de usuario o contraseña son incorrectos');
+        toast.error('El nombre de usuario o contraseña son incorrectos');
     }
-  };
+};
 
   return userRole === '' ? (
     <div className='mt-20 grid grid-cols-12 items-center'>

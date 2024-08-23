@@ -26,9 +26,9 @@ const useCentroMedicoStore = create((set) => ({
     set({ loading: true, error: null });
     try {
       const response = await axios.get(`${URI_CENTROSMEDICOS}/${id}`);
-      set({ centroMedico: response.data });
+      set({ centroMedico: response.data, loading: false });
     } catch (error) {
-      set({ error: 'Error al traer el centroMedico' });
+      set({ error: 'Error al traer el centroMedico', loading: false });
     } 
   },
 
@@ -59,9 +59,10 @@ const useCentroMedicoStore = create((set) => ({
       const response = await axios.post(`${URI_CENTROSMEDICOS}`, nuevocentroMedico);
       set((state) => ({
         centrosMedicos: [...state.centrosMedicos, response.data],
-      }));
+        loading: false}
+      ));
     } catch (error) {
-      set({ error: 'Error al agregar el centroMedico' });
+      set({ error: 'Error al agregar el centroMedico', loading: false });
     } 
   },
 
@@ -73,9 +74,10 @@ const useCentroMedicoStore = create((set) => ({
         centrosMedicos: state.centrosMedicos.map((centroMedico) =>
           centroMedico._id === id ? response.data : centroMedico
         ),
-      }));
+        loading: false}
+      ));
     } catch (error) {
-      set({ error: 'Error al actualizar el centroMedico' });
+      set({ error: 'Error al actualizar el centroMedico', loading: false });
     } 
   },
 
@@ -85,7 +87,8 @@ const useCentroMedicoStore = create((set) => ({
       await axios.delete(`${URI_CENTROSMEDICOS}/${id}`)
       set((state) => ({
         centrosMedicos: state.centrosMedicos.filter((centroMedico) => centroMedico._id !== id),
-      }));
+        loading: false}
+      ));
     } catch (error) {
       set({ error: 'Error al eliminar el centroMedico' });
     } 
