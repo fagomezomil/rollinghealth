@@ -27,7 +27,6 @@ export default function EspecialistasHome() {
             .slice(0, 5);
     }
     const medicosRandomResult = medicosRandom()
-
     const handleCentroMedicoChange = (event) => {
         setCentroMedicoId(event.target.value);
         const centroMedico = centrosMedicos.find((centro) => centro._id === event.target.value);

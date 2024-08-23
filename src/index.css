@@ -5,7 +5,7 @@
 @layer base {  
     /* NavBar */
 .navbar-button {
-    @apply bg-[#0c423b] rounded-md  w-full xl:w-fit text-white text-lg font-medium my-1  p-2 lg:px-10  xl:mx-2 lg:mx-1;
+    @apply bg-[#0c423b] rounded-md  w-full text-white text-lg font-medium my-1  p-2 lg:px-10  xl:mx-2 lg:mx-1;
   }
 .header-style {
     @apply bg-[#126459] fixed w-full text-white text-center py-4 shadow-xl z-50 flex justify-between items-center h-20;
