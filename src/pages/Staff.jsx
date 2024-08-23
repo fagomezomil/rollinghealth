@@ -1,7 +1,9 @@
-import React from 'react'
+import EspecialistasHome from '../components/home/EspecialistasHome'
 
 export default function Staff() {
   return (
-    <div>Staff</div>
+    <div className='mt-20'>
+      <EspecialistasHome />
+    </div>
   )
 }

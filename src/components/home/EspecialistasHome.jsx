@@ -85,7 +85,7 @@ export default function EspecialistasHome() {
                     </button>
                 </form>
             </div>
-            <div className='grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 px-4 lg:px-12'>
+            <div className='grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 px-4 lg:px-12'>
                 {centroMedicoId === 0 &&
                     medicosRandomResult.map((medico, index) => {
                         return (
@@ -94,8 +94,10 @@ export default function EspecialistasHome() {
                     })
                 }
             </div>
-            <div>
-                <p className='text-3xl md:text-[50px] text-[#126459] font-bold leading-tight'>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sequi provident saepe iusto praesentium ab, cupiditate consequuntur culpa. Suscipit, libero quas.</p>
+            <hr className="my-8 mx-4 lg:mx-12 border-neutral-300" />
+
+            <div className='my-8 mx-4 lg:mx-12'>
+                <p className='text-3xl md:text-4xl text-[#126459] leading-tight'>El cuerpo profesional de los Centros Médicos de Rolling Health le garantizan la mejor atención con la calidéz y la excelencia que nos representa.</p>
             </div>
         </div>
     )
