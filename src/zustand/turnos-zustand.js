@@ -1,6 +1,8 @@
 import { create } from 'zustand';
 import axios from 'axios';
 const URI_TURNOS = import.meta.env.VITE_API_TURNOS;
+const URI_USUARIOS = import.meta.env.VITE_API_USUARIOS;
+import { turnos } from "../utils/turnosData";
 
 
 const useTurnosStore = create((set) => ({
@@ -9,7 +11,7 @@ const useTurnosStore = create((set) => ({
   turnosPaciente: null,
   loading: false,
   error: null,
-
+  fechasDeshabilitadas: [],
 
   getTurnos: async () => {
     set({ loading: true, error: null });
@@ -91,6 +93,37 @@ const useTurnosStore = create((set) => ({
     } 
   },
 
+  getFechasDeshabilitadas: async(idMedico, horarios) => {
+    set({ loading: true, error: null });
+    try{
+      const response = await axios.get(`${URI_USUARIOS}/${idMedico}`); 
+      const atencion = response.data.atencion;
+      let horariosTotales = [];
+      if (atencion.includes("mañana")) {
+        horariosTotales = turnos.morning;
+      } else if (atencion.includes("tarde")) {
+        horariosTotales = turnos.afternoon;
+      }
+      // Cuento horarios ocupados por fecha para un médico específico
+      const fechasOcupadas = horarios.reduce((acc, horario) => {         
+          if (horario.doctorId === idMedico) {
+            if (acc[horario.fecha]) {
+              acc[horario.fecha].push(horario.hora);
+            } else {
+              acc[horario.fecha] = [horario.hora];
+            }
+          }
+          return acc;
+      }, {});  
+      // Filtro las fechas donde todos los horarios están ocupados y la seteo al estado
+      const fechasDeshabilitadas = Object.keys(fechasOcupadas).filter(fecha => fechasOcupadas[fecha].length >= horariosTotales.length);   
+      set({ fechasDeshabilitadas });
+    }catch (error) {
+      set({ error: 'Error al obtener fechas deshabilitadas'});
+    }     
+  }
 }));
+
+
 
 export default useTurnosStore;

@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { FaPlusCircle, FaUser } from 'react-icons/fa';
 import { RiCloseFill, RiMenu3Line } from 'react-icons/ri';
 import { Link, useNavigate } from 'react-router-dom';
@@ -6,7 +7,7 @@ import useUsuarioStore from '../../zustand/usuario-zustand';
 import useTurnosStore from "../../zustand/turnos-zustand.js";
 
 export default function NavLg({ open, setOpen, emailOk, setEmailOk, passwordOk, setPasswordOk, role }) {
-
+    const [isButtonDisabled, setIsButtonDisabled] = useState(false);
     const { turnosPaciente } = useTurnosStore(state => ({
         turnosPaciente: state.turnosPaciente,
     }));
@@ -19,6 +20,7 @@ export default function NavLg({ open, setOpen, emailOk, setEmailOk, passwordOk, 
     const navigate = useNavigate();
 
     const handleLogout = () => {
+        setIsButtonDisabled(true);
         toast((t) => (
             <div>
                 <p>¿Seguro que quieres cerrar sesión?</p>
@@ -28,6 +30,7 @@ export default function NavLg({ open, setOpen, emailOk, setEmailOk, passwordOk, 
                         onClick={() => {
                             toast.dismiss(t.id);
                             postLogout().then(() => {
+                                setIsButtonDisabled(false);
                                 setOpen(false);
                                 navigate('/');
                             });
@@ -36,8 +39,11 @@ export default function NavLg({ open, setOpen, emailOk, setEmailOk, passwordOk, 
                         Sí
                     </button>
                     <button
-                        className="px-4 py-2 bg-red-500 text-white rounded-lg"
-                        onClick={() => toast.dismiss(t.id)}
+                        className="mr-2 px-4 py-2 bg-red-500 text-white rounded-lg"
+                        onClick={() => {
+                            toast.dismiss(t.id);
+                            setIsButtonDisabled(false);
+                        }}
                     >
                         No
                     </button>
@@ -162,8 +168,8 @@ export default function NavLg({ open, setOpen, emailOk, setEmailOk, passwordOk, 
                                 <hr className="my-4 border-neutral-300" />
                                 <button
                                     onClick={handleLogout}
-                                    className={`rounded-lg text-white text-sm py-2 px-4 mb-4 ${isLoading ? 'bg-[#E6E6E6] cursor-not-allowed' : 'bg-[#126459]'
-                                        }`}
+                                    disabled={isButtonDisabled}
+                                    className={`btn text-white text-sm py-2 px-4 mb-4 rounded-lg ${isButtonDisabled ? 'cursor-not-allowed opacity-50 bg-gray-500' : 'bg-[#126459] hover:bg-[#0f513a]'}`}
                                 >
                                     {isLoading ? 'Cerrando Sesión...' : 'Cerrar Sesión'}
                                 </button>
