@@ -26,9 +26,9 @@ const useMedicoStore = create((set) => ({
     set({ loading: true, error: null });
     try {
       const response = await axios.get(`${URI_USUARIOS}/${id}`);
-      set({ medico: response.data });
+      set({ medico: response.data, loading: false });
     } catch (error) {
-      set({ error: 'Error al traer el medico' });
+      set({ error: 'Error al traer el medico', loading: false });
     } 
   },
 
@@ -60,9 +60,10 @@ const useMedicoStore = create((set) => ({
       await axios.post(`${URI_USUARIOS}/registrar`, nuevoMedico);
       set((state) => ({
         medicos: [...state.medicos, nuevoMedico],
-      }));
+        loading: false}
+      ));
     } catch (error) {
-      set({ error: 'Error al agregar el medico' });
+      set({ error: 'Error al agregar el medico', loading: false });
     } 
   },
 
@@ -73,10 +74,10 @@ const useMedicoStore = create((set) => ({
       set((state) => ({
         medicos: state.medicos.map((medico) =>
           medico._id === id ? response.data : medico
-        ),
-      }));
+        ), loading: false}
+      ));
     } catch (error) {
-      set({ error: 'Error al actualizar el medico' });
+      set({ error: 'Error al actualizar el medico', loading: false });
     } 
   },
 
@@ -86,9 +87,10 @@ const useMedicoStore = create((set) => ({
       await axios.delete(`${URI_USUARIOS}/${id}`)
       set((state) => ({
         medicos: state.medicos.filter((medico) => medico._id !== id),
-      }));
+        loading: false}
+      ));
     } catch (error) {
-      set({ error: 'Error al eliminar el medico' });
+      set({ error: 'Error al eliminar el medico', loading: false });
     } 
   },
 

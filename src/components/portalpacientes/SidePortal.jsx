@@ -6,7 +6,6 @@ import { FaPlusCircle } from 'react-icons/fa';
 
 export default function SidePortal({ setPortal , cantidadTurnos, paciente}) {
 
-   
     return (
         <div className='col-span-12 xl:col-span-4 bg-neutral-100 bg-cover bg-no-repeat w-full p-4 md:p-12'>
             <div className='flex justify-between'>
@@ -16,7 +15,7 @@ export default function SidePortal({ setPortal , cantidadTurnos, paciente}) {
             <div className='mt-6 flex justify-between'>
                 <div className='flex flex-col justify-center mr-12'>
                     <p className='text-2xl font-bold text-neutral-600'>
-                    {paciente ? `${paciente.name}` : 'Nombre y Apellido Paciente'}
+                    {paciente ? paciente.name : 'Nombre y Apellido Paciente'}
                   </p>
                 </div>
                 <div className='mt-6 flex flex-col items-center justify-center text-center'>
@@ -47,7 +46,7 @@ export default function SidePortal({ setPortal , cantidadTurnos, paciente}) {
                     Telefono de contacto
                 </p>
                 <p className='text-xl text-neutral-600 mb-4'>
-                    {paciente ? paciente.phone : 'Numero de teléfono del paciente'}
+                    {paciente ? paciente.phone : 'Telefono del paciente'}
                 </p>
                 <hr className="my-2" />
             </form>

@@ -25,9 +25,9 @@ const usePacienteStore = create((set) => ({
     set({ loading: true, error: null });
     try {
       const response = await axios.get(`${URI_USUARIOS}/${id}`);
-      set({ paciente: response.data });
+      set({ paciente: response.data, loading: false });
     } catch (error) {
-      set({ error: 'Error al traer el paciente' });
+      set({ error: 'Error al traer el paciente', loading: false });
     } 
   },
 
@@ -37,9 +37,10 @@ const usePacienteStore = create((set) => ({
       const response = await axios.post(`${URI_USUARIOS}/registrar`, nuevoPaciente);
       set((state) => ({
         pacientes: [...state.pacientes, response.data],
+        loading: false
       }));
     } catch (error) {
-      set({ error: 'Error al agregar el paciente' });
+      set({ error: 'Error al agregar el paciente', loading: false });
     } 
   },
 
@@ -50,10 +51,10 @@ const usePacienteStore = create((set) => ({
       set((state) => ({
         pacientes: state.pacientes.map((paciente) =>
           paciente._id === id ? response.data : paciente
-        ),
-      }));
+        ), loading: false}
+      ));
     } catch (error) {
-      set({ error: 'Error al actualizar el paciente' });
+      set({ error: 'Error al actualizar el paciente', loading: false });
     } 
   },
 
@@ -63,7 +64,7 @@ const usePacienteStore = create((set) => ({
       await axios.delete(`${URI_USUARIOS}/${id}`)
       set((state) => ({
         pacientes: state.pacientes.filter((paciente) => paciente._id !== id),
-      }));
+        loading: false }));
     } catch (error) {
       set({ error: 'Error al eliminar el paciente' });
     } 
