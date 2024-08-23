@@ -64,6 +64,7 @@ export default function MenuPortal({ setPortal, portal, cantidadTurnos, turnosPa
             </div>
             <div className='overflow-scroll rounded-lg my-6'>
                 <div className='w-full'>
+                    {isLoading && <Spinner />}
                     <table className='table-auto md:min-w-full'>
                         <thead className='text-left bg-gray-100'>
                             <tr className='text-neutral-500'>
@@ -76,7 +77,6 @@ export default function MenuPortal({ setPortal, portal, cantidadTurnos, turnosPa
                                 <th className='p-2 md:p-5 '>Cancelar</th>
                             </tr>
                         </thead>
-                        {isLoading && <Spinner />}
                         <tbody>
                             {turnosCompletos.map((turno, index) => (
                                 <tr key={turno._id || index} className='border-b'>
