@@ -4,17 +4,17 @@ import { IoCalendarNumber, IoCloseCircle, IoSearchSharp } from 'react-icons/io5'
 import { FaRegTrashAlt } from "react-icons/fa";
 import useTurnosStore from "../../zustand/turnos-zustand.js";
 import toast, {Toaster} from 'react-hot-toast';
+import Spinner from '../Spinner.jsx';
 import useButtonState from '../../hooks/useButtonState';
-
-
 
 export default function MenuPortal({ setPortal, portal, cantidadTurnos, turnosPaciente, centroMedicoTurnos, medicos, dataUsuario}) {
    
     const { isButtonDisabled, disableButton, enableButton } = useButtonState(false);
 
-    const {eliminarTurno, getTurnosPaciente} = useTurnosStore(state => ({      
+    const {eliminarTurno, getTurnosPaciente, isLoading} = useTurnosStore(state => ({      
         eliminarTurno: state.eliminarTurno,
-        getTurnosPaciente: state.getTurnosPaciente,      
+        getTurnosPaciente: state.getTurnosPaciente,
+        isLoading: state.loading
     }));
 
     const formatDate = (dateString) => {
@@ -96,6 +96,7 @@ export default function MenuPortal({ setPortal, portal, cantidadTurnos, turnosPa
             </div>
             <div className='overflow-scroll rounded-lg my-6'>
                 <div className='w-full'>
+                    {isLoading && <Spinner />}
                     <table className='table-auto md:min-w-full'>
                         <thead className='text-left bg-gray-100'>
                             <tr className='text-neutral-500'>
