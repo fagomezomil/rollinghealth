@@ -39,7 +39,7 @@ export default function SidePortal({ setPortal , cantidadTurnos, paciente}) {
                     Domicilio
                 </p>
                 <p className='text-xl text-neutral-600 mb-4'>
-                    Domicilio del paciente y Provincia
+                    {paciente ? paciente.address : 'Domicilio del paciente y Provincia'}
                 </p>
                 <hr className="my-2" />
                 <p className='text-base italic text-neutral-600 mt-4'>
