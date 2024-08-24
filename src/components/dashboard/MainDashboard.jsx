@@ -1,12 +1,13 @@
 import { Toaster } from 'react-hot-toast'
-import { IoCloseCircle } from 'react-icons/io5'
+import { IoArrowRedoCircle, IoCloseCircle, IoPencil, IoSearch } from 'react-icons/io5'
 import useUsuarioStore from '../../zustand/usuario-zustand';
+import { BsPencil } from 'react-icons/bs';
 
 export default function MainDashboard() {
     const { dataUsuario } = useUsuarioStore();
     const role = dataUsuario?.role || "";
     return (
-        <div className='col-span-12 md:col-span-8 my-8 mx-8 overflow-scroll'>
+        <div className='col-span-12 lg:col-span-8 my-8 mx-8 overflow-scroll'>
             {role === 'Doctor' && <>
                 <p className="text-3xl md:text-[50px] text-[#126459] font-base leading-[55px]">Encuentre aquí sus</p>
                 <p className="text-3xl md:text-[50px] text-[#126459] font-bold mb-6">
@@ -16,6 +17,20 @@ export default function MainDashboard() {
             </>}
             {role === 'Administrador' && <>
                 <p className="text-3xl md:text-[50px] text-[#126459] font-base leading-[55px]">Gestión de usuarios</p>
+                <div>
+                    <p className='text-xl font-medium uppercase text-neutral-500 my-4'>Buscar Usuario</p>
+                    <div className='flex flex-col md:flex-row gap-4'>
+                        <input
+                            type="text"
+                            placeholder="Busque por nombre o apellido"
+                            className='text-xl text-center text-neutral-700  rounded-md focus:outline-none focus:ring focus:ring-[#aaddd6] border border-[#126459] w-full h-16'
+                        />
+                        <button className="flex items-center gap-2 bg-[#0c423b] rounded-lg p-4 h-16">
+                            <IoSearch className='text-4xl text-white' />
+                            <p className="text-xl text-white font-bold uppercase">Buscar</p>
+                        </button>
+                    </div>
+                </div>
                 <p className='text-xl font-medium uppercase text-neutral-500 my-4'>Usuarios</p>
             </>}
             <table className='table-auto md:min-w-full mb-6'>
@@ -33,6 +48,7 @@ export default function MainDashboard() {
                                 <th className='p-1 md:p-5 whitespace-nowrap'>Id</th>
                                 <th className='p-1 md:p-5 whitespace-nowrap'>Nombre de Usuario</th>
                                 <th className='p-1 md:p-5 '>Email</th>
+                                <th className='p-1 md:p-5 '>Imagen</th>
                                 <th className='p-1 md:p-5 '>Rol</th>
                                 <th className='p-1 md:p-5 '>Verificado</th>
                                 <th className='p-1 md:p-5 '>Editar</th>
@@ -54,11 +70,12 @@ export default function MainDashboard() {
                                 <td className='p-2 md:p-5'>321a3s2d1a5d1asd</td>
                                 <td className='p-2 md:p-5'>Juan Lopez</td>
                                 <td className='p-2 md:p-5'>juanlopez@rollinghealth.com</td>
+                                <td className='p-2 md:p-5'>muestra el enlace de datausuario.img</td>
                                 <td className='p-2 md:p-5'>Paciente</td>
                                 <td className='p-2 md:p-5'>Activo</td>
                                 <td className='p-2 md:p-5'>
-                                    <button className="text-3xl flex items-center text-red-500 hover:text-neutral-600">
-                                        <IoCloseCircle />
+                                    <button className="text-xl p-2 flex items-center rounded-full bg-green-700 text-white hover:bg-neutral-600">
+                                        <BsPencil />
                                     </button>
                                     <Toaster />
                                 </td>
@@ -66,6 +83,7 @@ export default function MainDashboard() {
                     </tr>
                 </tbody>
             </table>
+            <hr className="my-4" />
             {role === 'Doctor' &&
                 <>
                     <p className='text-xl font-medium uppercase text-neutral-500 mb-4'>Turnos Mañana</p>
@@ -87,6 +105,7 @@ export default function MainDashboard() {
                             </tr>
                         </tbody>
                     </table>
+                    <hr className="my-4" />
                     <p className='text-xl font-medium uppercase text-neutral-500 mb-4'>Turnos Próximos 7 días</p>
                     <table className='table-auto md:min-w-full'>
                         <thead className=' text-left bg-gray-100'>

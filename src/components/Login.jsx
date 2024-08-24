@@ -21,7 +21,7 @@ export default function Login() {
         if (user.role === ROLES.PATIENT) {
             navigate('/paciente');
         } else if (user.role === ROLES.DOCTOR) {
-            navigate('/doctor');
+            navigate('/dashboard');
         } else if (user.role === ROLES.ADMIN) {
             navigate('/dashboard');
         } else {
