@@ -4,12 +4,12 @@ import useUsuarioStore from '../../zustand/usuario-zustand';
 
 export default function SideDashboard() {
     const { dataUsuario } = useUsuarioStore();
-
+    const role = dataUsuario?.role || "";
     return (
         <div className='col-span-12 md:col-span-4  bg-neutral-100 p-4 md:p-12'>
             <div className='flex justify-between'>
                 <h1 className='italic text-4xl text-[#126459]'>
-                    {dataUsuario && dataUsuario.role === 'Doctor' ? 'Portal Médico' : dataUsuario && dataUsuario.role === 'Administrador' && 'Portal Administrador'}</h1>
+                    {dataUsuario && role === 'Doctor' ? 'Portal Médico' : dataUsuario && role === 'Administrador' && 'Portal Administrador'}</h1>
                 <button className='text-4xl text-[#126459]'><BsPencilSquare /></button>
             </div>
             <div className='mt-6 flex justify-between'>
@@ -35,7 +35,7 @@ export default function SideDashboard() {
                 <hr className="my-4" />
                 <p className='text-xl font-medium uppercase text-neutral-500'>Servicios</p>
                 <hr className="my-4" />
-                <div className='navbar-button' >{dataUsuario.role === 'Doctor' ? "Agenda" : "Edición usuarios"}</div>
+                <div className='navbar-button' >{role === 'Doctor' ? "Agenda" : "Edición usuarios"}</div>
             </div>
         </div>
     )

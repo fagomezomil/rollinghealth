@@ -23,7 +23,7 @@ export default function Login() {
         } else if (user.role === ROLES.DOCTOR) {
             navigate('/doctor');
         } else if (user.role === ROLES.ADMIN) {
-            navigate('/admin');
+            navigate('/dashboard');
         } else {
             toast.error('Rol desconocido, por favor contacte con soporte.');
         }

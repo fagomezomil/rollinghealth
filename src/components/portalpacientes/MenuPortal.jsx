@@ -28,8 +28,8 @@ export default function MenuPortal({ setPortal, portal, cantidadTurnos, turnosPa
 
     const turnosCompletos = turnosPacienteMenu.map(turno => {
        
-        const medico = medicos.find(m => m._id === turno.doctor._id) || { name: 'Desconocido' };       
-        const centroMedico = centroMedicoTurnos.find(c => c._id === medico.centroMedico) || { address: 'Desconocido' };
+        const medico = medicos.find(m => m._id === turno.doctor._id) || { name: 'Cargando' };       
+        const centroMedico = centroMedicoTurnos.find(c => c._id === medico.centroMedico) || { address: 'Cargando' };
 
         return {
             ...turno,
@@ -121,7 +121,7 @@ export default function MenuPortal({ setPortal, portal, cantidadTurnos, turnosPa
                                     <td className='p-2 md:p-5'>
                                         <button onClick={() => cancelarTurno(turno._id)}
                                         disabled={isButtonDisabled}
-                                        className={`text-red-500 hover:text-red-700 ${isButtonDisabled ? 'cursor-not-allowed opacity-50 bg-gray-500' : 'text-red-500 hover:text-red-700' }`}>
+                                        className={`text-red-500 hover:text-red-700 text-3xl ${isButtonDisabled ? 'cursor-not-allowed opacity-50 bg-gray-500' : 'text-red-500 hover:text-red-700' }`}>
                                             <IoCloseCircle />
                                         </button>
                                         <Toaster/>

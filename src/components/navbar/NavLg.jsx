@@ -144,6 +144,9 @@ export default function NavLg({ open, setOpen, emailOk, setEmailOk, passwordOk, 
                                 {role === "Doctor" &&
                                     <Link to="/dashboard" className='navbar-button mb-4 block' onClick={() => setOpen(false)}>Administración</Link>
                                 }
+                                {role === "Administrador" &&
+                                    <Link to="/dashboard" className='navbar-button mb-4 block' onClick={() => setOpen(false)}>Administración</Link>
+                                }
                                 <div className='flex items-center justify-between text-neutral-500 mt-4 xl:mt-0'>
                                     <div className='text-left'>
                                         <p className='font-bold text-lg'>{dataUsuario.name}</p>
@@ -156,7 +159,7 @@ export default function NavLg({ open, setOpen, emailOk, setEmailOk, passwordOk, 
                                         <p className='text-sm'>Editar perfil</p>
                                     </div>
                                 </div>
-                                {role === "paciente" &&
+                                {role === "Paciente" &&
                                     <>
                                         <hr className="my-4 border-neutral-300" />
                                         <div className='flex items-center justify-between'>
