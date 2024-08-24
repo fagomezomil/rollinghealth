@@ -8,7 +8,7 @@ export default function DocCard({ medico }) {
     return (
         <button onClick={() => setMedicoSeleccionado(!medicoSeleccionado)} className={`rounded-lg ${medicoSeleccionado === true ? 'flex flex-col lg:col-span-2' : ''}`}>
             <div className={`items-center lg:justify-center rounded-b-md drop-shadow-md ${medicoSeleccionado === true ? 'grid lg:grid-cols-2' : 'flex flex-row lg:flex-col'}`}>
-                <div className={`flex lg:grid w-full ${medicoSeleccionado === true ? '' : ''}`}>
+                <div className={`flex lg:grid w-full ${medicoSeleccionado === true ? 'items-end ' : ''}`}>
                     <img src={medico.img} className="h-32 w-32 lg:h-72 lg:w-full rounded-md object-cover bg-center" alt="" />
                     <div className='flex flex-col w-full lg:text-center md:items-center justify-center'>
                         <h1 className="bg-[#0c423b] rounded-md p-3 w-full font-bold text-white text-[20px]  bottom-[140px]">{medico.name}</h1>

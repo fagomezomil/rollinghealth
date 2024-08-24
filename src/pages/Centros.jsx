@@ -36,9 +36,9 @@ export default function Centros() {
                                         <div className={`bg-cover bg-center ${centroMedicoSelected === centro._id ? 'h-full' : 'h-72'}`} style={{ backgroundImage: `url(${centro.img})` }}>
                                         </div>
                                         <div className={`grid grid-cols-2 items-center gap-1 ${centroMedicoSelected === centro._id ? 'p-8 col-span-2' : 'p-4'}`}>
-                                            <div className={`flex flex-col items-start gap-2 mr-2  text-left ${centroMedicoSelected === centro._id ? 'col-span-1' : 'col-span-2'}`} >
+                                            <div className={`flex flex-col items-start gap-2 mr-2  text-left ${centroMedicoSelected === centro._id ? 'col-span-2 md:col-span-1' : 'col-span-2'}`} >
                                                 <h1 className={`font-bold text-neutral-600 ${centroMedicoSelected === centro._id ? 'text-[30px] leading-8' : 'text-[20px]'}`}>{centro.name}</h1>
-                                                <p className="truncate md:w-full w-64 mt-1"><MdOutlineLocationOn className="inline-block mr-2 rounded-full h-7 w-7 p-1 bg-neutral-400 text-white text-xl" />{centro.address}</p>
+                                                <p className="md:truncate md:w-full w-64 mt-1"><MdOutlineLocationOn className="inline-block mr-2 rounded-full h-7 w-7 p-1 bg-neutral-400 text-white text-xl" />{centro.address}</p>
                                                 <p className={`${centroMedicoSelected === centro._id ? 'block' : 'hidden'}`}>
                                                     <MdOutlinePhone className="inline-block mr-2 rounded-full h-7 w-7 p-1 bg-neutral-400 text-white text-xl" />
                                                     {centro.phone}
@@ -49,7 +49,7 @@ export default function Centros() {
                                                 </p>
                                                 <Link to="/paciente" className={`${centroMedicoSelected === centro._id ? 'rounded-lg bg-[#0c423b] text-white text-md font-medium py-2 px-4 my-4' : 'hidden'}`}>Solicitar turno</Link>
                                             </div>
-                                            <iframe className={`${centroMedicoSelected === centro._id ? 'col-span-1 w-full h-full' : 'hidden'}`} src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d14241.076361140696!2d-65.2050432!3d-26.8313923!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses!2sar!4v1723988109297!5m2!1ses!2sar" ></iframe>
+                                            <iframe className={`${centroMedicoSelected === centro._id ? 'col-span-2 md:col-span-1 w-full h-full' : 'hidden'}`} src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d14241.076361140696!2d-65.2050432!3d-26.8313923!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses!2sar!4v1723988109297!5m2!1ses!2sar" ></iframe>
                                             <div className='col-span-2'>
                                                 <p className={`${centroMedicoSelected === centro._id ? 'hidden' : 'rounded-full bg-[#126459] text-white text-sm py-2 px-4 my-4'}`}>Ver toda la información</p>
                                                 <p className={`${centroMedicoSelected === centro._id ? 'block uppercase font-semibold text-left mt-4 pb-4' : 'hidden'}`}>Especialidades habilitadas</p>

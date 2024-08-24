@@ -12,20 +12,20 @@ export const services = [
         title: "Turnos Online",
         text: "Hacemos el seguimiento de tus turnos.",
         icon: "IoCalendarNumber",
-        link: "/turnos",
+        link: "/login",
     },
     {
         id: 3,
         title: "Cartilla de Médicos",
         text: "Descubre a nuestros profesionales.",
         icon: "FaUserDoctor",
-        link: "/medicos",
+        link: "/staff",
     },
     {
         id: 4,
         title: "Asistencia Telefonica",
         text: "Asistirte en cualquier momento.",
         icon: "FaUserNurse",
-        link: "/asistencia",
+        link: "/nosotros",
     },
 ];

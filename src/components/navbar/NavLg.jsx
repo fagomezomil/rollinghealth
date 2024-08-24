@@ -84,7 +84,7 @@ export default function NavLg({ open, setOpen, emailOk, setEmailOk, passwordOk, 
                 }
             </div>
             {open &&
-                <div className="flex bg-white shadow-lg p-6 w-screen lg:w-[400px] rounded-lg absolute right-0 lg:right-6 top-12 md:top-14 flex-col">
+                <div className="flex bg-neutral-100 shadow-lg p-6 w-screen lg:w-[400px] rounded-lg absolute right-0 lg:right-6 top-12 md:top-14 flex-col">
                     <>
                         {
                             role === "" &&
