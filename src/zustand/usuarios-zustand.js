@@ -12,7 +12,7 @@ const useUsersStore = create((set) => ({
   getUsuarios: async () => {
     set({ loading: true });
     try {
-      const { data } = await axios.get(`${URI_USUARIOS}usuarios`);
+      const { data } = await axios.get(`${URI_USUARIOS}`);
       const quitarAdmin = data.filter(usuario => usuario.role !== 'Administrador');
       set({ usuarios: quitarAdmin });
       return data;
