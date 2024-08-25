@@ -6,6 +6,8 @@ const useUsersStore = create((set) => ({
   usuarios: [],
   loading: true,
   error: null,
+  isErrorEdit: false,
+  isLoadingEdit: false,
 
   getUsuarios: async () => {
     set({ loading: true });
@@ -23,6 +25,17 @@ const useUsersStore = create((set) => ({
   guardarListaUsuarios: (data) => {
     set({usuarios: data})
   },
+  editarUsuario: async (dataForm, id) => {
+    set({isLoadingEdit: true})
+    try {
+       const { data } = await axios.put(`${URI_USUARIOS}usuarios/${id}`, dataForm)
+       return data
+    } catch (error) {
+      set({isErrorEdit: true});
+    } finally {
+      set({isLoadingEdit: false})
+    }
+  }
 }));
 
 export default useUsersStore;

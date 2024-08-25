@@ -1,4 +1,5 @@
-import { Toaster } from 'react-hot-toast';
+import toast, { Toaster } from 'react-hot-toast';
+import { useForm } from 'react-hook-form';
 import {
   IoArrowRedoCircle,
   IoCloseCircle,
@@ -15,19 +16,30 @@ export default function MainDashboard() {
   const [originalData, setOriginalData] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [usuarioAEditar, setUsuarioAEditar] = useState(null);
-  const { getUsuarios, usuarios, loading, guardarListaUsuarios, error } =
-    useUsersStore();
+  const {
+    getUsuarios,
+    usuarios,
+    loading,
+    guardarListaUsuarios,
+    error,
+    editarUsuario,
+    isLoadingEdit,
+  } = useUsersStore();
   const { dataUsuario } = useUsuarioStore();
   const role = dataUsuario?.role || '';
 
-  useEffect(() => {
-    const getDataUsuarios = async () => {
+  const getDataUsuarios = async () => {
+    try {
       const users = await getUsuarios();
-      if (users) {
-        setOriginalData(users);
-      }
-    };
+    if (users) {
+      setOriginalData(users);
+    }
+    } catch (error) {
+      console.log(error)
+    }
+  };
 
+  useEffect(() => {
     getDataUsuarios();
   }, []);
 
@@ -41,11 +53,37 @@ export default function MainDashboard() {
       guardarListaUsuarios(originalData);
     }
   };
+  console.log(usuarioAEditar)
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm();
 
   const openModal = (usuario) => {
     setUsuarioAEditar(usuario);
+    reset(usuario);
     setShowModal(true);
   };
+
+  const onSubmit = async (data) => {
+    try {
+      await editarUsuario(data, usuarioAEditar?._id);
+      setShowModal(false);
+      await getDataUsuarios();
+      setUsuarioAEditar(null);
+      toast.success('Usuario editado exitosamente');
+    } catch {
+      toast.error('Ha ocurrido un error, intente nuevamente más tarde');
+    }
+  };
+
+  const closeModal = () => {
+    setUsuarioAEditar(null);
+    setShowModal(false);
+  }
 
   return (
     <div className='col-span-12 lg:col-span-8 my-8 mx-8 overflow-scroll'>
@@ -137,7 +175,7 @@ export default function MainDashboard() {
             )}
             {role === 'Administrador' && !loading ? (
               usuarios.map((usuario) => (
-                <tr key={usuario.id}>
+                <tr key={usuario._id}>
                   <td className='p-2 md:p-5'>{usuario?.name}</td>
                   <td className='p-2 md:p-5'>{usuario?.email}</td>
                   <td className='p-2 md:p-5'>
@@ -148,7 +186,9 @@ export default function MainDashboard() {
                     />
                   </td>
                   <td className='p-2 md:p-5'>{usuario?.role}</td>
-                  <td className='p-2 md:p-5'>Activo</td>
+                  <td className='p-2 md:p-5'>
+                    {usuario?.verified ? 'Activo' : 'Inactivo'}
+                  </td>
                   <td className='p-2 md:p-5'>
                     <button
                       className='text-xl p-2 flex items-center rounded-full bg-green-700 text-white hover:bg-neutral-600'
@@ -246,10 +286,12 @@ export default function MainDashboard() {
               <div className='border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none'>
                 {/*header*/}
                 <div className='flex items-start justify-between p-5 border-b border-solid border-blueGray-200 rounded-t'>
-                  <h3 className='text-3xl font-semibold'>Editar Usuario: {usuarioAEditar?.name}</h3>
+                  <h3 className='text-3xl font-semibold'>
+                    Editar Usuario: {usuarioAEditar?.name}
+                  </h3>
                   <button
                     className='p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none'
-                    onClick={() => setShowModal(false)}
+                    onClick={() => closeModal()}
                   >
                     <span className='bg-transparent text-black opacity-5 h-6 w-6 text-2xl block outline-none focus:outline-none'>
                       ×
@@ -258,55 +300,79 @@ export default function MainDashboard() {
                 </div>
                 {/*body*/}
                 <div className='relative p-6 flex-auto'>
-                <form className='flex flex-col'>
-          <p className='text-neutral-700 text-left italic'>
-            Nombre
-          </p>
-          <input
-            value={usuarioAEditar?.name}
-            name='name'
-            placeholder='Ingrese su Correo Electrónico'
-            maxLength={30}
-            className='text-center text-neutral-700 h-10 my-2 mb-4 rounded-md focus:outline-none focus:ring focus:ring-[#aaddd6] border border-[#126459]'
-          />
-          <p className='text-neutral-700 text-left italic'>
-            Email
-          </p>
-          <input
-            value={usuarioAEditar?.email}
-            name='email'
-            type='email'
-            placeholder='Ingrese su Correo Electrónico'
-            maxLength={30}
-            className='text-center text-neutral-700 h-10 my-2 mb-4 rounded-md focus:outline-none focus:ring focus:ring-[#aaddd6] border border-[#126459]'
-          />
-          <p className='text-neutral-700 text-left italic'>
-           Estado
-          </p>
-          <select className='text-center text-neutral-700 h-10 my-2 mb-4 rounded-md focus:outline-none focus:ring focus:ring-[#aaddd6] border border-[#126459]'>
-            <option>Activo</option>
-            <option>Inactivo</option>
-          </select>
-
-
-        </form>
-                </div>
-                {/*footer*/}
-                <div className='flex items-center justify-end p-6 border-t border-solid border-blueGray-200 rounded-b'>
-                  <button
-                    className='text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150'
-                    type='button'
-                    onClick={() => setShowModal(false)}
+                  <form
+                    className='flex flex-col'
+                    onSubmit={handleSubmit(onSubmit)}
                   >
-                    Cancelar
-                  </button>
-                  <button
-                    className='bg-[#0c423b] text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150'
-                    type='button'
-                    onClick={() => setShowModal(false)}
-                  >
-                    Guardar
-                  </button>
+                    <p className='text-neutral-700 text-left italic'>Nombre</p>
+                    <input
+                      {...register('name', {
+                        required: 'El correo electrónico es obligatorio',
+                      })}
+                      name='name'
+                      defaultValue={usuarioAEditar?.name}
+                      placeholder='Ingrese el Nombre'
+                      maxLength={30}
+                      className='text-center text-neutral-700 h-10 my-2 mb-4 rounded-md focus:outline-none focus:ring focus:ring-[#aaddd6] border border-[#126459]'
+                    />
+                    <p className='text-neutral-700 text-left italic'>Email</p>
+                    <input
+                      {...register('email', {
+                        required: 'El correo electrónico es obligatorio',
+                      })}
+                      defaultValue={usuarioAEditar?.email}
+                      name='email'
+                      type='email'
+                      placeholder='Ingrese su Correo Electrónico'
+                      maxLength={30}
+                      className='text-center text-neutral-700 h-10 my-2 mb-4 rounded-md focus:outline-none focus:ring focus:ring-[#aaddd6] border border-[#126459]'
+                    />
+                    <p className='text-neutral-700 text-left italic'>Estado</p>
+                    <select
+                      {...register('verified', {
+                        required: 'El correo electrónico es obligatorio',
+                      })}
+                      name='verified'
+                      defaultValue={usuarioAEditar?.verified || false}
+                      className='text-center text-neutral-700 h-10 my-2 mb-4 rounded-md focus:outline-none focus:ring focus:ring-[#aaddd6] border border-[#126459]'
+                    >
+                      <option value={true}>Activo</option>
+                      <option value={false}>Inactivo</option>
+                    </select>
+                    <p className='text-neutral-700 text-left italic'>Rol</p>
+                    <select
+                      {...register('role', {
+                        required: 'El correo electrónico es obligatorio',
+                      })}
+                      name='role'
+                      defaultValue={usuarioAEditar?.role}
+                      className='text-center text-neutral-700 h-10 my-2 mb-4 rounded-md focus:outline-none focus:ring focus:ring-[#aaddd6] border border-[#126459]'
+                    >
+                      <option>Doctor</option>
+                      <option>Administrador</option>
+                      <option>Paciente</option>
+                    </select>
+                    <div className='flex items-center justify-end p-6 border-t border-solid border-blueGray-200 rounded-b'>
+                      <button
+                        className='text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150'
+                        type='button'
+                        onClick={() => closeModal()}
+                      >
+                        Cancelar
+                      </button>
+                      <button
+                        disabled={isLoadingEdit}
+                        className={`rounded-lg text-white text-sm py-2 px-4 mb-4 ${
+                          isLoadingEdit
+                            ? 'bg-[#E6E6E6] cursor-not-allowed'
+                            : 'bg-[#126459]'
+                        }`}
+                        type='submit'
+                      >
+                        Guardar
+                      </button>
+                    </div>
+                  </form>
                 </div>
               </div>
             </div>
