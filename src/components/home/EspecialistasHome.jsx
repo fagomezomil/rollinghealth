@@ -12,6 +12,7 @@ export default function EspecialistasHome() {
     const [centroMedicoId, setCentroMedicoId] = useState(0);
     const [especialidades, setEspecialidades] = useState([]);
     const [especialidadElegida, setEspecialidadElegida] = useState('');
+    const [medicoBuscado, setMedicoBuscado] = useState('');
 
     useEffect(() => {
         const getDatos = async () => {
@@ -47,7 +48,7 @@ export default function EspecialistasHome() {
                     </p>
                     <div className='flex gap-4 w-full flex-col lg:flex-row'>
                         <select
-                            required
+                            
                             value={centroMedicoId}
                             onChange={handleCentroMedicoChange}
                             className="rounded-lg p-4 text-lg font-semibold text-white bg-[#126459] h-16 w-full truncate;">
@@ -59,7 +60,7 @@ export default function EspecialistasHome() {
                             })}
                         </select>
                         <select
-                            required
+                            
                             value={especialidadElegida}
                             onChange={handleEspecialidadChange}
                             className="rounded-lg p-4 text-lg font-semibold text-white bg-[#126459] h-16 w-full;">
@@ -74,6 +75,8 @@ export default function EspecialistasHome() {
                     <div className='flex gap-4 w-full flex-col lg:flex-row'>
                         <input
                             required
+                            value={medicoBuscado}
+                            onChange={(e) => setMedicoBuscado(e.target.value)}
                             type="text"
                             placeholder="Busque por nombre o apellido"
                             className='text-xl text-center text-neutral-700  rounded-md focus:outline-none focus:ring focus:ring-[#aaddd6] border border-[#126459] w-full h-16'
@@ -85,7 +88,7 @@ export default function EspecialistasHome() {
                     </button>
                 </form>
             </div>
-            {centroMedicoId === 0 ? 
+            {centroMedicoId === 0 && medicoBuscado === '' ? 
                 <>
                     <div className='my-8 mx-4 lg:mx-12'>
                         <p className='text-3xl md:text-4xl text-[#126459] leading-tight'>El cuerpo profesional de los Centros Médicos de Rolling Health le garantizan la mejor atención con la calidéz y la excelencia que nos representa.</p>
@@ -93,8 +96,10 @@ export default function EspecialistasHome() {
                     <hr className="my-8 mx-4 lg:mx-12 border-neutral-300" />
                 </> :
                 <div className='grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 px-4 lg:px-12'>
-                    {medicos.filter((medico) => medico.centroMedico === centroMedicoId)
-                    .filter((medico) => especialidadElegida ? medico.speciality === especialidadElegida : true)
+                    {medicos
+                    .filter((medico) => !centroMedicoId || medico.centroMedico === centroMedicoId)
+                    .filter((medico) => !especialidadElegida || medico.speciality === especialidadElegida)
+                    .filter((medico) => medico.name.toLowerCase().includes(medicoBuscado.toLowerCase()))
                     .map((medico, index) => {
                         return (
                             <DocCard key={index} medico={medico} />
