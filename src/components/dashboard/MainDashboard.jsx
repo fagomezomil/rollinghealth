@@ -53,7 +53,6 @@ export default function MainDashboard() {
       guardarListaUsuarios(originalData);
     }
   };
-  console.log(usuarioAEditar)
 
   const {
     register,
