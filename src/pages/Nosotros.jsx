@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react'
-import { FaUser } from 'react-icons/fa6'
+import { useEffect } from 'react'
 import { irAlTop } from '../utils/functions'
+import { nosotrosData } from '../utils/nosotrosData';
 
 export default function Nosotros() {
   useEffect(() => {
@@ -11,31 +11,15 @@ export default function Nosotros() {
       <p className="text-3xl md:text-[50px] text-[#126459] font-bold leading-tight">Un equipo consolidado por el desarrollo</p>
       <p className="text-neutral-500 italic text-[20px] md:text-2xl lg:w-[70%] mt-4 mb-10">Somos un grupo de personas que apostamos a perfeccionar el manejo de React durante esta comisión avanzada dispuestos a trabajar en equipo.</p>
       <div className='grid grid-cols-1 lg:grid-cols-3 xl:grid-cols-5 gap-6 mb-12'>
-        <div className='flex flex-col items-center'>
-          <div className='rounded-full w-64 h-64 bg-[url("/images/nosotros/mariana.png")] bg-cover'></div>
-          <p className='bg-[#126459] rounded-md py-2 px-7 text-white text-xl font-medium mt-2'>Mariana Cervantes</p>
-          <p className='bg-neutral-400 rounded-md py-2 px-7 text-white italic font-base'>Titulo correspondiente - Comisión 32J</p>
-        </div>
-        <div className='flex flex-col items-center'>
-          <div className='rounded-full w-64 h-64 bg-[url("/images/nosotros/lucas.jpg")] bg-cover'></div>
-          <p className='bg-[#126459] rounded-md py-2 px-7 text-white text-xl font-medium mt-2'>Lucas Capdevilla</p>
-          <p className='bg-neutral-400 rounded-md py-2 px-7 text-white italic font-base'>Titulo correspondiente - Comisión 32J</p>
-        </div>
-        <div className='flex flex-col items-center'>
-          <div className='rounded-full w-64 h-64 bg-[url("/images/nosotros/marcelo.png")] bg-cover'></div>
-          <p className='bg-[#126459] rounded-md py-2 px-7 text-white text-xl font-medium mt-2'>Marcelo Frias</p>
-          <p className='bg-neutral-400 rounded-md py-2 px-7 text-white italic font-base'>Titulo correspondiente - Comisión 32J</p>
-        </div>
-        <div className='flex flex-col items-center'>
-          <div className='rounded-full w-64 h-64 bg-[url("/images/nosotros/joaquin.jpg")] bg-cover'></div>
-          <p className='bg-[#126459] rounded-md py-2 px-7 text-white text-xl font-medium mt-2'>Joaquin Ortiz</p>
-          <p className='bg-neutral-400 rounded-md py-2 px-7 text-white italic font-base'>Titulo correspondiente - Comisión 32J</p>
-        </div>
-        <div className='flex flex-col items-center'>
-          <div className='rounded-full w-64 h-64 bg-[url("/images/nosotros/federico.jpg")] bg-cover'></div>
-          <p className='bg-[#126459] rounded-md py-2 px-7 text-white text-xl font-medium mt-2'>Federico Alvarez</p>
-          <p className='bg-neutral-400 rounded-md py-2 px-7 text-white italic font-base'>Graphic Developer - Comisión 7i</p>
-        </div>
+        {
+          nosotrosData.map(({ id, name, img, titulo }) => (
+            <div key={id} className='flex flex-col items-center'>
+              <div className={`rounded-full w-56 h-56 bg-[url("${img}")] bg-cover`}></div>
+              <p className='bg-[#126459] rounded-md py-2 px-7 text-white text-xl font-medium mt-2'>{name}</p>
+              <p className='bg-neutral-400 rounded-md py-2 px-7 text-white italic font-base'>{titulo}</p>
+            </div>
+          ))
+        }
       </div>
       <hr className="my-8  border-neutral-300" />
       <div className='grid lg:grid-cols-2'>
@@ -58,7 +42,7 @@ export default function Nosotros() {
               <li>React: Para el desarrollo de componentes de interfaz de usuario.</li>
               <li>Zustand: Para la gestión del estado global de la aplicación.</li>
               <li>React Router: Para la navegación y manejo de rutas.</li>
-              <li>Tailwind CSS o Material-UI: Para estilos y componentes visuales.</li>
+              <li>Tailwind CSS: Para estilos y componentes visuales.</li>
               <li>Axios: Para la comunicación con la API backend.</li>
               <li className='font-medium'>Despliegue:</li>
               <li>Vercel o Netlify: Para desplegar el frontend.</li>
