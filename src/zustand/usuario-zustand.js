@@ -32,8 +32,7 @@ const useUsuarioStore = create(
     },
   }),  
   {
-    name: 'user-storage', 
-    getStorage: () => localStorage, 
+    name: 'user-storage'    
   })
 );
 

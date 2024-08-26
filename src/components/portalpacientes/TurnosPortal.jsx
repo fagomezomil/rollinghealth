@@ -35,7 +35,7 @@ export default function TurnosPortal({ setPortal, dataUsuario }) {
     turnosPaciente: state.turnosPaciente,
     allTurnos: state.turnos,
     getFechasDeshabilitadas: state.getFechasDeshabilitadas,
-    fechasDeshabilitadas: state.fechasDeshabilitadas
+    fechasDeshabilitadas: state.fechasDeshabilitadas  
 }));
   const { medicos, getMedicos} = useMedicoStore((state) => ({
     medicos: state.medicos,
@@ -98,20 +98,18 @@ export default function TurnosPortal({ setPortal, dataUsuario }) {
   }, [medicoSelected]);
 
 
-  const handleFechaChange = (date) => {
-    const fechaSeleccionada = date.toISOString().split('T')[0];
-    const turnosEnFecha = allTurnos.filter(turno => 
-      new Date(turno.fecha).toISOString().split('T')[0] === fechaSeleccionada
-    );
-
+  const handleFechaChange = (date) => {    
+    const fechaSeleccionada = date;   
+    const turnosEnFecha = allTurnos.filter(turno => {    
+      const fechaTurno = new Date(turno.fecha);     
+      return fechaTurno.toDateString() === fechaSeleccionada.toDateString();
+    });   
     const horariosDisponiblesFiltrados = horariosBase.filter(hora => 
       !turnosEnFecha.some(turno => turno.hora === hora)
-    );
-
+    );    
     setFechaSelected(fechaSeleccionada);
     setHorariosDisponibles(horariosDisponiblesFiltrados);
   };
-
 
   const handleHoraChange = (event) => {
     const horaElegida = event.target.value;
@@ -149,13 +147,18 @@ export default function TurnosPortal({ setPortal, dataUsuario }) {
     }
   };
 
+
   const renderDayContents = (day, date) => {
-    const isDisabled = fechasDeshabilitadas.includes(date.toISOString().split('T')[0]);
+    const isoFecha = date.toISOString().split('T')[0];
+    const isDisabled = fechasDeshabilitadas.includes(isoFecha);
+    const fechaPasada = date < new Date().setHours(0, 0, 0, 0);
 
     return (
       <div className="relative group">
-        <span className={isDisabled ? "text-red-500" : ""}>{day}</span>
-        {isDisabled && (
+        <span className={isDisabled && !fechaPasada ? "text-red-500" : ""}>
+          {day}
+        </span>
+        {isDisabled && !fechaPasada && (
           <span className="absolute hidden group-hover:block bg-red-500 text-white text-xs rounded px-2 py-1 bottom-full left-1/2 transform -translate-x-1/2">
             Turnos no disponibles en esta fecha
           </span>
@@ -292,19 +295,19 @@ export default function TurnosPortal({ setPortal, dataUsuario }) {
                       <div className="bg-neutral-500 rounded-lg py-4 px-8 flex flex-col lg:flex-row items-start lg:items-center w-full">
                         <p className="text-white w-fit text-xl mr-4">
                           Elija fecha del turno para continuar
-                        </p>
+                        </p>                       
                         <DatePicker
                           showIcon
-                          selected={
-                            fechaSelected ? new Date(fechaSelected) : null
-                          }
+                          selected={fechaSelected ? new Date(fechaSelected) : null}
                           onChange={handleFechaChange}
-                          filterDate={(date) =>
-                            !fechasDeshabilitadas.includes(date.toISOString().split('T')[0]) &&
-                            date.getDay() !== 0 && date.getDay() !== 6
-                          }
+                          filterDate={(date) => {
+                            const isoFecha = date.toISOString().split('T')[0];
+                            const isDisabled = fechasDeshabilitadas.includes(isoFecha);
+                            const fechaPasada = date < new Date().setHours(0, 0, 0, 0);                            
+                            return !fechaPasada && !isDisabled && (date.getDay() !== 0 && date.getDay() !== 6);
+                          }}
                           dateFormat="dd/MM/yyyy"
-                          minDate={new Date()}
+                          minDate={new Date()} 
                           className="text-neutral-700 font-semibold text-lg rounded-lg p-2 text-center"
                           closeOnScroll={true}
                           renderDayContents={renderDayContents}

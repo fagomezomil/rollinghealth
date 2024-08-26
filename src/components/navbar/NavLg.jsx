@@ -58,7 +58,22 @@ export default function NavLg({ open, setOpen, emailOk, setEmailOk, passwordOk, 
         });
     };
 
-    const cantidadTurnos = Array.isArray(turnosPaciente) ? turnosPaciente.length : 0;
+    //const cantidadTurnos = Array.isArray(turnosPaciente) ? turnosPaciente.length : 0;
+    const turnosPacienteMenu = Array.isArray(turnosPaciente) ? turnosPaciente : [];
+
+    const turnosCompletos = turnosPacienteMenu.map(turno => {
+        return {
+            fecha: (turno.fecha)           
+        };
+    });
+
+    const hoy = new Date();    
+    const turnosFiltrados = turnosCompletos.filter(turno => {
+        const fechaTurno = new Date(turno.fecha);
+        return fechaTurno >= hoy;
+    });  
+    
+    const cantidadTurnos = Array.isArray(turnosFiltrados) ? turnosFiltrados.length : 0;
 
     return (
         <>
