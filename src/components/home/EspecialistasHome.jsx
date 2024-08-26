@@ -37,10 +37,10 @@ export default function EspecialistasHome() {
     return (
         <div className='grid  bg-neutral-100 pb-12'>
             <div className='p-4 md:p-12'>
-                <p className="text-3xl md:text-[50px] text-[#126459] font-bold leading-tight">
+                <p className="titulo-articulo">
                     Encontrá aquí el profesional indicado
                 </p>
-                <p className="text-neutral-500 italic text-[20px] md:text-2xl lg:w-[70%] mt-4 mb-10">
+                <p className="bajada-articulo">
                     Ubicados por todo el país, nuestros centros medicos ofrecen la mejor atención con profesionales altamente calificados y con amplia experiencia.
                 </p>
                 <form className='w-full flex flex-col xl:flex-row items-center gap-4'>
