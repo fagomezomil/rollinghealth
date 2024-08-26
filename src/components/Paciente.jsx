@@ -92,15 +92,29 @@ export default function Paciente() {
         }
     }, [idMedicoCentro, getCentrosTurnos]);
 
-    const cantidadTurnos = Array.isArray(turnosPaciente) ? turnosPaciente.length : 0;
+    //const cantidadTurnos = Array.isArray(turnosPaciente) ? turnosPaciente.length : 0;
     const turnosPacienteMenu = Array.isArray(turnosPaciente) ? turnosPaciente : [];
+
+    const turnosCompletos = turnosPacienteMenu.map(turno => {
+        return {
+            fecha: (turno.fecha)           
+        };
+    });
+
+    const hoy = new Date();    
+    const turnosFiltrados = turnosCompletos.filter(turno => {
+        const fechaTurno = new Date(turno.fecha);
+        return fechaTurno >= hoy;
+    });  
+    
+    const cantidadTurnos = Array.isArray(turnosFiltrados) ? turnosFiltrados.length : 0;
 
 
     return (
         <div className='mt-20 grid grid-cols-12'>
             <SidePortal setPortal={setPortal} portal={portal} cantidadTurnos={cantidadTurnos} paciente={paciente} />
             <div className="col-span-12 xl:col-span-8 p-4 md:p-10 ">
-                {portal === "MenuPortal" && <MenuPortal setPortal={setPortal} portal={portal}  cantidadTurnos={cantidadTurnos} turnosPaciente={turnosPacienteMenu} centroMedicoTurnos={centroMedicoTurnos} medicos={medicos} dataUsuario={dataUsuario} />}
+                {portal === "MenuPortal" && <MenuPortal setPortal={setPortal} portal={portal}  turnosPaciente={turnosPacienteMenu} centroMedicoTurnos={centroMedicoTurnos} medicos={medicos} dataUsuario={dataUsuario} />}
                 {portal === "TurnosPortal" && <TurnosPortal setPortal={setPortal} portal={portal} dataUsuario={dataUsuario} />}
             </div>
         </div>

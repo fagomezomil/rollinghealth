@@ -3,6 +3,7 @@ import { ROLES } from '../constants/usersRoles';
 import { useNavigate } from 'react-router-dom';
 import toast, { Toaster } from 'react-hot-toast';
 import useUsuarioStore from '../zustand/usuario-zustand';
+import useButtonState from '../hooks/useButtonState';
 
 export default function Login() {
   const userRole = '';
@@ -12,10 +13,11 @@ export default function Login() {
     formState: { errors },
   } = useForm();
   const navigate = useNavigate();
-  const { isLoading, postLogin } = useUsuarioStore();
+  const { postLogin } = useUsuarioStore();
+  const { isButtonDisabled } = useButtonState(false);
 
 
-  const onSubmit = async (dataForm) => {
+  const onSubmit = async (dataForm) => {   
     try {
         const user = await postLogin(dataForm);       
         if (user.role === ROLES.PATIENT) {
@@ -79,12 +81,12 @@ export default function Login() {
           )}
           <button
             type='submit'
-            disabled={isLoading}
+            disabled={isButtonDisabled}
             className={`rounded-lg text-white text-sm py-2 px-4 mb-4 ${
-              isLoading ? 'bg-[#E6E6E6] cursor-not-allowed' : 'bg-[#126459]'
+              isButtonDisabled ? 'bg-[#E6E6E6] cursor-not-allowed' : 'bg-[#126459]'
             }`}
           >
-            {isLoading ? 'Ingresando...' : 'Ingresar'}
+            {'Ingresar'}
           </button>
         </form>
       </div>
