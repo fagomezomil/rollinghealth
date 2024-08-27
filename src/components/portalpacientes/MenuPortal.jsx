@@ -6,7 +6,9 @@ import useTurnosStore from "../../zustand/turnos-zustand.js";
 import toast, {Toaster} from 'react-hot-toast';
 import Spinner from '../Spinner.jsx';
 import useButtonState from '../../hooks/useButtonState';
+import { Link } from 'react-router-dom';
 import {convertirFechaHora} from '../../utils/functions.js';
+
 
 export default function MenuPortal({ setPortal, portal, turnosPaciente, centroMedicoTurnos, medicos, dataUsuario}) {
    
@@ -164,20 +166,20 @@ export default function MenuPortal({ setPortal, portal, turnosPaciente, centroMe
                     <p>Aqui podes gestionar tus turnos de manera inmediata y concretar una cita con el especialista indicado</p>
                 </div>
             </button>
-            <button className='boton-menu-portal mt-6'>
+            <Link to="/staff" className='boton-menu-portal mt-6'>
                 <IoSearchSharp className='text-7xl mr-6' />
                 <div className='text-left'>
                     <p className='text-2xl md:text-4xl font-semibold '>Buscar especialista</p>
                     <p>Encuentre al médico correcto para resolver sus consultas con la mejor atención </p>
                 </div>
-            </button>
-            <button className='boton-menu-portal mt-6'>
+            </Link>
+            <Link to="/nosotros" className='boton-menu-portal mt-6'>
                 <FaWhatsapp className='text-7xl mr-6 ' />
                 <div className='text-left'>
                     <p className='text-2xl md:text-4xl font-semibold '>Atención Telefónica</p>
                     <p>Donde puedes realizar una llamada telefônica con el especialista indicado</p>
                 </div>
-            </button>
+            </Link>
         </div>
     )
 }
