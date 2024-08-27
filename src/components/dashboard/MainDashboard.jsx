@@ -205,7 +205,7 @@ export default function MainDashboard() {
                   Error al mostrar los usuarios, intente de nuevo mas tarde
                 </td>
               </tr>
-            ) : (
+            ) : role === 'Administrador' && (
               <tr>
                 <td colSpan='7' className='text-center'>
                   Cargando usuarios...
