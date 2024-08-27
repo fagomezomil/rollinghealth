@@ -1,10 +1,25 @@
+import {useEffect} from 'react';
 import { FaUser } from 'react-icons/fa6'
 import { BsPencilSquare } from "react-icons/bs";
 import { ImStatsBars2 } from "react-icons/im";
 import { FaPlusCircle } from 'react-icons/fa';
+import useUsuarioStore from '../../zustand/usuario-zustand';
 
 
 export default function SidePortal({ setPortal , cantidadTurnos, paciente}) {
+    
+    const { dataUsuario, getDataUsuario } = useUsuarioStore((state) => ({
+        dataUsuario: state.dataUsuario,       
+        getDataUsuario: state.getDataUsuario       
+    }));
+
+    useEffect(() => {
+        if (paciente) {
+        getDataUsuario(dataUsuario._id);        
+        }
+    }, [paciente, getDataUsuario]); 
+    
+    const imageSrc = dataUsuario?.img;
 
     return (
         <div className='col-span-12 xl:col-span-4 bg-neutral-100 bg-cover bg-no-repeat w-full p-4 md:p-12'>
@@ -19,10 +34,13 @@ export default function SidePortal({ setPortal , cantidadTurnos, paciente}) {
                   </p>
                 </div>
                 <div className='mt-6 flex flex-col items-center justify-center text-center'>
-                    <p className="rounded-full w-fit p-6 mb-2 bg-neutral-400 text-2xl">
-                        <FaUser className=' text-white' />
-                    </p>
-                    <p className='text-sm'>Subir foto</p>
+                <div className="rounded-full w-fit p-6 mb-2 bg-neutral-400 text-2xl">
+                        {imageSrc ? (
+                            <img src={imageSrc} alt="Profile" className="rounded-full w-24 h-24 object-cover" />
+                        ) : (
+                            <FaUser className='text-white' />
+                        )}
+                    </div>             
                 </div>
             </div>
             <form>
@@ -54,11 +72,11 @@ export default function SidePortal({ setPortal , cantidadTurnos, paciente}) {
                 <p className='text-xl font-medium uppercase text-neutral-500'>Gestor de Turnos</p>
                 <hr className="mb-2 mt-2" />
                 <div className='flex flex-col lg:flex-row items-start justify-between mt-4'>
-                    <div className='flex items-center'>
+                    <div className='flex items-center'>s
                         <p className='rounded-full w-10 h-10 text-center pt-1 font-bold text-white bg-[#126459] text-2xl'>{cantidadTurnos}</p>
                         <p className='ml-3 text-xl font-bold text-neutral-500'>Turnos pendientes</p>
                     </div>
-                    <button onClick={() => setPortal("TurnosPortal")} className="rounded-lg flex justify-center items-center bg-[#126459] text-white text-lg py-2 px-4 my-4 lg:mt-0"><FaPlusCircle className='mr-2' />Nuevo Turno</button>
+                    <button onClick={() => setPortal("TurnosPortal")} className="rounded-lg flex justify-center items-center bg-[#126459] text-white text-lg py-2 px-4 my-4 lg:mt-0"><FaPlusCircle className='mr-2' />Editar Perfil</button>
                 </div>
             </div>
             <hr className="my-2" />
@@ -66,9 +84,9 @@ export default function SidePortal({ setPortal , cantidadTurnos, paciente}) {
                 <div className='flex flex-col lg:flex-row items-baseline justify-between mt-4'>
                     <div className='flex items-center'>
                         <ImStatsBars2 className='mr-2' />
-                        <p className='text-xl font-medium uppercase text-neutral-500'>Estadísticas del paciente</p>
+                        <p className='text-xl font-medium uppercase text-neutral-500'>Historial del paciente</p>
                     </div>
-                    <button className="rounded-lg flex justify-center items-center bg-[#126459] text-white text-lg py-2 px-4 mt-4 lg:mt-0">Ver Estadísticas</button>
+                    <button className="rounded-lg flex justify-center items-center bg-[#126459] text-white text-lg py-2 px-4 mt-4 lg:mt-0">Ver Historial</button>
                 </div>
             </div>
         </div>
