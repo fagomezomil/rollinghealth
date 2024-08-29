@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { FaPlusCircle, FaUser } from 'react-icons/fa';
 import { RiCloseFill, RiMenu3Line } from 'react-icons/ri';
 import { Link, useNavigate } from 'react-router-dom';
@@ -6,19 +6,25 @@ import toast, { Toaster } from 'react-hot-toast';
 import useUsuarioStore from '../../zustand/usuario-zustand';
 import useTurnosStore from "../../zustand/turnos-zustand.js";
 import useButtonState from '../../hooks/useButtonState';
+import {resizeImage} from '../../utils/functions.js';
+
 
 
 export default function NavLg({ open, setOpen, emailOk, setEmailOk, passwordOk, setPasswordOk, role }) {
-    
+    const [image, setImage] = useState(null);
+    const fileInputRef = useRef(null);
     const { isButtonDisabled, disableButton, enableButton } = useButtonState(false);
 
     const { turnosPaciente } = useTurnosStore(state => ({
         turnosPaciente: state.turnosPaciente,
     }));
 
-    const { dataUsuario, postLogout, isLoading } = useUsuarioStore((state) => ({
+    const { dataUsuario, postLogout, isLoading, actualizarImagenPerfil, getDataUsuario, eliminarImagenPerfil } = useUsuarioStore((state) => ({
         dataUsuario: state.dataUsuario,
-        postLogout: state.postLogout,   
+        postLogout: state.postLogout, 
+        actualizarImagenPerfil: state.actualizarImagenPerfil,
+        getDataUsuario: state.getDataUsuario, 
+        eliminarImagenPerfil: state.eliminarImagenPerfil
     }));
     const navigate = useNavigate();
 
@@ -73,7 +79,47 @@ export default function NavLg({ open, setOpen, emailOk, setEmailOk, passwordOk, 
         return fechaTurno >= hoy;
     });  
     
-    const cantidadTurnos = Array.isArray(turnosFiltrados) ? turnosFiltrados.length : 0;
+    const cantidadTurnos = Array.isArray(turnosFiltrados) ? turnosFiltrados.length : 0; 
+
+    const handleIconClick = () => {
+      fileInputRef.current.click();
+    };
+  
+    const handleImageChange = async (event) => {
+        const file = event.target.files[0];
+        if (!file) return;
+      
+        const resizedImage = await resizeImage(file, 800, 800);
+      
+        const reader = new FileReader();
+        reader.onloadend = () => {
+          setImage(reader.result);
+        };
+        reader.readAsDataURL(resizedImage);
+      };
+      
+
+   useEffect(() => {
+        if (image) {
+        getDataUsuario(dataUsuario._id);
+        handleSubmit();
+        }
+    }, [image, getDataUsuario]);  
+
+    const handleSubmit = async (event) => {
+      if (event) event.preventDefault();
+      if (image) {
+        await actualizarImagenPerfil(dataUsuario._id, image);
+        await getDataUsuario(dataUsuario._id);
+      }
+    };
+
+   
+   const handleRemoveImage = async () => { 
+    await eliminarImagenPerfil(dataUsuario._id);
+  };
+
+  const imageSrc = dataUsuario?.img;
 
     return (
         <>
@@ -168,10 +214,35 @@ export default function NavLg({ open, setOpen, emailOk, setEmailOk, passwordOk, 
                                         <p className='italic'>{dataUsuario.email}</p>
                                     </div>
                                     <div className='flex flex-col items-center'>
-                                        <div className='flex flex-col rounded-full w-fit p-4 mb-2 bg-neutral-400 text-white text-xl'>
+                                        <div className='flex flex-col rounded-full w-fit p-4 mb-2 bg-neutral-400 text-white text-xl cursor-pointer' onClick={handleIconClick}>
+                                        {imageSrc ? (
+                                            <img
+                                                src={imageSrc}
+                                                alt="Perfil"
+                                                className="rounded-full w-16 h-16 object-cover"
+                                            />
+                                            ) : (
                                             <FaUser />
+                                            )}
                                         </div>
-                                        <p className='text-sm'>Editar perfil</p>
+                                        {imageSrc ? (
+                                            <p 
+                                            className='text-sm text-black-500 cursor-pointer' 
+                                            onClick={handleRemoveImage}
+                                            >
+                                            Eliminar foto
+                                            </p>
+                                        ) : (
+                                            <p className='text-sm'>Subir foto perfil</p>
+                                        )}
+
+                                        <input
+                                            type="file"
+                                            accept="image/*"
+                                            ref={fileInputRef}
+                                            onChange={handleImageChange}
+                                            className='hidden'
+                                        />
                                     </div>
                                 </div>
                                 {role === "Paciente" &&
