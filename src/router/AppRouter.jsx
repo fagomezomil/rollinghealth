@@ -26,12 +26,18 @@ const AppRouter = () => {
                     <Route 
                         path="/dashboard/*"
                         element={
-                            <RutasProtegidas>
+                            <RutasProtegidas role={'Administrador' || 'Doctor'}>
                                 <RutasAdmin />
                             </RutasProtegidas>
                         }
                     />
-                    <Route path="/paciente" element={<Paciente />} />
+                    <Route
+                        path="/paciente/*"
+                        element={
+                            <RutasProtegidas role="Paciente">
+                                <Paciente />
+                            </RutasProtegidas>
+                        }/>
                 </Routes>
             </Layout>
         </BrowserRouter>
