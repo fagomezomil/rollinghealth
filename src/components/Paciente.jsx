@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback } from 'react';
 import MenuPortal from './portalpacientes/MenuPortal';
 import SidePortal from './portalpacientes/SidePortal';
 import TurnosPortal from './portalpacientes/TurnosPortal';
+import HistorialPortal from './portalpacientes/HistorialPortal';
 import useTurnosStore from "../zustand/turnos-zustand.js";
 import usePacienteStore from "../zustand/paciente-zustand.js";
 import useCentroMedicoStore from '../zustand/centroMedico-zustand.js';
@@ -116,6 +117,7 @@ export default function Paciente() {
             <div className="col-span-12 xl:col-span-8 p-4 md:p-10 ">
                 {portal === "MenuPortal" && <MenuPortal setPortal={setPortal} portal={portal}  turnosPaciente={turnosPacienteMenu} centroMedicoTurnos={centroMedicoTurnos} medicos={medicos} dataUsuario={dataUsuario} />}
                 {portal === "TurnosPortal" && <TurnosPortal setPortal={setPortal} portal={portal} dataUsuario={dataUsuario} />}
+                {portal === "HistorialPortal" && <HistorialPortal setPortal={setPortal} portal={portal} turnosPaciente={turnosPaciente} medicos={medicos} dataUsuario={dataUsuario} />}
             </div>
         </div>
     );

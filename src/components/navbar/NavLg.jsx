@@ -214,7 +214,7 @@ export default function NavLg({ open, setOpen, emailOk, setEmailOk, passwordOk, 
                                         <p className='italic'>{dataUsuario.email}</p>
                                     </div>
                                     <div className='flex flex-col items-center'>
-                                        <div className='flex flex-col rounded-full w-fit p-4 mb-2 bg-neutral-400 text-white text-xl cursor-pointer' onClick={handleIconClick}>
+                                        <div className='flex flex-col rounded-full w-fit mb-2 bg-neutral-400 text-white text-xl cursor-pointer' onClick={handleIconClick}>
                                         {imageSrc ? (
                                             <img
                                                 src={imageSrc}

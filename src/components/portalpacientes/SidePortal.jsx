@@ -34,7 +34,7 @@ export default function SidePortal({ setPortal , cantidadTurnos, paciente}) {
                   </p>
                 </div>
                 <div className='mt-6 flex flex-col items-center justify-center text-center'>
-                <div className="rounded-full w-fit p-6 mb-2 bg-neutral-400 text-2xl">
+                <div className="rounded-full w-fit mb-2 bg-neutral-400 text-2xl">
                         {imageSrc ? (
                             <img src={imageSrc} alt="Profile" className="rounded-full w-24 h-24 object-cover" />
                         ) : (
@@ -72,11 +72,11 @@ export default function SidePortal({ setPortal , cantidadTurnos, paciente}) {
                 <p className='text-xl font-medium uppercase text-neutral-500'>Gestor de Turnos</p>
                 <hr className="mb-2 mt-2" />
                 <div className='flex flex-col lg:flex-row items-start justify-between mt-4'>
-                    <div className='flex items-center'>s
+                    <div className='flex items-center'>
                         <p className='rounded-full w-10 h-10 text-center pt-1 font-bold text-white bg-[#126459] text-2xl'>{cantidadTurnos}</p>
                         <p className='ml-3 text-xl font-bold text-neutral-500'>Turnos pendientes</p>
                     </div>
-                    <button onClick={() => setPortal("TurnosPortal")} className="rounded-lg flex justify-center items-center bg-[#126459] text-white text-lg py-2 px-4 my-4 lg:mt-0"><FaPlusCircle className='mr-2' />Editar Perfil</button>
+                    <button onClick={() => setPortal("TurnosPortal")} className="rounded-lg flex justify-center items-center bg-[#126459] text-white text-lg py-2 px-4 my-4 lg:mt-0"><FaPlusCircle className='mr-2' />Nuevo Turno</button>
                 </div>
             </div>
             <hr className="my-2" />
@@ -86,7 +86,7 @@ export default function SidePortal({ setPortal , cantidadTurnos, paciente}) {
                         <ImStatsBars2 className='mr-2' />
                         <p className='text-xl font-medium uppercase text-neutral-500'>Historial del paciente</p>
                     </div>
-                    <button className="rounded-lg flex justify-center items-center bg-[#126459] text-white text-lg py-2 px-4 mt-4 lg:mt-0">Ver Historial</button>
+                    <button className="rounded-lg flex justify-center items-center bg-[#126459] text-white text-lg py-2 px-4 mt-4 lg:mt-0" onClick={() => setPortal("HistorialPortal")}>Ver Historial</button>
                 </div>
             </div>
         </div>
