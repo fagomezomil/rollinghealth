@@ -24,6 +24,8 @@ export default function MainDashboard() {
     error,
     editarUsuario,
     isLoadingEdit,
+    isErrorEdit,
+    limpiarError,
   } = useUsersStore();
   const { dataUsuario } = useUsuarioStore();
   const role = dataUsuario?.role || '';
@@ -31,11 +33,11 @@ export default function MainDashboard() {
   const getDataUsuarios = async () => {
     try {
       const users = await getUsuarios();
-    if (users) {
-      setOriginalData(users);
-    }
+      if (users) {
+        setOriginalData(users);
+      }
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
   };
 
@@ -70,6 +72,12 @@ export default function MainDashboard() {
   const onSubmit = async (data) => {
     try {
       await editarUsuario(data, usuarioAEditar?._id);
+      if (isErrorEdit) {
+        limpiarError();
+        return toast.error(
+          'Ha ocurrido un error, intente nuevamente más tarde'
+        );
+      }
       setShowModal(false);
       await getDataUsuarios();
       setUsuarioAEditar(null);
@@ -82,7 +90,7 @@ export default function MainDashboard() {
   const closeModal = () => {
     setUsuarioAEditar(null);
     setShowModal(false);
-  }
+  };
 
   return (
     <div className='col-span-12 lg:col-span-8 my-8 mx-8 overflow-scroll'>
@@ -205,12 +213,14 @@ export default function MainDashboard() {
                   Error al mostrar los usuarios, intente de nuevo mas tarde
                 </td>
               </tr>
-            ) : role === 'Administrador' && (
-              <tr>
-                <td colSpan='7' className='text-center'>
-                  Cargando usuarios...
-                </td>
-              </tr>
+            ) : (
+              role === 'Administrador' && (
+                <tr>
+                  <td colSpan='7' className='text-center'>
+                    Cargando usuarios...
+                  </td>
+                </tr>
+              )
             )}
           </tbody>
         </table>
