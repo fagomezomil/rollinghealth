@@ -30,7 +30,7 @@ const Footer = () => {
       </div>
       <div>
         <img src="/images/rollinghealth.svg" alt="" className="w-3/5  mt-4 md:mt-0 " />
-        <p className="text-sm font-light mt-4">Rolling Health es un proyecto integramente realizado por Mariana Cervantes, Lucas Capdevilla, Marcelo Frias, Joaquin Ortiz y Federico Alvarez, integrantes del Grupo 4 de la comisión de React Avanzado I para Rolling Code.</p>
+        <p className="text-sm font-light mt-4">Rolling Health es un proyecto integramente realizado por Mariana Cervantes, Lucas Capdevilla, Marcelo Frias y Federico Alvarez, integrantes del Grupo 4 de la comisión de React Avanzado I para Rolling Code.</p>
         <p className="italic text-sm font-light mt-4">3 de Septiembre de 2024</p>
       </div>
       <hr className=" border-white w-full col-span-1 md:col-span-2 lg:col-span-4 my-8" />

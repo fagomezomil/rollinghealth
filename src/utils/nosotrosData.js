@@ -18,12 +18,6 @@ export const nosotrosData = [
         titulo: "Titulo correspondiente - Comisión 32J"
     },
     {
-        id: 4,
-        name: "Joaquin Ortiz",
-        img: "/images/nosotros/joaquin.jpg",
-        titulo: "Titulo correspondiente - Comisión 32J"
-    },
-    {
         id: 5,
         name: "Federico Alvarez",
         img: "/images/nosotros/federico.jpg",

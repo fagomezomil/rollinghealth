@@ -8,8 +8,13 @@ import usePacienteStore from "../zustand/paciente-zustand.js";
 import useCentroMedicoStore from '../zustand/centroMedico-zustand.js';
 import useMedicoStore from '../zustand/medico-zustand';
 import useUsuarioStore from '../zustand/usuario-zustand.js';
+import { irAlTop } from '../utils/functions.js';
 
 export default function Paciente() {
+    useEffect( () => {
+        irAlTop();
+      });
+
     const [portal, setPortal] = useState("MenuPortal");
     const [medicoTurnos, setMedicoTurnos] = useState([]);
     const [centroTurnos, setCentroTurnos] = useState([]);
