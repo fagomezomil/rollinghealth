@@ -30,6 +30,8 @@ const useUsuarioStore = create(
         localStorage.removeItem('user-storage');
       } catch (error) {
         set({ error: true , loading: false });
+      } finally {
+        set({ isLoading: false });
       }
     },
     actualizarImagenPerfil: async (userId, image) => {
