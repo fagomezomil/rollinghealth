@@ -6,14 +6,12 @@ const RutasProtegidas = ({children, role}) => {
     dataUsuario: state.dataUsuario,
   }))
   
-  // const admin = dataUsuario ? dataUsuario.role === 'Administrador' : ''
-  // const doc = dataUsuario ? dataUsuario.role === 'Doctor' : ''
   if(!dataUsuario) {
     return <Navigate to='/login' />
   }
 
   if(role && dataUsuario.role !== role){
-    return <Navigate to='/login' />
+    return <Navigate to='/' />
   }
 
   return children
