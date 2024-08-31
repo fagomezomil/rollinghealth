@@ -275,9 +275,8 @@ export default function NavLg({
                       <button
                         type='submit'
                         disabled={isLoading}
-            className={`rounded-lg text-white text-sm py-2 px-4 mb-4 ${
-              isLoading ? 'bg-[#E6E6E6] cursor-not-allowed' : 'bg-[#126459]'
-            }`}
+                        className={`rounded-lg text-white text-sm py-2 px-4 mb-4 ${isLoading ? 'bg-[#E6E6E6] cursor-not-allowed' : 'bg-[#126459]'
+                          }`}
                       >
                         Ingresar
                       </button>
@@ -352,7 +351,7 @@ export default function NavLg({
                   </div>
                   <div className='flex flex-col items-center'>
                     <div
-                      className='flex flex-col rounded-full w-fit mb-2 bg-neutral-400 text-white text-xl cursor-pointer'
+                      className={`flex flex-col rounded-full w-fit mb-2  ${imageSrc === '' ? 'bg-neutral-400 text-white p-4' : ''} text-xl cursor-pointer`}
                       onClick={handleIconClick}
                     >
                       {imageSrc ? (
@@ -397,13 +396,13 @@ export default function NavLg({
                           Turnos pendientes
                         </p>
                       </div>
-                      <button
+                      <Link to='/paciente'><button
                         className='rounded-lg flex justify-center items-center bg-[#126459] text-white text-medium py-1 px-2 '
                         onClick={() => setOpen(false)}
                       >
                         <FaPlusCircle className='mr-2' />
                         Nuevo Turno
-                      </button>
+                      </button></Link>
                     </div>
                   </>
                 )}
@@ -411,23 +410,16 @@ export default function NavLg({
                 <button
                   onClick={handleLogout}
                   disabled={isButtonDisabled}
-                  className={`btn text-white text-sm py-2 px-4 mb-4 rounded-lg ${
-                    isButtonDisabled
-                      ? 'cursor-not-allowed opacity-50 bg-gray-500'
-                      : 'bg-[#126459] hover:bg-[#0f513a]'
-                  }`}
+                  className={`btn text-white text-sm py-2 px-4 mb-4 rounded-lg ${isButtonDisabled
+                    ? 'cursor-not-allowed opacity-50 bg-gray-500'
+                    : 'bg-[#126459] hover:bg-[#0f513a]'
+                    }`}
                 >
                   {isLoading ? 'Cerrando Sesión...' : 'Cerrar Sesión'}
                 </button>
-                
+
               </>
             )}
-            <Link
-              className='user-menu-button mt-2'
-              onClick={() => setOpen(false)}
-            >
-              Preguntas Frecuentes
-            </Link>
           </>
         </div>
       )}

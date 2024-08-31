@@ -3,7 +3,7 @@ export const nosotrosData = [
         id: 1,
         name: "Mariana Cervantes",
         img: "/images/nosotros/mariana.png",
-        titulo: "Titulo correspondiente - Comisión 32J"
+        titulo: "Comisión 44i"
     },
     {
         id: 2,
