@@ -40,14 +40,6 @@ const AppRouter = () => {
                             </RutasProtegidas>
                         }
                     />
-                    {/* <Route 
-                        path="/dashboard/*"
-                        element={
-                            <RutasProtegidas role={'Doctor'}>
-                                <RutasDoctor />
-                            </RutasProtegidas>
-                        }
-                    /> */}
                     <Route
                         path="/paciente/*"
                         element={
