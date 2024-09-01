@@ -14,7 +14,7 @@ const RutasProtegidas = ({children, role}) => {
     return <Navigate to='/' />
   }
 
-  return children
+  return children 
 }
 
 export default RutasProtegidas

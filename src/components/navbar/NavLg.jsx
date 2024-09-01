@@ -9,6 +9,8 @@ import useTurnosStore from '../../zustand/turnos-zustand.js';
 import useButtonState from '../../hooks/useButtonState';
 import { resizeImage } from '../../utils/functions.js';
 import { ROLES } from '../../constants/usersRoles';
+import useUsersStore from '../../zustand/usuarios-zustand';
+
 
 export default function NavLg({
   open,
@@ -21,10 +23,9 @@ export default function NavLg({
 }) {
   const [image, setImage] = useState(null);
   const fileInputRef = useRef(null);
-  const { isButtonDisabled, disableButton, enableButton } =
-    useButtonState(false);
-
-  useButtonState
+  const { isButtonDisabled, disableButton, enableButton } = useButtonState(false);
+  const [showModal, setShowModal] = useState(false);
+  const [usuarioAEditar, setUsuarioAEditar] = useState(null);
 
   const { turnosPaciente } = useTurnosStore((state) => ({
     turnosPaciente: state.turnosPaciente,
@@ -49,6 +50,14 @@ export default function NavLg({
     error: state.error,
     isLoading: state.isLoading,
   }));
+
+  const {       
+    editarUsuario,
+    isLoadingEdit,
+    isErrorEdit,
+    limpiarError,
+  } = useUsersStore();
+
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -153,7 +162,9 @@ export default function NavLg({
     register,
     handleSubmit,
     formState: { errors },
+    reset
   } = useForm();
+
   const onSubmit = async (dataForm) => {
     try {
       const user = await postLogin(dataForm);
@@ -164,11 +175,43 @@ export default function NavLg({
       } else {
         toast.error('Rol desconocido, por favor contacte con soporte.');
       }
+      reset({ username: '', password: '' });
       setOpen(false);
     } catch {
       toast.error('El nombre de usuario o contraseña son incorrectos');
     }
   };
+
+
+  const openModal = (paciente) => {
+    setUsuarioAEditar(paciente);
+    reset(paciente);
+    setShowModal(true);
+  };
+
+  const onSubmitEdit = async (data) => {
+    try {
+      await editarUsuario(data, usuarioAEditar?._id);
+      if (isErrorEdit) {
+        limpiarError();
+        return toast.error(
+          'Ha ocurrido un error, intente nuevamente más tarde'
+        );
+      }
+      setShowModal(false);
+      await getDataUsuario(dataUsuario._id);
+      setUsuarioAEditar(null);
+      toast.success('Usuario editado exitosamente');
+    } catch {
+      toast.error('Ha ocurrido un error, intente nuevamente más tarde');
+    }
+  };
+
+  const closeModal = () => {
+    setUsuarioAEditar(null);
+    setShowModal(false);
+  };
+
 
   return (
     <>
@@ -397,11 +440,10 @@ export default function NavLg({
                         </p>
                       </div>
                       <Link to='/paciente'><button
-                        className='rounded-lg flex justify-center items-center bg-[#126459] text-white text-medium py-1 px-2 '
-                        onClick={() => setOpen(false)}
-                      >
-                        <FaPlusCircle className='mr-2' />
-                        Nuevo Turno
+                        className='rounded-lg flex justify-center items-center bg-[#126459] text-white text-medium py-1 px-2'
+                        onClick={() => openModal(dataUsuario)}
+                      >                       
+                        Editar Perfil
                       </button></Link>
                     </div>
                   </>
@@ -424,6 +466,100 @@ export default function NavLg({
         </div>
       )}
       <Toaster />
+      {showModal ? (
+            <>
+            <div className='justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none'>
+                <div className='relative w-auto my-6 mx-auto max-w-3xl'>
+                {/*content*/}
+                <div className='border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none'>
+                    {/*header*/}
+                    <div className='flex items-start justify-between p-5 border-b border-solid border-blueGray-200 rounded-t'>
+                    <h3 className='text-2xl font-semibold text-black'>
+                        Editar Usuario: {usuarioAEditar?.name}
+                    </h3>
+                    <button
+                        className='p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none'
+                        onClick={() => closeModal()}
+                    >
+                        <span className='bg-transparent text-black opacity-5 h-6 w-6 text-2xl block outline-none focus:outline-none'>
+                        ×
+                        </span>
+                    </button>
+                    </div>
+                    {/*body*/}
+                    <div className='relative p-6 flex-auto'>
+                    <form
+                        className='flex flex-col'
+                        onSubmit={handleSubmit(onSubmitEdit)}
+                    >
+                        <p className='text-neutral-700 text-left italic'>Nombre</p>
+                        <input
+                        {...register('name', {
+                            required: 'El correo electrónico es obligatorio',
+                        })}
+                        name='name'
+                        defaultValue={usuarioAEditar?.name}
+                        placeholder='Ingrese el Nombre'
+                        maxLength={30}
+                        className='text-center text-neutral-700 h-10 my-2 mb-4 rounded-md focus:outline-none focus:ring focus:ring-[#aaddd6] border border-[#126459]'
+                        />  
+                        <p className='text-neutral-700 text-left italic'>Email</p>
+                        <input
+                        {...register('email', {
+                            required: 'El correo electrónico es obligatorio',
+                        })}
+                        defaultValue={usuarioAEditar?.email}
+                        name='email'
+                        type='email'
+                        placeholder='Ingrese su Correo Electrónico'
+                        maxLength={30}
+                        className={`text-center h-10 my-2 mb-4 rounded-md focus:outline-none focus:ring focus:ring-[#aaddd6] border border-[#126459] ${usuarioAEditar?.email ? 'bg-gray-200 text-gray-500' : 'text-neutral-700'}`}
+                        disabled                            
+                        />                     
+                        <p className='text-neutral-700 text-left italic'>Domicilio</p>
+                        <input
+                        {...register('address'
+                        )}
+                        name='address'
+                        defaultValue={usuarioAEditar?.address || ''}
+                        className='text-center text-neutral-700 h-10 my-2 mb-4 rounded-md focus:outline-none focus:ring focus:ring-[#aaddd6] border border-[#126459]'
+                        />                    
+                        <p className='text-neutral-700 text-left italic'>Teléfono</p>
+                        <input
+                        {...register('phone'
+                        )}
+                        name='phone'
+                        defaultValue={usuarioAEditar?.phone}
+                        className='text-center text-neutral-700 h-10 my-2 mb-4 rounded-md focus:outline-none focus:ring focus:ring-[#aaddd6] border border-[#126459]'
+                        />                       
+                        <div className='flex items-center justify-end p-6 border-t border-solid border-blueGray-200 rounded-b'>
+                        <button
+                            className='text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150'
+                            type='button'
+                            onClick={() => closeModal()}
+                        >
+                            Cancelar
+                        </button>
+                        <button
+                            disabled={isLoadingEdit}
+                            className={`rounded-lg text-white text-sm py-2 px-4 mb-4 ${
+                            isLoadingEdit
+                                ? 'bg-[#E6E6E6] cursor-not-allowed'
+                                : 'bg-[#126459]'
+                            }`}
+                            type='submit'
+                        >
+                            Guardar
+                        </button>
+                        </div>
+                    </form>
+                    </div>
+                </div>
+                </div>
+            </div>
+            <div className='opacity-25 fixed inset-0 z-40 bg-black'></div>
+            </>
+        ) : null}
     </>
   );
 }
