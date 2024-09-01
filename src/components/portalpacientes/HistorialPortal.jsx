@@ -15,6 +15,22 @@ const HistorialPortal = ({ turnosPaciente, medicos }) => {
         return fechaTurno <= hoy;
     });
 
+    if (turnosFiltrados.length === 0) {
+        return (
+            <div style={{ width: '100%', maxWidth: '800px', margin: '0 auto', padding: '20px' }}>
+                <p className="text-[50px] text-[#126459] font-base leading-[55px]">
+                    Portal Paciente
+                </p>
+                <p className="text-[50px] text-[#126459] font-bold mb-6">
+                    Historial de Turnos
+                </p>
+                <p className="italic text-2xl text-gray-600 text-center">
+                    No tienes turnos registrados anteriormente.
+                </p>
+            </div>
+        );
+    }
+
     const turnosPorFechaYEspecialidad = turnosFiltrados.reduce((acc, turno) => {
         const fecha = new Date(turno.fecha).toISOString().split('T')[0]; 
         const medico = medicos.find(m => m._id === turno.doctor._id);
