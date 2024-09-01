@@ -7,10 +7,10 @@ export default function Nosotros() {
     irAlTop();
   })
   return (
-    <div className="mt-20 p-6 md:p-12 relative">
+    <div className="my-20 p-6 md:p-12 relative">
       <p className="titulo-articulo">Un equipo consolidado por el desarrollo</p>
       <p className="bajada-articulo">Somos un grupo de personas que apostamos a perfeccionar el manejo de React durante esta comisión avanzada dispuestos a trabajar en equipo.</p>
-      <div className='grid grid-cols-1 lg:grid-cols-3 xl:grid-cols-5 gap-6 mb-12'>
+      <div className='grid grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-12'>
         {
           nosotrosData.map(({ id, name, img, titulo }) => (
             <div key={id} className='flex flex-col items-center'>

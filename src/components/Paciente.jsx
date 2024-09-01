@@ -10,6 +10,8 @@ import useMedicoStore from '../zustand/medico-zustand';
 import useUsuarioStore from '../zustand/usuario-zustand.js';
 
 export default function Paciente() {
+
+
     const [portal, setPortal] = useState("MenuPortal");
     const [medicoTurnos, setMedicoTurnos] = useState([]);
     const [centroTurnos, setCentroTurnos] = useState([]);
@@ -114,7 +116,7 @@ export default function Paciente() {
     return (
         <div className='mt-20 grid grid-cols-12'>
             <SidePortal setPortal={setPortal} portal={portal} cantidadTurnos={cantidadTurnos} paciente={paciente} />
-            <div className="col-span-12 xl:col-span-8 p-4 md:p-10 ">
+            <div className="col-span-12 xl:col-span-8 p-4 md:p-10 mb-16 ">
                 {portal === "MenuPortal" && <MenuPortal setPortal={setPortal} portal={portal}  turnosPaciente={turnosPacienteMenu} centroMedicoTurnos={centroMedicoTurnos} medicos={medicos} dataUsuario={dataUsuario} />}
                 {portal === "TurnosPortal" && <TurnosPortal setPortal={setPortal} portal={portal} dataUsuario={dataUsuario} />}
                 {portal === "HistorialPortal" && <HistorialPortal setPortal={setPortal} portal={portal} turnosPaciente={turnosPaciente} medicos={medicos} dataUsuario={dataUsuario} />}
