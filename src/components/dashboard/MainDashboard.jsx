@@ -215,11 +215,13 @@ export default function MainDashboard() {
                 </td>
               </tr>
             ) : (
-              <tr>
-                <td colSpan='7' className='text-center py-16'>
-                  <Spinner />
-                </td>
-              </tr>
+              role === 'Administrador' && (
+                <tr>
+                  <td colSpan='7' className='text-center'>
+                    <Spinner />
+                  </td>
+                </tr>
+              )
             )}
           </tbody>
         </table>
