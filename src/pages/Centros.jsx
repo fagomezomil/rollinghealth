@@ -3,11 +3,16 @@ import { MdOutlineLocationOn, MdOutlineMail, MdOutlinePhone } from 'react-icons/
 import useCentroMedicoStore from '../zustand/centroMedico-zustand'
 import { Link } from 'react-router-dom';
 import { irAlTop } from '../utils/functions';
+import Spinner from '../components/Spinner';
 
 export default function Centros() {
-    const centrosMedicos = useCentroMedicoStore((state) => state.centrosMedicos);
-    const getCentrosMedicos = useCentroMedicoStore((state) => state.getCentrosMedicos);
+    const {centrosMedicos, getCentrosMedicos, isLoading} = useCentroMedicoStore(state => ({      
+        centrosMedicos: state.centrosMedicos,
+        getCentrosMedicos: state.getCentrosMedicos,
+        isLoading: state.loading   
+    }));
     const [centroMedicoSelected, setCentroMedicoSelected] = useState('');
+
 
     useEffect(() => {
         const getDatos = async () => {
@@ -23,7 +28,7 @@ export default function Centros() {
                 <p className="titulo-articulo">Conocé nuestros Centros Médicos</p>
                 <p className="bajada-articulo">Ubicados por todo el país, nuestros centros medicos ofrecen la mejor atención con profesionales altamente calificados y con amplia experiencia.</p>
                 <div className="grid grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-12">
-                    {
+                    {isLoading ? <Spinner /> :
                         centrosMedicos.map((centro, index) => {
                             return (
                                 <button key={index} onClick={() => setCentroMedicoSelected(centro._id)} className={` lg:block ${centroMedicoSelected === centro._id ? 'md:col-span-1 lg:col-span-3 ' : 'col-span-1'}`}>
