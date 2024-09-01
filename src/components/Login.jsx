@@ -4,8 +4,13 @@ import { useNavigate } from 'react-router-dom';
 import toast, { Toaster } from 'react-hot-toast';
 import useUsuarioStore from '../zustand/usuario-zustand';
 import useButtonState from '../hooks/useButtonState';
+import { useEffect } from 'react';
+import { irAlTop } from '../utils/functions';
 
 export default function Login() {
+  useEffect( () => {
+    irAlTop();
+  });
   const userRole = '';
   const {
     register,

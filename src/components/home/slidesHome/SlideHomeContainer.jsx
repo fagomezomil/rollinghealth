@@ -1,4 +1,5 @@
 import { RiWhatsappLine } from "react-icons/ri";
+import { Link } from "react-router-dom";
 export default function SlideHomeContainer({ data }) {
     return (
         <>
@@ -26,12 +27,12 @@ export default function SlideHomeContainer({ data }) {
                 <div className="p-6 space-y-4 ">
                     <p className="text-[#0c423b] font-medium text-4xl md:text-5xl">{data.title}</p>
                     <p className="text-neutral-500 text-2xl w-[90%]">{data.text}</p>
-                    <button className={`slide-home-button ${data.icon === "whatsapp" ? "bg-[#29bb24]" : "bg-neutral-500"}`}>
+                    <Link to={data.link} className={`slide-home-button ${data.icon === "whatsapp" ? "bg-[#29bb24]" : "bg-neutral-500"}`}>
                         {
                             data.icon === "whatsapp" && <RiWhatsappLine className="inline-block mr-2 text-2xl" />
                         }
                         {data.button}
-                    </button>
+                    </Link >
                 </div>
             </div>
         </>

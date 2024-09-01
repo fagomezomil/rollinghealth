@@ -21,8 +21,19 @@ const NavBar = () => {
                 <Link to="/nosotros" className='navbar-button' >Nosotros</Link>
                 <Link to="/centros" className='navbar-button'>Centros de Salud</Link>
                 <Link to="/staff" className='navbar-button'>Staff Médico</Link>                
-                <Link to={role && role === "Paciente" ? "/paciente" : "/login"}
-                className='navbar-button'>Turnos Online</Link>
+                <Link to={role ? (()=>{
+                            switch(role) {
+                                case "Paciente":
+                                    return "/paciente";
+                                case "Administrador":
+                                case "Doctor":
+                                    return "/dashboard";
+                                default:
+                                    return "/login";}
+                            })()
+                            : "/login"
+                        }
+                    className='navbar-button'>Turnos Online</Link>
             </div>
         </div>
     );

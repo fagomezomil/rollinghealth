@@ -2,8 +2,14 @@ import { useForm } from "react-hook-form"
 import { agregarUsuarioAPI } from "../utils/queries"
 import toast, { Toaster } from "react-hot-toast"
 import { useNavigate } from "react-router-dom"
+import { useEffect } from "react";
+import { irAlTop } from "../utils/functions";
 
 export default function Register() {
+    useEffect( () => {
+        irAlTop();
+      });
+
     const { register, handleSubmit, reset, watch, formState: { errors } } = useForm()
     const navegacion = useNavigate()
 
