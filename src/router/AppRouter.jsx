@@ -26,7 +26,7 @@ const AppRouter = () => {
                     <Route 
                         path="/dashboard/*"
                         element={
-                            <RutasProtegidas role={'Administrador' || 'Doctor'}>
+                            <RutasProtegidas role={['Administrador','Doctor']}>
                                 <RutasAdmin />
                             </RutasProtegidas>
                         }

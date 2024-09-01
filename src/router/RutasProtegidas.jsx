@@ -8,7 +8,7 @@ const RutasProtegidas = ({children, role}) => {
   
   // const admin = dataUsuario ? dataUsuario.role === 'Administrador' : ''
   // const doc = dataUsuario ? dataUsuario.role === 'Doctor' : ''
-  if(!dataUsuario) {
+/*   if(!dataUsuario) {
     return <Navigate to='/login' />
   }
 
@@ -16,7 +16,16 @@ const RutasProtegidas = ({children, role}) => {
     return <Navigate to='/login' />
   }
 
-  return children
+  return children */
+
+  if (!dataUsuario) {
+    return <Navigate to='/login' />;
+  }
+  if (role && !role.includes(dataUsuario.role)) {
+    return <Navigate to='/login' />;
+  }
+
+  return children;
 }
 
 export default RutasProtegidas
