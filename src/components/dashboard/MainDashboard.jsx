@@ -11,6 +11,7 @@ import { BsPencil } from 'react-icons/bs';
 import { useEffect, useState } from 'react';
 import useUsersStore from '../../zustand/usuarios-zustand';
 import defaultAvatarImage from '../../../public/images/defaultAvatarImage.png';
+import Spinner from '../Spinner';
 
 export default function MainDashboard() {
   const [originalData, setOriginalData] = useState([]);
@@ -217,7 +218,7 @@ export default function MainDashboard() {
               role === 'Administrador' && (
                 <tr>
                   <td colSpan='7' className='text-center'>
-                    Cargando usuarios...
+                    <Spinner />
                   </td>
                 </tr>
               )
