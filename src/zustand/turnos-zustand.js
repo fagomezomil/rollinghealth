@@ -131,9 +131,16 @@ const useTurnosStore = create((set) => ({
     try {
       const response = await axios.get(URI_TURNOS);
       const turnos = response.data;
+      const turnosDoctor = turnos.filter((turno) => turno.doctor._id === idDoctor);
+      const hoy = new Date();
+
+      const turnosFiltrados = turnosDoctor.filter(turno => {
+        const fechaTurno = new Date(turno.fecha);
+        return fechaTurno >= hoy;
+      });
       set({
         turnos,
-        turnosDoctor: turnos.filter((turno) => turno.doctor._id === idDoctor),
+        turnosDoctor: turnosFiltrados, 
         loading: false,
       });
     } catch (error) {

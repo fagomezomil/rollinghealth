@@ -10,20 +10,15 @@ import usePacienteStore from "../../zustand/paciente-zustand.js";
 import defaultAvatarImage from '../../../public/images/defaultAvatarImage.png';
 import { obtenerMesYAnio } from '../../utils/functions.js';
 import Spinner from '../Spinner';
+import { FaFileExcel } from 'react-icons/fa';
 
-
-
-const formatDate = (dateString) => {
-  const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-  return new Date(dateString).toLocaleDateString('es-ES', options);
-};
 
 export default function Component() {
   const [originalData, setOriginalData] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [usuarioAEditar, setUsuarioAEditar] = useState(null);
   const [turnosPorMes, setTurnosPorMes] = useState({});
-  const [nombresPacientes, setNombresPacientes] = useState({});
+  const [nombresPacientes, setNombresPacientes] = useState([]);
   const [loadingPacientes, setLoadingPacientes] = useState(true);
   const [noResultados, setNoResultados] = useState(false);
   const [isSearching, setIsSearching] = useState(false);
@@ -55,6 +50,11 @@ export default function Component() {
       console.error("Error al obtener usuarios:", error);
     }
   }; 
+
+  const formatDate = (dateString) => {
+  const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+  return new Date(dateString).toLocaleDateString('es-ES', options);
+};
 
   const grupoTurnosPorMes = (turnos) => {
     const grupo = turnos.reduce((acc, turno) => {
@@ -109,6 +109,7 @@ export default function Component() {
           setLoadingPacientes(false);
         }
       } else {
+        setNombresPacientes([]);
         setLoadingPacientes(false);
       }
     };
@@ -173,8 +174,9 @@ export default function Component() {
     setShowModal(false);
   };
 
+ 
   return (
-    <div className='col-span-12 lg:col-span-8 my-8 mx-8 overflow-scroll'>
+    <div className='col-span-12 lg:col-span-8 my-8 mx-8 overflow-scroll'>    
     {role === 'Doctor' && (
       <>
         <p className='text-3xl md:text-[50px] text-[#126459] font-base leading-[55px]'>
@@ -183,9 +185,7 @@ export default function Component() {
         <p className='text-3xl md:text-[50px] text-[#126459] font-bold mb-6'>
           Turnos Pendientes
         </p>
-        <p className='text-xl font-medium uppercase text-neutral-500 mb-4'>
-          Turnos Hoy
-        </p>
+       
       </>
     )}
     {role === 'Administrador' && (
@@ -224,117 +224,134 @@ export default function Component() {
     )}
     {!noResultados && !isSearching && (
       <div className='overflow-x-auto'>
-        <table className='table-auto md:min-w-full mb-6'>
-          <thead className='text-left bg-gray-100'>
-            <tr className='h-6 text-neutral-500'>
-              {role === 'Doctor' && (
-                <>
-                  <th className='p-1 md:p-5 mr-10 whitespace-nowrap'>N°</th>
-                  <th className='p-1 md:p-5 mr-10 whitespace-nowrap'>Día</th>
-                  <th className='p-1 md:p-5 mr-10 whitespace-nowrap'>Horario</th>
-                  <th className='p-1 md:p-5 whitespace-nowrap'>Nombre del Paciente</th>
-                </>
-              )}
-              {role === 'Administrador' && (
-                <>
-                  <th className='p-1 md:p-5 whitespace-nowrap'>Nombre de Usuario</th>
-                  <th className='p-1 md:p-5'>Email</th>
-                  <th className='p-1 md:p-5'>Imagen</th>
-                  <th className='p-1 md:p-5'>Rol</th>
-                  <th className='p-1 md:p-5'>Verificado</th>
-                  <th className='p-1 md:p-5'>Editar</th>
-                </>
-              )}
-            </tr>
-          </thead>
-          <tbody>
-            {role === 'Doctor' ? (
-              Object.keys(turnosPorMes).sort().map((mes) => {
-                const { mesString, anioString } = obtenerMesYAnio(turnosPorMes[mes][0].fecha);
-                return (
-                  <React.Fragment key={mes}>
-                    <tr>
-                      <td colSpan={5} className='p-2 md:p-2 font-bold text-lg bg-gray-200'>
-                        {`${mesString} ${anioString}`}
-                      </td>
+       {role === 'Doctor' && nombresPacientes.length === 0 ? (
+            <p className='text-xl text-center text-red-500 mt-4'>
+              No hay pacientes asignados momentaneamente...
+            </p>
+          ) : (
+            <>
+            <div className="table-header">
+              <button className="export-button flex items-center">
+                <FaFileExcel className="text-green-600 mr-2" size={24} />
+                <span>Exportar a Excel</span>
+              </button>
+            </div>
+              <table className='table-auto md:min-w-full mb-6'>
+                  <thead className='text-left bg-gray-100'>
+                    <tr className='h-6 text-neutral-500'>
+                      {role === 'Doctor' && (
+                        <>
+                          <th className='p-1 md:p-5 mr-10 whitespace-nowrap'>N°</th>
+                          <th className='p-1 md:p-5 mr-10 whitespace-nowrap'>Día</th>
+                          <th className='p-1 md:p-5 mr-10 whitespace-nowrap'>Horario</th>
+                          <th className='p-1 md:p-5 whitespace-nowrap'>Nombre del Paciente</th>
+                        </>
+                      )}
+                      {role === 'Administrador' && (
+                        <>
+                          <th className='p-1 md:p-5 whitespace-nowrap'>Nombre de Usuario</th>
+                          <th className='p-1 md:p-5'>Email</th>
+                          <th className='p-1 md:p-5'>Imagen</th>
+                          <th className='p-1 md:p-5'>Rol</th>
+                          <th className='p-1 md:p-5'>Verificado</th>
+                          <th className='p-1 md:p-5'>Editar</th>
+                        </>
+                      )}
                     </tr>
-                    {turnosPorMes[mes].map((turno, index) => (
-                      <tr key={turno._id}>
-                        <td className='p-2 md:p-5'>
-                          <p className='font-bold text-white bg-[#126459] rounded-full py-2 px-4 w-fit'>
-                            {index + 1}
-                          </p>
-                        </td>
-                        <td className='p-2 md:p-5'>{formatDate(turno.fecha)}</td>
-                        <td className='p-2 md:p-5'>{turno.hora}</td>
-                        <td className='p-2 md:p-5'>
-                          {loadingPacientes
-                            ? 'Cargando...'
-                            : nombresPacientes[turno.paciente._id] || 'Nombre no disponible'}
+                  </thead>
+                  <tbody>
+                    {role === 'Doctor' ? (
+                      Object.keys(turnosPorMes).sort((a, b) => {
+                        const fechaA = new Date(turnosPorMes[a][0].fecha);
+                        const fechaB = new Date(turnosPorMes[b][0].fecha);
+                        return fechaA - fechaB;
+                      })
+                        .map((mes) => {
+                          const { mesString, anioString } = obtenerMesYAnio(turnosPorMes[mes][0].fecha);
+                          return (
+                            <React.Fragment key={mes}>
+                              <tr>
+                                <td colSpan={5} className='p-2 md:p-2 font-bold text-lg bg-gray-200'>
+                                  {`${mesString} ${anioString}`}
+                                </td>
+                              </tr>
+                              {turnosPorMes[mes].map((turno, index) => (
+                                <tr key={turno._id}>
+                                  <td className='p-2 md:p-5'>
+                                    <p className='font-bold text-white bg-[#126459] rounded-full py-2 px-4 w-fit'>
+                                      {index + 1}
+                                    </p>
+                                  </td>
+                                  <td className='p-2 md:p-5'>{formatDate(turno.fecha)}</td>
+                                  <td className='p-2 md:p-5'>{turno.hora}</td>
+                                  <td className='p-2 md:p-5'>
+                                    {loadingPacientes
+                                      ? 'Cargando...'
+                                      : nombresPacientes[turno.paciente._id] || 'Nombre no disponible'}
+                                  </td>
+                                </tr>
+                              ))}
+                            </React.Fragment>
+                          );
+                        })
+                    ) : error ? (
+                      <tr>
+                        <td colSpan='7' className='text-center'>
+                          Error al mostrar los turnos, intente de nuevo más tarde
                         </td>
                       </tr>
-                    ))}
-                  </React.Fragment>
-                );
-              })
-            ) : error ? (
-              <tr>
-                <td colSpan='7' className='text-center'>
-                  Error al mostrar los turnos, intente de nuevo más tarde
-                </td>
-              </tr>
-            ) : (
-              <tr>
-                <td colSpan='7' className='text-center'>
-                  {' '}
-                </td>
-              </tr>
-            )}
+                    ) : (
+                      <tr>
+                        <td colSpan='7' className='text-center'>
+                          {' '}
+                        </td>
+                      </tr>
+                    )}
 
-            {role === 'Administrador' && !loading ? (
-              usuarios.map((usuario) => (
-                <tr key={usuario._id}>
-                  <td className='p-2 md:p-5'>{usuario?.name}</td>
-                  <td className='p-2 md:p-5'>{usuario?.email}</td>
-                  <td className='p-2 md:p-5'>
-                    <img
-                      className='w-10 h-10 rounded-full'
-                      src={usuario?.img || defaultAvatarImage}
-                      alt='Rounded avatar'
-                    />
-                  </td>
-                  <td className='p-2 md:p-5'>{usuario?.role}</td>
-                  <td className='p-2 md:p-5'>
-                    {usuario?.verified ? 'Activo' : 'Inactivo'}
-                  </td>
-                  <td className='p-2 md:p-5'>
-                    <button
-                      className='text-xl p-2 flex items-center rounded-full bg-green-700 text-white hover:bg-neutral-600'
-                      onClick={() => openModal(usuario)}
-                    >
-                      <BsPencil />
-                    </button>
-                    <Toaster />
-                  </td>
-                </tr>
-              ))
-            ) : error ? (
-              <tr>
-                <td colSpan='7' className='text-center'>
-                  Error al mostrar los usuarios, intente de nuevo mas tarde
-                </td>
-              </tr>
-            ) : (
-              role === 'Administrador' && (
-                <tr>
-                  <td colSpan='7' className='text-center'>
-                    <Spinner />
-                  </td>
-                </tr>
-              )
-            )}
-          </tbody>
-        </table>
+                    {role === 'Administrador' && !loading ? (
+                      usuarios.map((usuario) => (
+                        <tr key={usuario._id}>
+                          <td className='p-2 md:p-5'>{usuario?.name}</td>
+                          <td className='p-2 md:p-5'>{usuario?.email}</td>
+                          <td className='p-2 md:p-5'>
+                            <img
+                              className='w-10 h-10 rounded-full'
+                              src={usuario?.img || defaultAvatarImage}
+                              alt='Rounded avatar' />
+                          </td>
+                          <td className='p-2 md:p-5'>{usuario?.role}</td>
+                          <td className='p-2 md:p-5'>
+                            {usuario?.verified ? 'Activo' : 'Inactivo'}
+                          </td>
+                          <td className='p-2 md:p-5'>
+                            <button
+                              className='text-xl p-2 flex items-center rounded-full bg-green-700 text-white hover:bg-neutral-600'
+                              onClick={() => openModal(usuario)}
+                            >
+                              <BsPencil />
+                            </button>
+                            <Toaster />
+                          </td>
+                        </tr>
+                      ))
+                    ) : error ? (
+                      <tr>
+                        <td colSpan='7' className='text-center'>
+                          Error al mostrar los usuarios, intente de nuevo mas tarde
+                        </td>
+                      </tr>
+                    ) : (
+                      role === 'Administrador' && (
+                        <tr>
+                          <td colSpan='7' className='text-center'>
+                            <Spinner />
+                          </td>
+                        </tr>
+                      )
+                    )}
+                  </tbody>
+                </table></>
+        )}
       </div>
     )}
     

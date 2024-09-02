@@ -330,6 +330,7 @@ export default function NavLg({
                 <button
                   className='flex items-center justify-center user-menu-button'
                   onClick={() => setOpen(false)}
+                  disabled
                 >
                   <img src='./images/google.png' alt='' className='h-10 p-2' />
                   <p className=''>Continuar con Google</p>
