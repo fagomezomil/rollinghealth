@@ -12,6 +12,7 @@ const useTurnosStore = create((set) => ({
   loading: false,
   error: null,
   fechasDeshabilitadas: [],
+  turnosDoctor: null,
 
   getTurnos: async () => {
     set({ loading: true, error: null });
@@ -123,7 +124,26 @@ const useTurnosStore = create((set) => ({
     }catch (error) {
       set({ error: 'Error al obtener fechas deshabilitadas', loading: false});
     }     
-  }
+  },
+
+  getTurnosDoctor: async (idDoctor) => {
+    set({ loading: true, error: null });
+    try {
+      const response = await axios.get(URI_TURNOS);
+      const turnos = response.data;
+      set({
+        turnos,
+        turnosDoctor: turnos.filter((turno) => turno.doctor._id === idDoctor),
+        loading: false,
+      });
+    } catch (error) {
+      set({
+        error: error.message || 'Error al traer los turnos',
+        loading: false,
+        turnosDoctor: [], 
+      });
+    }
+  },
 }));
 
 

@@ -8,6 +8,7 @@ const usePacienteStore = create((set) => ({
   paciente: null,
   loading: false,
   error: null,
+  pacientesTurnosDoctor: [],
 
 
   getPacientes: async () => {
@@ -69,6 +70,20 @@ const usePacienteStore = create((set) => ({
       set({ error: 'Error al eliminar el paciente' });
     } 
   },
+
+  getPacientesTurnosDoctor: async (ids) => {
+    set({ loading: true, error: null });
+    try {      
+      const idsPacientes = Array.from(new Set(ids));     
+      const responses = await Promise.all(
+        idsPacientes.map(id => axios.get(`${URI_USUARIOS}/${id}`))
+      );      
+      const pacientesTurnosDoctor = responses.map(response => response.data);      
+      set({ pacientesTurnosDoctor, loading: false });
+    } catch (error) {
+      set({ error: error.message, loading: false });
+    }
+  }
 
 }));
 
