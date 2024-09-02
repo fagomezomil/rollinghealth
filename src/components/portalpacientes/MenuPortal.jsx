@@ -123,40 +123,41 @@ export default function MenuPortal({ setPortal, portal, turnosPaciente, centroMe
             </div>
             <div className='overflow-scroll rounded-lg my-6'>
                 <div className='w-full'>
-                    {isLoading && <Spinner />}
-                    <table className='table-auto md:min-w-full'>
-                        <thead className='text-left bg-gray-100'>
-                            <tr className='text-neutral-500'>
-                                <th className='p-2 md:p-5 mr-10 whitespace-nowrap'>N°</th>
-                                <th className='p-2 md:p-5 mr-10 whitespace-nowrap'>Día</th>
-                                <th className='p-2 md:p-5 mr-10 whitespace-nowrap'>Horario</th>
-                                <th className='p-2 md:p-5 whitespace-nowrap'>Médico tratante</th>
-                                <th className='p-2 md:p-5 whitespace-nowrap'>Especialidad</th>
-                                <th className='p-2 md:p-5 whitespace-nowrap'>Dirección de atención</th>
-                                <th className='p-2 md:p-5 '>Cancelar</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {turnosFiltrados.map((turno, index) => (
-                                <tr key={turno._id || index} className='border-b'>
-                                    <td className='p-2 md:p-5'> <p className='font-bold text-white bg-[#126459] rounded-full py-2 px-4'>{index + 1}</p></td>
-                                    <td className='p-2 md:p-5'>{turno.fecha}</td>
-                                    <td className='p-2 md:p-5'>{turno.hora}</td>
-                                    <td className='p-2 md:p-5'>{turno.medico}</td>
-                                    <td className='p-2 md:p-5'>{turno.especialidad}</td>
-                                    <td className='p-2 md:p-5'>{turno.centroMedico}</td>
-                                    <td className='p-2 md:p-5'>
-                                        <button onClick={() => cancelarTurno(turno._id, turno.fecha, turno.hora)}
-                                        disabled={isButtonDisabled}
-                                        className={`text-red-500 hover:text-red-700 text-3xl ${isButtonDisabled ? 'cursor-not-allowed opacity-50 bg-gray-500' : 'text-red-500 hover:text-red-700' }`}>
-                                            <IoCloseCircle />
-                                        </button>
-                                        <Toaster/>
-                                    </td>
+                    {isLoading ? <Spinner /> :
+                        <table className='table-auto md:min-w-full'>
+                            <thead className='text-left bg-gray-100'>
+                                <tr className='text-neutral-500'>
+                                    <th className='p-2 md:p-5 mr-10 whitespace-nowrap'>N°</th>
+                                    <th className='p-2 md:p-5 mr-10 whitespace-nowrap'>Día</th>
+                                    <th className='p-2 md:p-5 mr-10 whitespace-nowrap'>Horario</th>
+                                    <th className='p-2 md:p-5 whitespace-nowrap'>Médico tratante</th>
+                                    <th className='p-2 md:p-5 whitespace-nowrap'>Especialidad</th>
+                                    <th className='p-2 md:p-5 whitespace-nowrap'>Dirección de atención</th>
+                                    <th className='p-2 md:p-5 '>Cancelar</th>
                                 </tr>
-                            ))}
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                {turnosFiltrados.map((turno, index) => (
+                                    <tr key={turno._id || index} className='border-b'>
+                                        <td className='p-2 md:p-5'> <p className='font-bold text-white bg-[#126459] rounded-full py-2 px-4'>{index + 1}</p></td>
+                                        <td className='p-2 md:p-5'>{turno.fecha}</td>
+                                        <td className='p-2 md:p-5'>{turno.hora}</td>
+                                        <td className='p-2 md:p-5'>{turno.medico}</td>
+                                        <td className='p-2 md:p-5'>{turno.especialidad}</td>
+                                        <td className='p-2 md:p-5'>{turno.centroMedico}</td>
+                                        <td className='p-2 md:p-5'>
+                                            <button onClick={() => cancelarTurno(turno._id, turno.fecha, turno.hora)}
+                                            disabled={isButtonDisabled}
+                                            className={`text-red-500 hover:text-red-700 text-3xl ${isButtonDisabled ? 'cursor-not-allowed opacity-50 bg-gray-500' : 'text-red-500 hover:text-red-700' }`}>
+                                                <IoCloseCircle />
+                                            </button>
+                                            <Toaster/>
+                                        </td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    }
                 </div>
             </div>
             <button onClick={() => setPortal("TurnosPortal")} className='boton-menu-portal'>

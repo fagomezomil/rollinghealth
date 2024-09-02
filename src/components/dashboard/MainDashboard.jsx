@@ -9,6 +9,7 @@ import useTurnosStore from "../../zustand/turnos-zustand.js";
 import usePacienteStore from "../../zustand/paciente-zustand.js";
 import defaultAvatarImage from '../../../public/images/defaultAvatarImage.png';
 import { obtenerMesYAnio } from '../../utils/functions.js';
+import Spinner from '../Spinner';
 
 
 
@@ -327,7 +328,7 @@ export default function Component() {
               role === 'Administrador' && (
                 <tr>
                   <td colSpan='7' className='text-center'>
-                    Cargando usuarios...
+                    <Spinner />
                   </td>
                 </tr>
               )
