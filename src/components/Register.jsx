@@ -6,9 +6,9 @@ import { useEffect } from "react";
 import { irAlTop } from "../utils/functions";
 
 export default function Register() {
-    useEffect( () => {
+    useEffect(() => {
         irAlTop();
-      });
+    });
 
     const { register, handleSubmit, reset, watch, formState: { errors } } = useForm()
     const navegacion = useNavigate()
@@ -28,7 +28,7 @@ export default function Register() {
         <div className='mt-20 grid grid-cols-12'>
             <div className='col-span-12 lg:col-span-5 bg-[url(/images/register/register.webp)] bg-cover bg-no-repeat w-full h-[350px] lg:h-full'>
             </div>
-            <div className="col-span-12 lg:col-span-6 p-10 ">
+            <div className="col-span-12 lg:col-span-6 p-10 pb-16">
                 <p className="text-[50px] text-[#126459] font-bold leading-[55px] mb-6">Registrese y sientase cuidado por Rolling Health</p>
                 <form className="flex flex-col" onSubmit={handleSubmit(onSubmit)}>
                     <p className="text-neutral-700 text-left italic">Nombre y apellido <span className="text-red-500">*</span></p>

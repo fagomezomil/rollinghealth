@@ -1,6 +1,7 @@
 import { RiWhatsappLine } from "react-icons/ri";
 import { Link } from "react-router-dom";
 export default function SlideHomeContainer({ data }) {
+    console.log(data.link)
     return (
         <>
             <div
@@ -10,12 +11,12 @@ export default function SlideHomeContainer({ data }) {
                 <div className="lg:ml-12 space-y-8 w-[50%] xl:w-[40%]">
                     <p className="text-[#0c423b] text-6xl">{data.title}</p>
                     <p className="text-neutral-500 text-2xl w-[90%]">{data.text}</p>
-                    <button className={`slide-home-button ${data.icon === "whatsapp" ? "bg-[#29bb24]" : "bg-neutral-500"}`}>
+                    <Link to={data.link}><button className={`slide-home-button mt-4 ${data.icon === "whatsapp" ? "bg-[#29bb24]" : "bg-neutral-500"}`}>
                         {
                             data.icon === "whatsapp" && <RiWhatsappLine className="inline-block mr-2 text-2xl" />
                         }
                         {data.button}
-                    </button>
+                    </button></Link>
                 </div>
             </div>
             <div className="lg:hidden">
