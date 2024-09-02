@@ -204,7 +204,7 @@ export default function SidePortal({ setPortal , cantidadTurnos, paciente}) {
                         />                       
                         <div className='flex items-center justify-end p-6 border-t border-solid border-blueGray-200 rounded-b'>
                         <button
-                            className='text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150'
+                            className='bg-white text-red-500 border border-red-500 hover:bg-red-500 hover:text-white font-bold uppercase px-6 py-2 text-sm rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150'
                             type='button'
                             onClick={() => closeModal()}
                         >
@@ -212,14 +212,15 @@ export default function SidePortal({ setPortal , cantidadTurnos, paciente}) {
                         </button>
                         <button
                             disabled={isLoadingEdit}
-                            className={`rounded-lg text-white text-sm py-2 px-4 mb-4 ${
-                            isLoadingEdit
-                                ? 'bg-[#E6E6E6] cursor-not-allowed'
-                                : 'bg-[#126459]'
-                            }`}
+                            className={`
+                            font-bold uppercase px-6 py-2 text-sm rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150
+                            ${isLoadingEdit
+                                ? 'bg-gray-400 text-white cursor-not-allowed'
+                                : 'bg-green-500 text-white hover:bg-green-600'}
+                            `}
                             type='submit'
                         >
-                            Guardar
+                            {isLoadingEdit ? 'Guardando...' : 'Guardar'}
                         </button>
                         </div>
                     </form>

@@ -2,6 +2,13 @@ export function irAlTop() {
     window.scrollTo(0, 0);
   }
   
+export const formatDate = (dateString) => {
+  const date = new Date(dateString);
+  const day = String(date.getUTCDate()).padStart(2, '0');
+  const month = String(date.getUTCMonth() + 1).padStart(2, '0');
+  const year = date.getUTCFullYear();
+  return `${day}-${month}-${year}`;
+};
 
 export const convertirFechaHora = (fecha, horario) => {
   const [dia, mes, anio] = fecha.split('-').map(Number);
@@ -47,4 +54,12 @@ export const resizeImage = (file, maxWidth, maxHeight) => {
     };
     reader.readAsDataURL(file);
   });
+};
+
+export const obtenerMesYAnio = (fecha) => {
+  const date = new Date(fecha);
+  const mes = date.toLocaleString('es-ES', { month: 'long' });
+  const mesString = mes.toUpperCase();
+  const anioString = date.getFullYear();
+  return { mesString, anioString };
 };

@@ -116,8 +116,9 @@ export default function TurnosPortal({ setPortal, dataUsuario }) {
     setHoraSelected(horaElegida);
   };
 
+ 
   const handleSubmit = async (event) => {
-    event.preventDefault();
+    event.preventDefault();    
     const nuevoTurno = {
       paciente: { _id: dataUsuario._id },
       doctor: { _id: idMedicoSelected },
@@ -125,27 +126,36 @@ export default function TurnosPortal({ setPortal, dataUsuario }) {
       hora: horaSelected,
       notas: "prueba",
     };
-
-    try {
-    const medicoYaReservado = turnosPaciente.some(turno => turno.doctor._id === idMedicoSelected);
+  
+    try {     
+      const turnosConElMismoMedico = turnosPaciente.filter(turno => turno.doctor._id === idMedicoSelected);    
+      const hoy = new Date();        
+      const turnosFuturosConElMismoMedico = turnosConElMismoMedico.filter(turno => {
+        const fechaTurno = new Date(turno.fecha);
+        return fechaTurno >= hoy;
+      });      
+      const medicoYaReservado = turnosFuturosConElMismoMedico.length > 0;
+  
       if (medicoYaReservado) {
-        toast.error('El médico seleccionado ya tiene turnos reservados por Usted.');
-      }else{ 
-      await agregarTurno(nuevoTurno);
-      await getTurnosPaciente(dataUsuario._id);
-      toast.success("Turno guardado exitosamente");
-
-      setTimeout(() => {
-        setCentroMedicoSelected("");
-        setMedicoSelected("");
-        setFechaSelected("");
-        setHoraSelected("");
-        setPortal("MenuPortal");
-      }, 2000)}
+        toast.error('El médico seleccionado ya tiene turnos reservados por usted.');
+      } else { 
+        await agregarTurno(nuevoTurno);
+        await getTurnosPaciente(dataUsuario._id);
+        toast.success("Turno guardado exitosamente");
+  
+        setTimeout(() => {
+          setCentroMedicoSelected("");
+          setMedicoSelected("");
+          setFechaSelected("");
+          setHoraSelected("");
+          setPortal("MenuPortal");
+        }, 2000);
+      }
     } catch (error) {
       toast.error("Error al guardar el turno");
     }
   };
+  
 
 
   const renderDayContents = (day, date) => {
