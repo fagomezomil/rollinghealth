@@ -1,3 +1,5 @@
+import * as XLSX from 'xlsx';
+
 export function irAlTop() {
     window.scrollTo(0, 0);
   }
@@ -62,4 +64,46 @@ export const obtenerMesYAnio = (fecha) => {
   const mesString = mes.toUpperCase();
   const anioString = date.getFullYear();
   return { mesString, anioString };
+};
+
+export const transformDoctorDataForExcel = (turnosPorMes, nombresPacientes) => {
+  const transformedData = [];
+
+  Object.keys(turnosPorMes).sort((a, b) => {
+    const fechaA = new Date(turnosPorMes[a][0].fecha);
+    const fechaB = new Date(turnosPorMes[b][0].fecha);
+    return fechaA - fechaB;
+  })
+  .forEach((mes) => {
+    const { mesString, anioString } = obtenerMesYAnio(turnosPorMes[mes][0].fecha);
+    turnosPorMes[mes].forEach((turno, index) => {
+      transformedData.push({
+        Mes: `${mesString} ${anioString}`,
+        Numero: index + 1,
+        Fecha: formatDate(turno.fecha),
+        Hora: turno.hora,
+        Paciente: nombresPacientes[turno.paciente._id] || 'Nombre no disponible',
+      });
+    });
+  });
+
+  return transformedData;
+};
+
+export const transformAdminDataForExcel = (usuarios) => {
+  const transformedData = usuarios.map((usuario) => ({
+    Nombre: usuario?.name || 'N/A',
+    Email: usuario?.email || 'N/A',
+    Rol: usuario?.role || 'N/A',
+    Estado: usuario?.verified ? 'Activo' : 'Inactivo',
+  }));
+
+  return transformedData;
+};
+
+export const exportToExcel = (data, fileName) => {
+  const worksheet = XLSX.utils.json_to_sheet(data);
+  const workbook = XLSX.utils.book_new();
+  XLSX.utils.book_append_sheet(workbook, worksheet, "Sheet1");
+  XLSX.writeFile(workbook, `${fileName}.xlsx`);
 };

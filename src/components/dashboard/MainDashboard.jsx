@@ -8,7 +8,7 @@ import useUsersStore from '../../zustand/usuarios-zustand';
 import useTurnosStore from "../../zustand/turnos-zustand.js";
 import usePacienteStore from "../../zustand/paciente-zustand.js";
 import defaultAvatarImage from '../../../public/images/defaultAvatarImage.png';
-import { obtenerMesYAnio } from '../../utils/functions.js';
+import { obtenerMesYAnio, transformAdminDataForExcel, transformDoctorDataForExcel, exportToExcel } from '../../utils/functions.js';
 import Spinner from '../Spinner';
 import { FaFileExcel } from 'react-icons/fa';
 
@@ -173,6 +173,23 @@ export default function Component() {
     setUsuarioAEditar(null);
     setShowModal(false);
   };
+  
+  function handleExportToExcel(role, turnosPorMes, nombresPacientes, usuarios) {
+    let transformedData = [];
+  
+    if (role === 'Doctor') {
+      transformedData = transformDoctorDataForExcel(turnosPorMes, nombresPacientes);
+      exportToExcel(transformedData, 'Turnos_Doctor');
+    } else if (role === 'Administrador') {
+      transformedData = transformAdminDataForExcel(usuarios);
+      exportToExcel(transformedData, 'Usuarios_Administrador');
+    }
+  }
+
+  const handleExportToExcelClick = () => {
+    handleExportToExcel(role, turnosPorMes, nombresPacientes, usuarios);
+  };
+  
 
  
   return (
@@ -231,9 +248,9 @@ export default function Component() {
           ) : (
             <>
             <div className="table-header">
-              <button className="export-button flex items-center">
+              <button onClick={handleExportToExcelClick} className="export-button flex items-center">
                 <FaFileExcel className="text-green-600 mr-2" size={24} />
-                <span>Exportar a Excel</span>
+                <span className="font-semibold">Exportar a Excel</span>
               </button>
             </div>
               <table className='table-auto md:min-w-full mb-6'>
