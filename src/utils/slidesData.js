@@ -5,6 +5,7 @@ export const slidesData = [
         text: "En nuestros centros multidisciplinarios, ofrecemos atención cercana y accesible en toda Argentina.",
         img: "/images/slidehome/slide_img-2.jpg",
         button: "Descubre Más",
+        link: "/centros",
     },
     {
         id: 1,
@@ -12,6 +13,7 @@ export const slidesData = [
         text: "Nuestros servicios de salud integral te garantizan atención de calidad y bienestar en cada visita.",
         img: "/images/slidehome/slide_img-1.jpg",
         button: "Conocer Coberturas",
+        link: "/login",
     },
     {
         id: 3,
@@ -19,6 +21,7 @@ export const slidesData = [
         text: "Nuestro equipo de profesionales altamente capacitados está comprometido con tu salud y bienestar diario.",
         img: "/images/slidehome/slide_img-3.jpg",
         button: "Ver Equipo",
+        link: "/staff",
     },
     {
         id: 4,
@@ -27,5 +30,6 @@ export const slidesData = [
         img: "/images/slidehome/slide_img-4.jpg",
         button: "Comunícate ahora",
         icon: "whatsapp",
+        link: "/nosotros",
     },
 ]

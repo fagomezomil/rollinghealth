@@ -220,10 +220,10 @@ export default function NavLg({
         className='text-lg italic flex justify-center items-center mr-6'
       >
         {role === '' && (
-          <>
+          <button className='flex justify-center items-center'>
             <p className='mr-2'>Ingresar</p>
             <FaUser />
-          </>
+          </button>
         )}
         {role !== '' && (
           <button

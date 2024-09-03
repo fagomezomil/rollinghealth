@@ -1,6 +1,6 @@
 import { useForm } from 'react-hook-form';
 import { ROLES } from '../constants/usersRoles';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import toast, { Toaster } from 'react-hot-toast';
 import useUsuarioStore from '../zustand/usuario-zustand';
 import useButtonState from '../hooks/useButtonState';
@@ -8,7 +8,7 @@ import { useEffect } from 'react';
 import { irAlTop } from '../utils/functions';
 
 export default function Login() {
-  useEffect( () => {
+  useEffect(() => {
     irAlTop();
   });
   const userRole = '';
@@ -22,22 +22,22 @@ export default function Login() {
   const { isButtonDisabled } = useButtonState(false);
 
 
-  const onSubmit = async (dataForm) => {   
+  const onSubmit = async (dataForm) => {
     try {
-        const user = await postLogin(dataForm);       
-        if (user.role === ROLES.PATIENT) {
-            navigate('/paciente');
-        } else if (user.role === ROLES.DOCTOR) {
-            navigate('/dashboard');
-        } else if (user.role === ROLES.ADMIN) {
-            navigate('/dashboard');
-        } else {
-            toast.error('Rol desconocido, por favor contacte con soporte.');
-        }
+      const user = await postLogin(dataForm);
+      if (user.role === ROLES.PATIENT) {
+        navigate('/paciente');
+      } else if (user.role === ROLES.DOCTOR) {
+        navigate('/dashboard');
+      } else if (user.role === ROLES.ADMIN) {
+        navigate('/dashboard');
+      } else {
+        toast.error('Rol desconocido, por favor contacte con soporte.');
+      }
     } catch {
-        toast.error('El nombre de usuario o contraseña son incorrectos');
+      toast.error('El nombre de usuario o contraseña son incorrectos');
     }
-};
+  };
 
   return userRole === '' ? (
     <div className='mt-20 grid md:grid-cols-12 items-center'>
@@ -87,13 +87,15 @@ export default function Login() {
           <button
             type='submit'
             disabled={isButtonDisabled}
-            className={`rounded-lg text-white text-sm py-2 px-4 mb-4 ${
-              isButtonDisabled ? 'bg-[#E6E6E6] cursor-not-allowed' : 'bg-[#126459]'
-            }`}
+            className={`rounded-lg text-white text-sm py-2 px-4 mb-4 ${isButtonDisabled ? 'bg-[#E6E6E6] cursor-not-allowed' : 'bg-[#126459]'
+              }`}
           >
             {'Ingresar'}
           </button>
         </form>
+
+      <p className='text-neutral-700 text-left italic md:mt-4'>¿No tenés cuenta de usuario?</p>
+      <Link to={'/register'}><p className='text-neutral-700 font-bold'>Registrate aquí</p></Link>
       </div>
       <Toaster />
     </div>
