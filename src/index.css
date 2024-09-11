@@ -5,7 +5,7 @@
 @layer base {  
     /* NavBar */
 .navbar-button {
-    @apply bg-[#0c423b] rounded-md  w-full text-white text-lg font-medium my-1  p-2 lg:px-10  xl:mx-2 lg:mx-1;
+    @apply bg-[#0c423b] hover:bg-white rounded-md  w-full text-white hover:text-[#0c423b] text-lg font-medium my-1  p-2 lg:px-10  xl:mx-2 lg:mx-1;
   }
 .header-style {
     @apply bg-[#126459] fixed w-full text-white text-center py-4 shadow-xl z-50 flex justify-between items-center h-20;
@@ -25,7 +25,7 @@
 
   /* Slide Home */
   .slide-home-button {
-    @apply text-white text-lg font-medium rounded-lg  px-6 py-2 flex items-center justify-center;
+    @apply text-white text-lg font-medium rounded-lg hover:bg-[#126459] px-6 py-2 flex items-center justify-center;
   }
   .slide-control-button {
     @apply text-neutral-300 text-4xl;
@@ -52,6 +52,14 @@
   }
   .services-icon {
     @apply text-[30px] mr-2;
+  }
+
+  /* Register */
+  .input-register {
+    @apply text-neutral-700 h-10 my-2 mb-4 rounded-md focus:outline-none focus:ring focus:ring-[#aaddd6] border border-[#126459] pl-4;
+  }
+  .input-text-register {
+    @apply text-neutral-700 text-left italic
   }
 
   /* Paciente */
@@ -97,7 +105,19 @@
   @apply font-medium text-xl text-[#126459];
 }
 
-  /* Urgencias */
+  /* Side Portal */
+  .subtitulo-side {
+    @apply text-xl font-medium uppercase text-neutral-500;
+  }
+  .button-side {
+    @apply rounded-lg flex justify-center items-center bg-[#126459] hover:bg-neutral-500 text-white text-lg py-2 px-4 lg:mt-0;
+  }
+  .bg-circle-verde {
+    @apply rounded-full w-10 h-10 text-center pt-1 font-bold text-white bg-[#126459] text-2xl;
+  }
+  .container-modal {
+    @apply justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none;
+  }
 
   /* Footer */
   .bg-footer-style {

@@ -29,13 +29,13 @@ export default function Register() {
             <div className='col-span-12 lg:col-span-5 bg-[url(/images/register/register.webp)] bg-cover bg-no-repeat w-full h-[350px] lg:h-full'>
             </div>
             <div className="col-span-12 lg:col-span-6 p-10 pb-16">
-                <p className="text-[50px] text-[#126459] font-bold leading-[55px] mb-6">Registrese y sientase cuidado por Rolling Health</p>
+                <p className="titulo-articulo mb-6">Registrese y sientase cuidado por Rolling Health</p>
                 <form className="flex flex-col" onSubmit={handleSubmit(onSubmit)}>
-                    <p className="text-neutral-700 text-left italic">Nombre y apellido <span className="text-red-500">*</span></p>
+                    <p className="input-text-register">Nombre y apellido <span className="text-red-500">*</span></p>
                     <input
                         type="text"
                         placeholder="Ingrese su Nombre y Apellido completo"
-                        className="text-center text-neutral-700 h-10 my-2 mb-4 rounded-md focus:outline-none focus:ring focus:ring-[#aaddd6] border border-[#126459]"
+                        className="input-register"
                         {
                         ...register("name", {
                             required: 'El nombre y apellido es obligatorio.',
@@ -53,11 +53,11 @@ export default function Register() {
                     {errors.nombre && (
                         <p className="text-red-500 text-sm">{errors.nombre.message}</p>
                     )}
-                    <p className="text-neutral-700 text-left italic">Dirección (Domicilio y Provincia) <span className="text-red-500">*</span></p>
+                    <p className="input-text-register">Dirección (Domicilio y Provincia) <span className="text-red-500">*</span></p>
                     <input
                         type="text"
                         placeholder="Ingrese su dirección"
-                        className="text-center text-neutral-700 h-10 my-2 mb-4 rounded-md focus:outline-none focus:ring focus:ring-[#aaddd6] border border-[#126459]"
+                        className="input-register"
                         {
                         ...register("address", {
                             required: 'La dirección es obligatoria.',
@@ -75,11 +75,11 @@ export default function Register() {
                     {errors.address && (
                         <p className="text-red-500 text-sm">{errors.address.message}</p>
                     )}
-                    <p className="text-neutral-700 text-left italic">Teléfono de contacto <span className="text-red-500">*</span></p>
+                    <p className="input-text-register">Teléfono de contacto <span className="text-red-500">*</span></p>
                     <input
                         type="number"
                         placeholder="Ingrese su número de contacto (sin 0 ni 15)"
-                        className="text-center text-neutral-700 h-10 my-2 mb-4 rounded-md focus:outline-none focus:ring focus:ring-[#aaddd6] border border-[#126459]"
+                        className="input-register"
                         {
                         ...register("phone", {
                             required: 'El número de teléfono es obligatorio.',
@@ -97,11 +97,11 @@ export default function Register() {
                     {errors.phone && (
                         <p className="text-red-500 text-sm">{errors.phone.message}</p>
                     )}
-                    <p className="text-neutral-700 text-left italic">Correo electrónico <span className="text-red-500">*</span></p>
+                    <p className="input-text-register">Correo electrónico <span className="text-red-500">*</span></p>
                     <input
                         type="email"
                         placeholder="Ingrese su Correo Electrónico"
-                        className="text-center text-neutral-700 h-10 my-2 mb-4 rounded-md focus:outline-none focus:ring focus:ring-[#aaddd6] border border-[#126459]"
+                        className="input-register"
                         {...register("email", {
                             required: "El email es obligatorio",
                             minLength: {
@@ -125,11 +125,11 @@ export default function Register() {
                     {errors.email && (
                         <p className='text-red-500 text-sm'>{errors.email.message}</p>
                     )}
-                    <p className="text-neutral-700 text-left italic">Ingresar Contraseña <span className="text-red-500">*</span></p>
+                    <p className="input-text-register">Ingresar Contraseña <span className="text-red-500">*</span></p>
                     <input
                         type="password"
                         placeholder="Ingrese su contraseña"
-                        className="text-center text-neutral-700 h-10 my-2 mb-4 rounded-md focus:outline-none focus:ring focus:ring-[#aaddd6] border border-[#126459]"
+                        className="input-register"
                         {...register("password", {
                             required: "La contraseña es obligatoria",
                             minLength: {
@@ -145,11 +145,11 @@ export default function Register() {
                     {errors.password && (
                         <p className='text-red-500 text-sm'>{errors.password.message}</p>
                     )}
-                    <p className="text-neutral-700 text-left italic">Repetir Contraseña <span className="text-red-500">*</span></p>
+                    <p className="input-text-register">Repetir Contraseña <span className="text-red-500">*</span></p>
                     <input
                         type="password"
                         placeholder="Repita su contraseña"
-                        className="text-center text-neutral-700 h-10 my-2 mb-4 rounded-md focus:outline-none focus:ring focus:ring-[#aaddd6] border border-[#126459]"
+                        className="input-register"
                         {...register("confirmPassword", {
                             required: "Es obligatorio ingresar nuevamente la contraseña",
                             minLength: {
@@ -168,7 +168,7 @@ export default function Register() {
                     {errors.confirmPassword && (
                         <p className='text-red-500 text-sm'>{errors.confirmPassword.message}</p>
                     )}
-                    <button type="submit" className="rounded-lg bg-[#126459] text-white text-sm py-2 px-4 mb-4">Registrar</button>
+                    <button type="submit" className="rounded-lg bg-[#126459] text-white text-sm py-2 px-4 my-4">Registrar</button>
                 </form>
             </div>
             <Toaster />

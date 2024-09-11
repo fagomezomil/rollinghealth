@@ -43,11 +43,11 @@ export default function Login() {
     <div className='mt-20 grid md:grid-cols-12 items-center'>
       <div className='col-span-12 lg:col-span-5 bg-[url(/images/register/register.webp)] bg-cover bg-no-repeat w-full h-[350px] lg:h-[650px]'></div>
       <div className='col-span-12 lg:col-span-5 p-10 '>
-        <p className='text-[50px] text-[#126459] font-bold leading-[55px] mb-6'>
+        <p className='titulo-articulo mb-6'>
           Ingresar
         </p>
         <form className='flex flex-col' onSubmit={handleSubmit(onSubmit)}>
-          <p className='text-neutral-700 text-left italic'>
+          <p className='input-text-register'>
             Correo electrónico
           </p>
           <input
@@ -58,12 +58,12 @@ export default function Login() {
             name='email'
             placeholder='Ingrese su Correo Electrónico'
             maxLength={30}
-            className='text-center text-neutral-700 h-10 my-2 mb-4 rounded-md focus:outline-none focus:ring focus:ring-[#aaddd6] border border-[#126459]'
+            className='input-register'
           />
           {errors.email && (
             <p className='text-red-500 text-sm'>{errors.email.message}</p>
           )}
-          <p className='text-neutral-700 text-left italic'>
+          <p className='input-text-register'>
             Ingresar Contraseña
           </p>
           <input
@@ -79,7 +79,7 @@ export default function Login() {
             placeholder='Ingrese su contraseña'
             maxLength={16}
             minLength={8}
-            className='text-center text-neutral-700 h-10 my-2 mb-4 rounded-md focus:outline-none focus:ring focus:ring-[#aaddd6] border border-[#126459]'
+            className='input-register'
           />
           {errors.password && (
             <p className='text-red-500 text-sm'>{errors.password.message}</p>
@@ -94,7 +94,7 @@ export default function Login() {
           </button>
         </form>
 
-      <p className='text-neutral-700 text-left italic md:mt-4'>¿No tenés cuenta de usuario?</p>
+      <p className='input-text-register md:mt-4'>¿No tenés cuenta de usuario?</p>
       <Link to={'/register'}><p className='text-neutral-700 font-bold'>Registrate aquí</p></Link>
       </div>
       <Toaster />
