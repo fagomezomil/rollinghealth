@@ -1,0 +1,123 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {  
+    /* NavBar */
+.navbar-button {
+    @apply bg-[#0c423b] rounded-md  w-full text-white text-lg font-medium my-1  p-2 lg:px-10  xl:mx-2 lg:mx-1;
+  }
+.header-style {
+    @apply bg-[#126459] fixed w-full text-white text-center py-4 shadow-xl z-50 flex justify-between items-center h-20;
+  }
+  .user-badge {
+    @apply hidden lg:flex rounded-full h-10 w-10 mx-6 bg-[#a3a39d] border border-white items-center justify-center;
+  }
+  .user-menu {
+    @apply hidden lg:flex bg-white shadow-lg px-4 py-6 w-80 rounded-lg absolute right-6 top-14 flex-col;
+  }
+  .user-menu-button {
+    @apply text-neutral-500 hover:bg-[#c4e9e4] hover:rounded-lg hover:text-neutral-700 my-2 py-1 font-medium text-lg;
+}
+.input-menu {
+  @apply text-center text-neutral-700 h-10 my-2 mb-4 rounded-md focus:outline-none focus:ring focus:ring-[#aaddd6] border border-[#126459];
+}
+
+  /* Slide Home */
+  .slide-home-button {
+    @apply text-white text-lg font-medium rounded-lg  px-6 py-2 flex items-center justify-center;
+  }
+  .slide-control-button {
+    @apply text-neutral-300 text-4xl;
+  }
+  .container-centros {
+    @apply grid grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-12;
+  }
+  .titulo-centro {
+    @apply font-bold text-neutral-600 text-[20px];
+  }
+  .button-info {
+    @apply rounded-full bg-[#126459] text-white text-sm py-2 px-4 my-4;
+  }
+  .icon-info {
+    @apply inline-block mr-2 rounded-full h-7 w-7 p-1 bg-neutral-400 text-white text-xl;
+  }
+  .button-mas {
+    @apply flex justify-center items-center bg-neutral-400 rounded-full px-6 py-4 font-semibold text-white;
+  }
+
+  /* services home */
+  .services-button {
+    @apply text-white text-2xl px-6 md:px-20 p-6 font-medium rounded-lg flex flex-col justify-center items-center active:p-6 active:bg-[#126459] ;
+  }
+  .services-icon {
+    @apply text-[30px] mr-2;
+  }
+
+  /* Paciente */
+  .boton-menu-portal {
+    @apply w-full flex flex-col md:flex-row items-center rounded-lg text-white bg-neutral-500 hover:bg-[#0c423b] p-6;
+  }
+  .num-gestion-turno {
+    @apply text-3xl text-neutral-600 font-bold p-2 border-2 border-neutral-600 rounded-lg mr-4;
+  }
+  .opt-gestion-turno {
+    @apply text-3xl text-neutral-600 font-semibold mr-4;
+  }
+  .select-centros {
+    @apply rounded-lg p-4 text-lg font-semibold text-white bg-[#126459] w-full mt-4 lg:mt-0;
+  }
+  .text-continuar {
+    @apply w-full col-span-4 text-xl text-neutral-400 font-light
+  }
+  .img-doc-turno {
+    @apply h-20 w-20 border-4 border-neutral-200 rounded-md mr-4;
+  }
+  
+  /* Textos */
+  .titulo-articulo {
+    @apply text-3xl md:text-[50px] text-[#126459] font-bold leading-tight;
+  }
+  .bajada-articulo {
+    @apply text-neutral-500 italic text-[20px] md:text-2xl lg:w-[70%] mt-4 mb-10;
+  }
+
+/* Centros */
+.badge-especialidad {
+  @apply rounded-full border border-[#126459] text-[#126459] text-sm py-2 px-4 w-fit;
+}
+/* Nosotros */
+.nombre-nosotros {
+  @apply bg-[#126459] rounded-md py-2 px-7 text-white text-xl font-medium mt-2;
+}
+.comision-nosotros {
+  @apply bg-neutral-400 rounded-md py-2 px-7 text-white italic;
+}
+.subtitulo-nosotros {
+  @apply font-medium text-xl text-[#126459];
+}
+
+  /* Urgencias */
+
+  /* Footer */
+  .bg-footer-style {
+    @apply bg-[#3b3a35] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 text-white p-4 pt-20 lg:px-12 relative;
+  }
+  .titulo-footer {
+    @apply text-lg font-bold mt-4 md:mt-0 mb-2;
+  }
+  .container-social {
+    @apply flex mt-8 gap-6 absolute -top-16 left-[15%] sm:left-[37%] lg:left-[45%];
+  }
+  .social-badge {
+    @apply flex items-center justify-center bg-[#126459] rounded-full border-white border-2 p-4;
+  }
+  
+}
+
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
