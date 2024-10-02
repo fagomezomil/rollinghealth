@@ -1,7 +1,6 @@
 import { RiWhatsappLine } from "react-icons/ri";
 import { Link } from "react-router-dom";
 export default function SlideHomeContainer({ data }) {
-    console.log(data.link)
     return (
         <>
             <div
