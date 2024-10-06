@@ -47,11 +47,17 @@ export default function Register() {
                                 value: 50,
                                 message: "Puede ingresar como máximo 30 carácteres para el nombre y apellido de usuario.",
                             },
+                            pattern: {
+                                value:
+                                    /[a-zA-Z]/g,
+                                message:
+                                    "El nombre y apellido debe contener solo letras y espacios.",
+                            },
                         })
                         }
                     />
-                    {errors.nombre && (
-                        <p className="text-red-500 text-sm">{errors.nombre.message}</p>
+                    {errors.name && (
+                        <p className="text-red-500 text-sm">{errors.name.message}</p>
                     )}
                     <p className="input-text-register">Dirección (Domicilio y Provincia) <span className="text-red-500">*</span></p>
                     <input
