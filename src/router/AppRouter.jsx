@@ -12,6 +12,7 @@ import RutasProtegidas from "./RutasProtegidas"
 import RutasAdmin from "./RutasAdmin"
 import RutasDoctor from "./RutasDoctor"
 import useUsuarioStore from "../zustand/usuario-zustand"
+import Error404 from "../components/Error404"
 
 const AppRouter = () => {
     const { dataUsuario } = useUsuarioStore((state) => ({
@@ -28,6 +29,7 @@ const AppRouter = () => {
                     <Route path="/nosotros" element={<Nosotros />} />
                     <Route path="/centros" element={<Centros />} />
                     <Route path="/staff" element={<Staff />} />
+                    <Route path="/404" element={<Error404 />} />
                     <Route path="/register" element={<Register />} />
                     <Route path="/login" element={<Login />} />
                     <Route 

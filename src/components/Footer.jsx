@@ -1,4 +1,5 @@
 import { FaFacebook, FaInstagram, FaYoutube } from "react-icons/fa6";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -21,11 +22,11 @@ const Footer = () => {
       <div>
         <h2 className="titulo-footer">Legales</h2>
         <ul className="list-disc list-inside p-0 m-0">
-          <li className="mb-2"><a href="#">Términos y condiciones de uso</a></li>
-          <li className="mb-2"><a href="#">Política de privacidad</a></li>
-          <li className="mb-2"><a href="#">Defensa de las y los Consumidores.</a></li>
-          <li className="mb-2"><a href="#">Reportes de incidentes</a></li>
-          <li className="mb-2"><a href="#">Trabajar con nosotros</a></li>
+          <li className="mb-2"><Link to='/404'>Términos y condiciones de uso</Link></li>
+          <li className="mb-2"><Link to='/404'>Política de privacidad</Link></li>
+          <li className="mb-2"><Link to='/404'>Defensa de las y los Consumidores.</Link></li>
+          <li className="mb-2"><Link to='/404'>Reportes de incidentes</Link></li>
+          <li className="mb-2"><Link to='/404'>Trabajar con nosotros</Link></li>
         </ul>
       </div>
       <div>
@@ -43,9 +44,9 @@ const Footer = () => {
       </div>
       <div>
       <div className="container-social">
-        <p className="social-badge"><FaFacebook className="text-white text-3xl" /></p>
-        <p className="social-badge"><FaYoutube className="text-white text-3xl" /></p>
-        <p className="social-badge"><FaInstagram className="text-white text-3xl" /></p>
+        <a href="http://www.facebook.com"><p className="social-badge"><FaFacebook className="text-white text-3xl" /></p></a>
+        <a href="http://www.youtube.com"><p className="social-badge"><FaYoutube className="text-white text-3xl" /></p></a>
+        <a href="http://www.instagram.com"><p className="social-badge"><FaInstagram className="text-white text-3xl" /></p></a>
       </div>
       </div>
     </footer>
